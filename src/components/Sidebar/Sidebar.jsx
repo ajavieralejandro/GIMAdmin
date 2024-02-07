@@ -37,17 +37,32 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 
 const items3 = [
-    getItem('Clientes', 'grp', null,null, null),
+    getItem('Clientes', '/clientes', null,null, null),
     getItem('Cuentas', 'sub1', <MailOutlined />, [
-        getItem('Movimientos', 'g1', null,null,null),
+        getItem('Conceptos de Movimientos', '/conceptos_movimiento', null,null,null),
+
+        getItem('Movimientos', '/movimientos', null,null,null),
         getItem('Cajas', '/cajas', null,null,null),
+        getItem('Apertura/Cierre', '/aperturas_cierres', null,null,null),
+        getItem('Categorias de conceptos', '/categorias_concepto', null,null,null),
+
 
       
       ]),
     
     getItem('Fidelizacion', 'sub1', <MailOutlined />, [
-      getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-      getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+        getItem('Lista de Premios', '/premios', null,null,null),
+        getItem('Reglas Puntajes', '/puntajes', null,null,null),
+        getItem('Covertura de Puntos', '/covertura', null,null,null),
+        getItem('Listados', '/listados', null,null,null),
+        getItem('Configuracion de Herramientas', '/herramientas', null,null,null),
+        getItem('Niveles de Fidelización', '/niveles', null,null,null),
+        getItem('Beneficios', '/beneficios', null,null,null),
+
+
+
+
+
     ]),
     getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
       getItem('Option 5', '5'),

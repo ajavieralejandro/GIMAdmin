@@ -11,17 +11,17 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Punto de Venta',
-    dataIndex: 'venta',
-    key: 'venta',
+    title: 'Abreviatura',
+    dataIndex: 'abreviatura',
+    key: 'abreviatura',
   },
   {
-    title: 'Sucursal',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Categoria',
+    dataIndex: 'categoria',
+    key: 'categoria',
   },
   {
-    title: 'Activa',
+    title: 'Real',
     key: 'active',
     dataIndex: 'active',
     render: (_, { active }) => (
@@ -30,6 +30,17 @@ const columns = [
       </>
     ),
   },
+  {
+    title: 'Tipo por Defecto',
+    dataIndex: 'type',
+    key: 'type',
+  },
+  {
+    title: 'Aplica a CAC',
+    dataIndex: 'CAC',
+    key: 'CAC',
+  },
+
   {
     title: 'Action',
     key: 'action',
@@ -44,9 +55,10 @@ const columns = [
 const data = [
   {
     key: '1',
-    descripcion: 'CAJA ADMIN LOMAS',
-    venta: '',
-    address: 'LAS HERAS 1512 (LOMAS DE ZAMORA)',
+    descripcion: 'ABONOS',
+    abreviatura: 'ABONOS',
+    categoria: 'ABONOS',
+    type : 'Inegreso',
     active: true,
   },
   
