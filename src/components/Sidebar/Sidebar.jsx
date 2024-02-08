@@ -64,6 +64,16 @@ const items3 = [
 
 
     ]),
+    getItem('Facturacion', 'sub3', <MailOutlined />, [
+        getItem('Configuracion', '/facturacion', null,null,null),
+        getItem('Comprobantes', '/facturacion', null,null,null),
+   
+
+
+
+
+
+    ]),
    
   ];
 const App = ({children}) => {

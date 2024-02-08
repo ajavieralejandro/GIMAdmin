@@ -11,6 +11,7 @@ import Categorias from "./Admin/Cuentas/categorias";
 import AperturasCierres from "./Admin/Cuentas/aperturas_cierres";
 import ListaPremios from "./Admin/Fidelizacion/premios";
 import CoverturaPuntos from "./Admin/Fidelizacion/covertura_puntos";
+import FacturacionRechazada from "./Admin/Facturacion/facturacion.rechazada";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -27,7 +28,8 @@ const AdminPage = () =>{
 
         <Route path='/premios' element={<ListaPremios/>} />
         <Route path='/covertura' element={<CoverturaPuntos />} />
-
+        
+        <Route path='/facturacion' element={<FacturacionRechazada />} />
     
       </Routes>
            </SideBar>
