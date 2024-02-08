@@ -19,16 +19,16 @@ const SelectCajas = () => (
     onChange={onChange}
     onSearch={onSearch}
     filterOption={filterOption}
-    options={[
-      {
-        value: 'Caja Lomas',
-        label: 'Caja Lomas',
-      },
-      {
-        value: 'Lomas',
-        label: 'Lomas',
-      }
-    ]}
+        options={[
+        {
+            value: 'Caja Lomas',
+            label: 'Caja Lomas',
+        },
+        {
+            value: 'Lomas',
+            label: 'Lomas',
+        }
+        ]}
   />
 );
 export default SelectCajas;

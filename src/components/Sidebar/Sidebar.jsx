@@ -65,8 +65,18 @@ const items3 = [
 
     ]),
     getItem('Facturacion', 'sub3', <MailOutlined />, [
-        getItem('Configuracion', '/facturacion', null,null,null),
-        getItem('Comprobantes', '/facturacion', null,null,null),
+        getItem('Configuracion', '/facturacion/configuracion', null,null,null),
+        getItem('Comprobantes', '/facturacion/comprobantes', null,null,null),
+   
+
+
+
+
+
+    ]),
+    getItem('Pagos Electronicos', 'sub4', <MailOutlined />, [
+        getItem('Configuracion', '/pagos/configuracion', null,null,null),
+        getItem('Operaciones Registradas', '/pagos/operaciones', null,null,null),
    
 
 

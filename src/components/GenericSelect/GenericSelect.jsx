@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select } from 'antd';
 const onChange = (value) => {
+    
   console.log(`selected ${value}`);
 };
 const onSearch = (value) => {
@@ -11,10 +12,11 @@ const onSearch = (value) => {
 const filterOption = (input, option) =>
   (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
 const GenericSelect = ({options,placeholder}) => (
+  
   <Select
-    showSearch
+    
     placeholder={placeholder}
-    style={{width:'50%'}}
+    style={{width:'100%'}}
     optionFilterProp="children"
     onChange={onChange}
     onSearch={onSearch}

@@ -12,6 +12,8 @@ import AperturasCierres from "./Admin/Cuentas/aperturas_cierres";
 import ListaPremios from "./Admin/Fidelizacion/premios";
 import CoverturaPuntos from "./Admin/Fidelizacion/covertura_puntos";
 import FacturacionRechazada from "./Admin/Facturacion/facturacion.rechazada";
+import PagosRegistrados from "./Admin/Pagos/pagos.registrados";
+import ConfiguracionPagos from "./Admin/Pagos/configuracion";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -28,8 +30,13 @@ const AdminPage = () =>{
 
         <Route path='/premios' element={<ListaPremios/>} />
         <Route path='/covertura' element={<CoverturaPuntos />} />
-        
-        <Route path='/facturacion' element={<FacturacionRechazada />} />
+
+        <Route path='/facturacion/configuracion' element={<FacturacionRechazada />} />
+
+        <Route path='/facturacion/comprobantes' element={<FacturacionRechazada />} />
+
+        <Route path='/pagos/operaciones' element={<PagosRegistrados />} />
+        <Route path='/pagos/configuracion' element={<ConfiguracionPagos />} />
     
       </Routes>
            </SideBar>

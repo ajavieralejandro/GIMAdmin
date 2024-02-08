@@ -1,3 +1,4 @@
+
 const Puntos = ()=>{
     return (
         <>

@@ -1,0 +1,6 @@
+const Listados = () =>{
+    return(
+        <>
+        </> 
+    )
+}
