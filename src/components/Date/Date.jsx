@@ -5,8 +5,8 @@ const onChange = (date, dateString) => {
 };
 const Date = () => (
   <Space direction="horizontal" size={12}>
-    <h1>Desde : </h1><DatePicker onChange={onChange} />
-    <h1>Hasta : </h1><DatePicker onChange={onChange}    />
+    <DatePicker placeholder='Desde' onChange={onChange} />
+    <DatePicker placeholder='hasta' onChange={onChange}    />
   </Space>
 );
 export default Date;

@@ -14,6 +14,9 @@ import CoverturaPuntos from "./Admin/Fidelizacion/covertura_puntos";
 import FacturacionRechazada from "./Admin/Facturacion/facturacion.rechazada";
 import PagosRegistrados from "./Admin/Pagos/pagos.registrados";
 import ConfiguracionPagos from "./Admin/Pagos/configuracion";
+
+//Entrenamiento
+import Ejercicios from "./Admin/Entrenamiento/ejercicios";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -37,6 +40,8 @@ const AdminPage = () =>{
 
         <Route path='/pagos/operaciones' element={<PagosRegistrados />} />
         <Route path='/pagos/configuracion' element={<ConfiguracionPagos />} />
+
+        <Route path='/entrenamiento/ejercicios' element={<Ejercicios />} />
     
       </Routes>
            </SideBar>

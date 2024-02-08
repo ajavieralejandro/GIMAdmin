@@ -1,5 +1,7 @@
 import React from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined, MailOutlined,AppstoreOutlined ,SettingOutlined} from '@ant-design/icons';
+//Iconos
+import { LaptopOutlined,DollarOutlined, HeartFilled,NotificationOutlined,CalculatorOutlined, UserOutlined, MailOutlined,AppstoreOutlined ,SettingOutlined} from '@ant-design/icons';
+
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Sider } = Layout;
 import { Link } from 'react-router-dom';
@@ -37,8 +39,8 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 
 const items3 = [
-    getItem('Clientes', '/clientes', null,null, null),
-    getItem('Cuentas', 'sub1', <MailOutlined />, [
+    getItem('Clientes', '/clientes', <UserOutlined />,null, null),
+    getItem('Cuentas', 'sub1', <CalculatorOutlined />, [
         getItem('Conceptos de Movimientos', '/conceptos_movimiento', null,null,null),
 
         getItem('Movimientos', '/movimientos', null,null,null),
@@ -74,9 +76,28 @@ const items3 = [
 
 
     ]),
-    getItem('Pagos Electronicos', 'sub4', <MailOutlined />, [
+    getItem('Pagos Electronicos', 'sub4', <DollarOutlined />, [
         getItem('Configuracion', '/pagos/configuracion', null,null,null),
         getItem('Operaciones Registradas', '/pagos/operaciones', null,null,null),
+   
+
+
+
+
+
+    ]),
+
+    getItem('Entrenamiento', 'sub5', <HeartFilled />, [
+        getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
+        getItem('Plantillas Entrenamiento', '/entrenamiento/plantillas', null,null,null),
+        getItem('Planes', '/entrenamiento/planes', null,null,null),
+        getItem('Vencimiento Planes', '/entrenamiento/vencimiento_planes', null,null,null),
+        getItem('WODs', '/entrenamiento/wods', null,null,null),
+        getItem('Control Clases', '/entrenamiento/control_clases', null,null,null),
+
+
+
+
    
 
 
