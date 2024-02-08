@@ -17,6 +17,7 @@ import ConfiguracionPagos from "./Admin/Pagos/configuracion";
 
 //Entrenamiento
 import Ejercicios from "./Admin/Entrenamiento/ejercicios";
+import Planes from "./Admin/Entrenamiento/planes";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -42,6 +43,7 @@ const AdminPage = () =>{
         <Route path='/pagos/configuracion' element={<ConfiguracionPagos />} />
 
         <Route path='/entrenamiento/ejercicios' element={<Ejercicios />} />
+        <Route path='/entrenamiento/planes' element={<Planes />} />
     
       </Routes>
            </SideBar>

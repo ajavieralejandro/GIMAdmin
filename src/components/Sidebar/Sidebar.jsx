@@ -111,6 +111,7 @@ const App = ({children}) => {
     const navigate = useNavigate();
     const onClick = (e) => {
         navigate(e.key);
+        window.scrollTo(0, 0);
     };
   const {
     token: { colorBgContainer, borderRadiusLG },
