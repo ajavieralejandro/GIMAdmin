@@ -1,6 +1,7 @@
 import SearchInput from "../../../components/SearchInput/search.input";
 import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import { Button } from "antd";
+import GenericTabl from "../../../components/GenericTable/GenericTable";
 const Plantillas = () =>{
     return(
         <>
@@ -14,7 +15,7 @@ const Plantillas = () =>{
                 <Button>Crear</Button>
 
         </div>
-        </div>
+            </div>
         </>
     )
 }
