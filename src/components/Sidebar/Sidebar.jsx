@@ -50,7 +50,7 @@ const items3 = [
       
       ]),
     
-    getItem('Fidelizacion', 'sub1', <MailOutlined />, [
+    getItem('Fidelizacion', 'sub2', <MailOutlined />, [
         getItem('Lista de Premios', '/premios', null,null,null),
         getItem('Reglas Puntajes', '/puntajes', null,null,null),
         getItem('Covertura de Puntos', '/covertura', null,null,null),
@@ -64,21 +64,7 @@ const items3 = [
 
 
     ]),
-    getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-      getItem('Option 5', '5'),
-      getItem('Option 6', '6'),
-      getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-    ]),
-    {
-      type: 'divider',
-    },
-    getItem('Navigation Three', 'sub4', <SettingOutlined />, [
-      getItem('Option 9', '9'),
-      getItem('Option 10', '10'),
-      getItem('Option 11', '11'),
-      getItem('Option 12', '12'),
-    ]),
-    getItem('Group', 'grp', null, [getItem('Option 13', '13'), getItem('Option 14', '14')], 'group'),
+   
   ];
 const App = ({children}) => {
     const navigate = useNavigate();

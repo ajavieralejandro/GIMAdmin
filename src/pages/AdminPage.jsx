@@ -9,6 +9,8 @@ import {
 import Cajas from "./Admin/Cuentas/cajas";
 import Categorias from "./Admin/Cuentas/categorias";
 import AperturasCierres from "./Admin/Cuentas/aperturas_cierres";
+import ListaPremios from "./Admin/Fidelizacion/premios";
+import CoverturaPuntos from "./Admin/Fidelizacion/covertura_puntos";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -22,6 +24,9 @@ const AdminPage = () =>{
 
         <Route  path="/clientes" element={<Clients />} />
         <Route  path="/cajas" element={<Cajas />} />
+
+        <Route path='/premios' element={<ListaPremios/>} />
+        <Route path='/covertura' element={<CoverturaPuntos />} />
 
     
       </Routes>
