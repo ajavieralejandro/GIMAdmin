@@ -51,6 +51,43 @@ const items3 = [
 
       
       ]),
+      getItem('Ventas', 'sub0', <MailOutlined />, [
+        getItem('Actividades', '/ventas/actividades', null,null,null),
+        getItem('Abonos y adiciones', '/ventas/abonos_adicionales', null,null,null),
+        getItem('horarios', '/ventas/horarios', null,null,null),
+        getItem('Clases Programadas', '/ventas/clases_programadas', null,null,null),
+        getItem('Productos', '/ventas/productos', null,null,null),
+        getItem('Comprobantes', '/ventas/comprobantes', null,null,null),
+        getItem('Ajustes de Precios', '/ventas/ajustes_precios', null,null,null),
+        getItem('Inscripciones', '/ventas/inscripciones', null,null,null),
+        getItem('Renovaciones', '/ventas/renovaciones', null,null,null),
+        getItem('Procesar Debitos', '/ventas/debitos', null,null,null),
+        getItem('Acciones Recurrentes', '/ventas/acciones_recurrentes', null,null,null),
+        getItem('Descuentos', '/ventas/descuentos', null,null,null),
+        getItem('Ajuste Comprobantes', '/ventas/comprobantes', null,null,null),
+        getItem('Reservas Fijas', '/ventas/reservas_fijas', null,null,null),
+        getItem('Resumen Ventas', '/ventas/resumen_ventas', null,null,null),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+    ]),
     
     getItem('Fidelizacion', 'sub2', <MailOutlined />, [
         getItem('Lista de Premios', '/premios', null,null,null),

@@ -22,6 +22,7 @@ import Plantillas from "./Admin/Entrenamiento/plantillas";
 import Wods from "./Admin/Entrenamiento/wods";
 import Vencimientos from "./Admin/Entrenamiento/vencimientos";
 import ControlClases from "./Admin/Entrenamiento/clases";
+import ActividadesVentas from "./Admin/Ventas/actividades";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -52,6 +53,9 @@ const AdminPage = () =>{
         <Route path='/entrenamiento/wods' element={<Wods />} />
         <Route path='/entrenamiento/vencimiento_planes' element={<Vencimientos />} />
         <Route path='/entrenamiento/control_clases' element={<ControlClases />} />
+
+
+        <Route path='/ventas/actividades' element={<ActividadesVentas />} />
     
       </Routes>
            </SideBar>
