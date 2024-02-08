@@ -1,3 +1,4 @@
+import { Button } from "antd";
 const ClientCard = () =>{
     return(
         <>
@@ -12,24 +13,11 @@ const ClientCard = () =>{
                     </div>
                 </div>
 
-                <div className=" grid md:grid-cols-4 grid-cols-2 gap-0 pt-6">
-                    <button className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-      >                 Registrar
-                        Cobro
-                    </button>
-                    <button className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-      >
-                        Modificar
-                    </button>
-                    <button className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-      >
-                        Detalle
-                    </button>
-
-                    <button className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-      >
-                        Perfilado
-                    </button>
+                <div className=" grid md:grid-cols-4 grid-cols-2 gap-2 pt-6">
+                   <Button>Cobro</Button>
+                   <Button>Modificar </Button>
+                    <Button>Detalle</Button>
+                    <Button>Perfil</Button>
 
                     </div>
 

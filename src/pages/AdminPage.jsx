@@ -18,6 +18,7 @@ import ConfiguracionPagos from "./Admin/Pagos/configuracion";
 //Entrenamiento
 import Ejercicios from "./Admin/Entrenamiento/ejercicios";
 import Planes from "./Admin/Entrenamiento/planes";
+import Plantillas from "./Admin/Entrenamiento/plantillas";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -44,6 +45,8 @@ const AdminPage = () =>{
 
         <Route path='/entrenamiento/ejercicios' element={<Ejercicios />} />
         <Route path='/entrenamiento/planes' element={<Planes />} />
+        <Route path='/entrenamiento/plantillas' element={<Plantillas />} />
+
     
       </Routes>
            </SideBar>
