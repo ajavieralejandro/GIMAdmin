@@ -1,6 +1,7 @@
 import React from 'react';
 //Iconos
-import { LaptopOutlined,DollarOutlined, HeartFilled,NotificationOutlined,CalculatorOutlined, UserOutlined, MailOutlined,AppstoreOutlined ,SettingOutlined} from '@ant-design/icons';
+import { ToolOutlined,LaptopOutlined,DollarOutlined, HeartFilled,NotificationOutlined,CalculatorOutlined,
+   UserOutlined, MailOutlined,AppstoreOutlined ,SettingOutlined,SnippetsOutlined} from '@ant-design/icons';
 
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Sider } = Layout;
@@ -41,6 +42,20 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 const items3 = [
     getItem('Clientes', '/clientes', <UserOutlined />,null, null),
+    getItem('Fidelizacion', 'sub0', <MailOutlined />, [
+      getItem('Lista de Premios', '/premios', null,null,null),
+      getItem('Reglas Puntajes', '/fidelizacion/reglas', null,null,null),
+      getItem('Covertura de Puntos', '/covertura', null,null,null),
+      getItem('Listados', '/fidelizacion/listados', null,null,null),
+      getItem('Configuracion de Herramientas', '/herramientas', null,null,null),
+      getItem('Niveles de Fidelización', '/niveles', null,null,null),
+      getItem('Beneficios', '/beneficios', null,null,null),
+
+
+
+
+
+  ]),
     getItem('Cuentas', 'sub1', <CalculatorOutlined />, [
         getItem('Conceptos de Movimientos', '/conceptos_movimiento', null,null,null),
 
@@ -52,10 +67,10 @@ const items3 = [
 
       
       ]),
-      getItem('CRM', 'sub', <MailOutlined />, [
+    
+      getItem('CRM', 'sub11', <MailOutlined />, [
         getItem('Seguimiento Prospectos', '/crm/seguimiento', null,null,null),
         getItem('Control de seguimiento', '/crm/control_seguimiento', null,null,null),
-        getItem('Invitacion a clases', '/crm/invitacion_clases', null,null,null),
         getItem('Acciones Seguimiento', '/crm/acciones_seguimiento', null,null,null),
 
         getItem('Registro consultas', '/crm/registro_consultas', null,null,null),
@@ -74,7 +89,7 @@ const items3 = [
         
 
     ]),
-      getItem('Ventas', 'sub0', <MailOutlined />, [
+      getItem('Ventas', 'sub2', <MailOutlined />, [
         getItem('Actividades', '/ventas/actividades', null,null,null),
         getItem('Abonos y adiciones', '/ventas/abonos_adicionales', null,null,null),
         getItem('horarios', '/ventas/horarios', null,null,null),
@@ -82,9 +97,7 @@ const items3 = [
         getItem('Productos', '/ventas/productos', null,null,null),
         getItem('Comprobantes', '/ventas/comprobantes', null,null,null),
         getItem('Ajustes de Precios', '/ventas/ajustes_precios', null,null,null),
-        getItem('Inscripciones', '/ventas/inscripciones', null,null,null),
-        getItem('Renovaciones', '/ventas/renovaciones', null,null,null),
-        getItem('Procesar Debitos', '/ventas/debitos', null,null,null),
+     
         getItem('Acciones Recurrentes', '/ventas/acciones_recurrentes', null,null,null),
         getItem('Descuentos', '/ventas/descuentos', null,null,null),
         getItem('Ajuste Comprobantes', '/ventas/comprobantes', null,null,null),
@@ -112,20 +125,7 @@ const items3 = [
 
     ]),
     
-    getItem('Fidelizacion', 'sub2', <MailOutlined />, [
-        getItem('Lista de Premios', '/premios', null,null,null),
-        getItem('Reglas Puntajes', '/puntajes', null,null,null),
-        getItem('Covertura de Puntos', '/covertura', null,null,null),
-        getItem('Listados', '/fidelizacion/listados', null,null,null),
-        getItem('Configuracion de Herramientas', '/herramientas', null,null,null),
-        getItem('Niveles de Fidelización', '/niveles', null,null,null),
-        getItem('Beneficios', '/beneficios', null,null,null),
-
-
-
-
-
-    ]),
+   
     getItem('Facturacion', 'sub3', <MailOutlined />, [
         getItem('Configuracion', '/facturacion/configuracion', null,null,null),
         getItem('Comprobantes', '/facturacion/comprobantes', null,null,null),
@@ -165,6 +165,16 @@ const items3 = [
 
 
     ]),
+
+    
+    getItem('Reportes', 'sub8', <SnippetsOutlined />, [
+      getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
+
+  ]),
+  getItem('Configuracion', 'sub9', <ToolOutlined />, [
+    getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
+
+]),
    
   ];
 const App = ({children}) => {

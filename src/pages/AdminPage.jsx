@@ -26,6 +26,7 @@ import Wods from "./Admin/Entrenamiento/wods";
 import Vencimientos from "./Admin/Entrenamiento/vencimientos";
 import ControlClases from "./Admin/Entrenamiento/clases";
 import ActividadesVentas from "./Admin/Ventas/actividades";
+import FidelizacionReglasPuntaje from "./Admin/Fidelizacion/reglas.puntaje";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -44,6 +45,7 @@ const AdminPage = () =>{
         <Route path='/covertura' element={<CoverturaPuntos />} />
 
         <Route path='/fidelizacion/listados' element={<Listados />} />
+        <Route path='/fidelizacion/reglas' element={<FidelizacionReglasPuntaje />} />
 
         <Route path='/facturacion/configuracion' element={<FacturacionRechazada />} />
 

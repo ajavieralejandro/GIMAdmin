@@ -1,20 +1,13 @@
 import Search from "antd/es/input/Search";
 import { Button,Flex } from "antd";
+import SearchInput from '../../../components/SearchInput/search.input';
 const ListaPremios = () =>{
     return(
         <>
             <section className="bg-white h-screen">
 
             <Flex gap="small" wrap="wrap">
-
-            <Search
-      placeholder="Realice una busqueda"
-      allowClear
-      enterButton="Search"
-      size="large"
-      style={{width:'50%'}}
-      onSearch={null}
-    />
+                <SearchInput placeholder={"Buscar"} />
                 <Button style={{ marginLeft: 'auto' }}>Crear</Button>
 
 </Flex>
