@@ -1,6 +1,6 @@
 import SearchInput from "../../../components/SearchInput/search.input";
 import { Button,Flex } from "antd";
-const BeneficiosFidelizacion = () =>{
+const NivelesFidelizacion = () =>{
     return (
         <Flex>
         <SearchInput placeholder={"Buscar"} />
@@ -12,4 +12,4 @@ const BeneficiosFidelizacion = () =>{
     )
 }
 
-export default BeneficiosFidelizacion;
+export default NivelesFidelizacion;

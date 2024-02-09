@@ -27,6 +27,9 @@ import Vencimientos from "./Admin/Entrenamiento/vencimientos";
 import ControlClases from "./Admin/Entrenamiento/clases";
 import ActividadesVentas from "./Admin/Ventas/actividades";
 import FidelizacionReglasPuntaje from "./Admin/Fidelizacion/reglas.puntaje";
+import ConfiguracionFidelizacion from "./Admin/Fidelizacion/configuracion";
+import BeneficiosFidelizacion from "./Admin/Fidelizacion/beneficios";
+import NivelesFidelizacion from "./Admin/Fidelizacion/niveles";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -46,10 +49,11 @@ const AdminPage = () =>{
 
         <Route path='/fidelizacion/listados' element={<Listados />} />
         <Route path='/fidelizacion/reglas' element={<FidelizacionReglasPuntaje />} />
-
+        <Route path='/fidelizacion/herramientas' element={<ConfiguracionFidelizacion />} />
         <Route path='/facturacion/configuracion' element={<FacturacionRechazada />} />
-
+        <Route path='/fidelizacion/beneficios' element={<BeneficiosFidelizacion />} />
         <Route path='/facturacion/comprobantes' element={<FacturacionRechazada />} />
+        <Route path='/fidelizacion/niveles' element={<NivelesFidelizacion />} />
 
         <Route path='/pagos/operaciones' element={<PagosRegistrados />} />
         <Route path='/pagos/configuracion' element={<ConfiguracionPagos />} />

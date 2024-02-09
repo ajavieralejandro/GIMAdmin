@@ -47,16 +47,16 @@ const items3 = [
       getItem('Reglas Puntajes', '/fidelizacion/reglas', null,null,null),
       getItem('Covertura de Puntos', '/covertura', null,null,null),
       getItem('Listados', '/fidelizacion/listados', null,null,null),
-      getItem('Configuracion de Herramientas', '/herramientas', null,null,null),
-      getItem('Niveles de Fidelización', '/niveles', null,null,null),
-      getItem('Beneficios', '/beneficios', null,null,null),
+      getItem('Configuracion de Herramientas', '/fidelizacion/herramientas', null,null,null),
+      getItem('Niveles de Fidelización', '/fidelizacion/niveles', null,null,null),
+      getItem('Beneficios', '/fidelizacion/beneficios', null,null,null),
 
 
 
 
 
   ]),
-    getItem('Cuentas', 'sub1', <CalculatorOutlined />, [
+    getItem('Cuentas', 'Cuentas', <CalculatorOutlined />, [
         getItem('Conceptos de Movimientos', '/conceptos_movimiento', null,null,null),
 
         getItem('Movimientos', '/movimientos', null,null,null),
@@ -68,7 +68,7 @@ const items3 = [
       
       ]),
     
-      getItem('CRM', 'sub11', <MailOutlined />, [
+      getItem('CRM', 'CRM', <MailOutlined />, [
         getItem('Seguimiento Prospectos', '/crm/seguimiento', null,null,null),
         getItem('Control de seguimiento', '/crm/control_seguimiento', null,null,null),
         getItem('Acciones Seguimiento', '/crm/acciones_seguimiento', null,null,null),
@@ -89,7 +89,7 @@ const items3 = [
         
 
     ]),
-      getItem('Ventas', 'sub2', <MailOutlined />, [
+      getItem('Ventas', 'Ventas', <MailOutlined />, [
         getItem('Actividades', '/ventas/actividades', null,null,null),
         getItem('Abonos y adiciones', '/ventas/abonos_adicionales', null,null,null),
         getItem('horarios', '/ventas/horarios', null,null,null),
@@ -126,7 +126,7 @@ const items3 = [
     ]),
     
    
-    getItem('Facturacion', 'sub3', <MailOutlined />, [
+    getItem('Facturacion', 'Facturacion', <MailOutlined />, [
         getItem('Configuracion', '/facturacion/configuracion', null,null,null),
         getItem('Comprobantes', '/facturacion/comprobantes', null,null,null),
    
@@ -136,7 +136,7 @@ const items3 = [
 
 
     ]),
-    getItem('Pagos Electronicos', 'sub4', <DollarOutlined />, [
+    getItem('Pagos Electronicos', 'Pagos', <DollarOutlined />, [
         getItem('Configuracion', '/pagos/configuracion', null,null,null),
         getItem('Operaciones Registradas', '/pagos/operaciones', null,null,null),
    
@@ -147,7 +147,7 @@ const items3 = [
 
     ]),
 
-    getItem('Entrenamiento', 'sub5', <HeartFilled />, [
+    getItem('Entrenamiento', 'Entrenamiento', <HeartFilled />, [
         getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
         getItem('Plantillas Entrenamiento', '/entrenamiento/plantillas', null,null,null),
         getItem('Planes', '/entrenamiento/planes', null,null,null),
@@ -167,11 +167,11 @@ const items3 = [
     ]),
 
     
-    getItem('Reportes', 'sub8', <SnippetsOutlined />, [
+    getItem('Reportes', 'Reportes', <SnippetsOutlined />, [
       getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
 
   ]),
-  getItem('Configuracion', 'sub9', <ToolOutlined />, [
+  getItem('Configuracion', 'Configuracion', <ToolOutlined />, [
     getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
 
 ]),
@@ -192,7 +192,6 @@ const App = ({children}) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const [path,setPath]= useState(['Clientes']);
-
   return (
     <Layout>
       <Header
@@ -241,7 +240,7 @@ const App = ({children}) => {
             style={{
               padding: 24,
               margin: 0,
-              minHeight: 280,
+              minHeight: "100vh",
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
