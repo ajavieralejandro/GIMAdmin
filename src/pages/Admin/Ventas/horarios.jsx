@@ -2,11 +2,10 @@ import SearchInput from "../../../components/SearchInput/search.input";
 import GenericTable from "../../../components/GenericTable/GenericTable";
 import { Flex,Button, Space } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
-const ActividadesVentas = () =>{
+const HorariosVentas = () =>{
     const data =[{
-        descripcion : '8 clases',
-        active : true,
-        reservas : '8 reservas'
+        descripcion : 'Abdominales',
+        dias : 'domingo',
     }
        
     ];
@@ -16,20 +15,11 @@ const ActividadesVentas = () =>{
             dataIndex: 'descripcion',
             key: 'descripcion',
           },
+          
           {
-            title: 'Reserva y anulacion',
-            key: 'active',
-            dataIndex: 'active',
-            render: (_, { active }) => (
-              <>
-                {active?<CheckCircleOutlined />:null}
-              </>
-            ),
-          },
-          {
-            title: 'Cant. Reservas',
-            dataIndex: 'reservas',
-            key: 'reservas',
+            title: 'Dias Permitidos',
+            dataIndex: 'dias',
+            key: 'dias',
           },
           {
             title: 'Action',
@@ -54,4 +44,4 @@ const ActividadesVentas = () =>{
     )
 }
 
-export default ActividadesVentas;
+export default HorariosVentas;

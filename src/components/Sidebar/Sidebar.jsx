@@ -6,6 +6,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Sider } = Layout;
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar/navbar';
 const items1 = ['1', '2', '3'].map((key) => ({
   key,
   label: `nav ${key}`,
@@ -156,23 +157,10 @@ const App = ({children}) => {
   return (
     <Layout>
       <Header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={items1}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        />
    
+      >
+      
+        <Navbar />
       </Header>
       <Layout>
         <Sider

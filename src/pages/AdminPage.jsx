@@ -2,7 +2,7 @@ import SideBar from "../components/Sidebar/Sidebar";
 import Clients from "./Admin/Clients";
 import Movimientos from '../pages/Admin/Cuentas/movimientos';
 import {
-    BrowserRouter,
+    HashRouter as BrowserRouter,
     Route,
     Routes,
   } from "react-router-dom";
