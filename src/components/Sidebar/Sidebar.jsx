@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 //Iconos
-import { ToolOutlined,LaptopOutlined,DollarOutlined, HeartFilled,NotificationOutlined,CalculatorOutlined,
+import { IdcardOutlined,ShoppingCartOutlined,TrophyOutlined,ToolOutlined,LaptopOutlined,DollarOutlined, HeartFilled,NotificationOutlined,CalculatorOutlined,
    UserOutlined, MailOutlined,AppstoreOutlined ,SettingOutlined,SnippetsOutlined} from '@ant-design/icons';
 
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
@@ -42,7 +42,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 const items3 = [
     getItem('Clientes', '/clientes', <UserOutlined />,null, null),
-    getItem('Fidelizacion', 'Fidelizacion', <MailOutlined />, [
+    getItem('Fidelizacion', 'Fidelizacion', <TrophyOutlined />, [
       getItem('Lista de Premios', '/premios', null,null,null),
       getItem('Reglas Puntajes', '/fidelizacion/reglas', null,null,null),
       getItem('Covertura de Puntos', '/covertura', null,null,null),
@@ -68,7 +68,7 @@ const items3 = [
       
       ]),
     
-      getItem('CRM', 'CRM', <MailOutlined />, [
+      getItem('CRM', 'CRM', <IdcardOutlined />, [
         getItem('Seguimiento Prospectos', '/crm/seguimiento', null,null,null),
         getItem('Control de seguimiento', '/crm/control_seguimiento', null,null,null),
         getItem('Acciones Seguimiento', '/crm/acciones_seguimiento', null,null,null),
@@ -89,7 +89,7 @@ const items3 = [
         
 
     ]),
-      getItem('Ventas', 'Ventas', <MailOutlined />, [
+      getItem('Ventas', 'Ventas',<DollarOutlined /> , [
         getItem('Actividades', '/ventas/actividades', null,null,null),
         getItem('Abonos y adiciones', '/ventas/abonos_adicionales', null,null,null),
         getItem('horarios', '/ventas/horarios', null,null,null),
@@ -136,7 +136,7 @@ const items3 = [
 
 
     ]),
-    getItem('Pagos Electronicos', 'Pagos', <DollarOutlined />, [
+    getItem('Pagos Electronicos', 'Pagos', <ShoppingCartOutlined />, [
         getItem('Configuracion', '/pagos/configuracion', null,null,null),
         getItem('Operaciones Registradas', '/pagos/operaciones', null,null,null),
    
