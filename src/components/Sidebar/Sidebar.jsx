@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 //Iconos
 import { ToolOutlined,LaptopOutlined,DollarOutlined, HeartFilled,NotificationOutlined,CalculatorOutlined,
    UserOutlined, MailOutlined,AppstoreOutlined ,SettingOutlined,SnippetsOutlined} from '@ant-design/icons';
@@ -42,7 +42,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 
 const items3 = [
     getItem('Clientes', '/clientes', <UserOutlined />,null, null),
-    getItem('Fidelizacion', 'sub0', <MailOutlined />, [
+    getItem('Fidelizacion', 'Fidelizacion', <MailOutlined />, [
       getItem('Lista de Premios', '/premios', null,null,null),
       getItem('Reglas Puntajes', '/fidelizacion/reglas', null,null,null),
       getItem('Covertura de Puntos', '/covertura', null,null,null),
@@ -177,15 +177,22 @@ const items3 = [
 ]),
    
   ];
+
 const App = ({children}) => {
     const navigate = useNavigate();
     const onClick = (e) => {
+        let route = e.key.split("/");
+        route = route.pop();
+
         navigate(e.key);
+        setPath([e.keyPath[1],route]);
         window.scrollTo(0, 0);
     };
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const [path,setPath]= useState(['Clientes']);
+
   return (
     <Layout>
       <Header
@@ -226,9 +233,9 @@ const App = ({children}) => {
               margin: '16px 0',
             }}
           >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
+            <Breadcrumb.Item>Admin</Breadcrumb.Item>
+            <Breadcrumb.Item>{path[0]}</Breadcrumb.Item>
+            {path[1]?<Breadcrumb.Item>{path[1]}</Breadcrumb.Item>:null}
           </Breadcrumb>
           <Content
             style={{
