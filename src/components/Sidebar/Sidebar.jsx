@@ -52,6 +52,28 @@ const items3 = [
 
       
       ]),
+      getItem('CRM', 'sub', <MailOutlined />, [
+        getItem('Seguimiento Prospectos', '/crm/seguimiento', null,null,null),
+        getItem('Control de seguimiento', '/crm/control_seguimiento', null,null,null),
+        getItem('Invitacion a clases', '/crm/invitacion_clases', null,null,null),
+        getItem('Acciones Seguimiento', '/crm/acciones_seguimiento', null,null,null),
+
+        getItem('Registro consultas', '/crm/registro_consultas', null,null,null),
+        getItem('Referentes', '/crm/referentes', null,null,null),
+        getItem('Distribucion Usuario', '/crm/distribucion_usuario', null,null,null),
+        getItem('Origenes prospecto', '/crm/origenes_prospecto', null,null,null),
+        getItem('Motivo Consulta', '/crm/motivo_consulta', null,null,null),
+        getItem('Perfilados', '/crm/perfilados', null,null,null),
+
+
+
+
+
+
+
+        
+
+    ]),
       getItem('Ventas', 'sub0', <MailOutlined />, [
         getItem('Actividades', '/ventas/actividades', null,null,null),
         getItem('Abonos y adiciones', '/ventas/abonos_adicionales', null,null,null),
@@ -94,7 +116,7 @@ const items3 = [
         getItem('Lista de Premios', '/premios', null,null,null),
         getItem('Reglas Puntajes', '/puntajes', null,null,null),
         getItem('Covertura de Puntos', '/covertura', null,null,null),
-        getItem('Listados', '/listados', null,null,null),
+        getItem('Listados', '/fidelizacion/listados', null,null,null),
         getItem('Configuracion de Herramientas', '/herramientas', null,null,null),
         getItem('Niveles de Fidelización', '/niveles', null,null,null),
         getItem('Beneficios', '/beneficios', null,null,null),

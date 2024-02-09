@@ -15,6 +15,9 @@ import FacturacionRechazada from "./Admin/Facturacion/facturacion.rechazada";
 import PagosRegistrados from "./Admin/Pagos/pagos.registrados";
 import ConfiguracionPagos from "./Admin/Pagos/configuracion";
 
+//Fidelizacion
+import Listados from "./Admin/Fidelizacion/listados";
+
 //Entrenamiento
 import Ejercicios from "./Admin/Entrenamiento/ejercicios";
 import Planes from "./Admin/Entrenamiento/planes";
@@ -39,6 +42,8 @@ const AdminPage = () =>{
 
         <Route path='/premios' element={<ListaPremios/>} />
         <Route path='/covertura' element={<CoverturaPuntos />} />
+
+        <Route path='/fidelizacion/listados' element={<Listados />} />
 
         <Route path='/facturacion/configuracion' element={<FacturacionRechazada />} />
 
