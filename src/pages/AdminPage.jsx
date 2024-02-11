@@ -30,6 +30,9 @@ import FidelizacionReglasPuntaje from "./Admin/Fidelizacion/reglas.puntaje";
 import ConfiguracionFidelizacion from "./Admin/Fidelizacion/configuracion";
 import BeneficiosFidelizacion from "./Admin/Fidelizacion/beneficios";
 import NivelesFidelizacion from "./Admin/Fidelizacion/niveles";
+import HorariosVentas from "./Admin/Ventas/horarios";
+import AbonosVentas from "./Admin/Ventas/abonos";
+import ClasesProgramadasVentas from "./Admin/Ventas/clases.programadas";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -67,6 +70,9 @@ const AdminPage = () =>{
 
 
         <Route path='/ventas/actividades' element={<ActividadesVentas />} />
+        <Route path='/ventas/horarios' element={<HorariosVentas />} />
+        <Route path='/ventas/abonos_adicionales' element={<AbonosVentas />} />
+        <Route path='/ventas/clases_programadas' element={<ClasesProgramadasVentas />} />
     
       </Routes>
            </SideBar>
