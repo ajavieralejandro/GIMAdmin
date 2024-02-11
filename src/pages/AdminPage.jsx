@@ -33,6 +33,8 @@ import NivelesFidelizacion from "./Admin/Fidelizacion/niveles";
 import HorariosVentas from "./Admin/Ventas/horarios";
 import AbonosVentas from "./Admin/Ventas/abonos";
 import ClasesProgramadasVentas from "./Admin/Ventas/clases.programadas";
+import ComprobantesVentas from "./Admin/Ventas/comprobantes";
+import ProductosVentas from "./Admin/Ventas/productos";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -73,6 +75,8 @@ const AdminPage = () =>{
         <Route path='/ventas/horarios' element={<HorariosVentas />} />
         <Route path='/ventas/abonos_adicionales' element={<AbonosVentas />} />
         <Route path='/ventas/clases_programadas' element={<ClasesProgramadasVentas />} />
+        <Route path='/ventas/comprobantes' element={<ComprobantesVentas />} />
+        <Route path='/ventas/productos' element={<ProductosVentas />} />
     
       </Routes>
            </SideBar>
