@@ -35,6 +35,11 @@ import AbonosVentas from "./Admin/Ventas/abonos";
 import ClasesProgramadasVentas from "./Admin/Ventas/clases.programadas";
 import ComprobantesVentas from "./Admin/Ventas/comprobantes";
 import ProductosVentas from "./Admin/Ventas/productos";
+import AjustesPreciosVentas from "./Admin/Ventas/ajustes.precios";
+import DescuentosVentas from "./Admin/Ventas/descuentos";
+import ResumenVentas from "./Admin/Ventas/resumen";
+import ReservasFijasVentas from "./Admin/Ventas/reservas";
+import AccionesVentas from "./Admin/Ventas/acciones.ventas";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -77,7 +82,11 @@ const AdminPage = () =>{
         <Route path='/ventas/clases_programadas' element={<ClasesProgramadasVentas />} />
         <Route path='/ventas/comprobantes' element={<ComprobantesVentas />} />
         <Route path='/ventas/productos' element={<ProductosVentas />} />
-    
+        <Route path='/ventas/ajustes_precios' element={<AjustesPreciosVentas />} />
+        <Route path='/ventas/descuentos' element={<DescuentosVentas />} />
+        <Route path='ventas/resumen_ventas' element={<ResumenVentas />} />
+        <Route path='/ventas/reservas_fijas' element={<ReservasFijasVentas />} />
+        <Route path='/ventas/acciones_recurrentes' element={<AccionesVentas />} />
       </Routes>
            </SideBar>
            </BrowserRouter>    
