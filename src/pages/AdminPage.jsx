@@ -40,6 +40,10 @@ import DescuentosVentas from "./Admin/Ventas/descuentos";
 import ResumenVentas from "./Admin/Ventas/resumen";
 import ReservasFijasVentas from "./Admin/Ventas/reservas";
 import AccionesVentas from "./Admin/Ventas/acciones.ventas";
+import SeguimientoCRM from "./Admin/CRM/seguimiento.prospectos";
+import ControlSeguimientoCRM from "./Admin/CRM/control.seguimiento";
+import AccionesSeguimientoCRM from "./Admin/CRM/acciones.seguimiento";
+import RegistroConsultasCRM from "./Admin/CRM/registro.consultas";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -87,6 +91,13 @@ const AdminPage = () =>{
         <Route path='ventas/resumen_ventas' element={<ResumenVentas />} />
         <Route path='/ventas/reservas_fijas' element={<ReservasFijasVentas />} />
         <Route path='/ventas/acciones_recurrentes' element={<AccionesVentas />} />
+
+        <Route path='/crm/seguimiento' element={<SeguimientoCRM />} />
+        <Route path='/crm/control_seguimiento'element={<ControlSeguimientoCRM />} />
+        <Route path='/crm/acciones_seguimiento'element={<AccionesSeguimientoCRM />} />
+        <Route path='/crm/registro_consultas' element={<RegistroConsultasCRM />} />
+
+
       </Routes>
            </SideBar>
            </BrowserRouter>    
