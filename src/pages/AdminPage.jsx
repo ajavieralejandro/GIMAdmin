@@ -44,6 +44,8 @@ import SeguimientoCRM from "./Admin/CRM/seguimiento.prospectos";
 import ControlSeguimientoCRM from "./Admin/CRM/control.seguimiento";
 import AccionesSeguimientoCRM from "./Admin/CRM/acciones.seguimiento";
 import RegistroConsultasCRM from "./Admin/CRM/registro.consultas";
+import ReferentesCRM from "./Admin/CRM/referentes";
+import OriginesCRM from "./Admin/CRM/origines.prospecto";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -96,7 +98,8 @@ const AdminPage = () =>{
         <Route path='/crm/control_seguimiento'element={<ControlSeguimientoCRM />} />
         <Route path='/crm/acciones_seguimiento'element={<AccionesSeguimientoCRM />} />
         <Route path='/crm/registro_consultas' element={<RegistroConsultasCRM />} />
-
+        <Route path='/crm/referentes' element={<ReferentesCRM />} />
+        <Route path='/crm/origenes_prospecto' element={<OriginesCRM />} />
 
       </Routes>
            </SideBar>
