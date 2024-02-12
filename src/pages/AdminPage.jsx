@@ -49,6 +49,8 @@ import OriginesCRM from "./Admin/CRM/origines.prospecto";
 import DistribucionUsuarioCRM from "./Admin/CRM/distribucion.usuario";
 import MotivoConsultaCRM from "./Admin/CRM/motivo.consulta";
 import PerfiladosCRM from "./Admin/CRM/perfilados";
+import IndicadoresReportes from "./Admin/Reportes/indicadores";
+import VentasProductosReportes from "./Admin/Reportes/ventas.productos";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -106,6 +108,10 @@ const AdminPage = () =>{
         <Route path='/crm/distribucion_usuario' element={<DistribucionUsuarioCRM />} />
         <Route path='/crm/motivo_consulta' element={<MotivoConsultaCRM />} />
         <Route path='/crm/perfilados' element={<PerfiladosCRM />} />
+
+
+        <Route path='/reportes/indicadores' element={<IndicadoresReportes />} />
+        <Route path='/reportes/ventas_productos' element={<VentasProductosReportes />} />
 
       </Routes>
            </SideBar>

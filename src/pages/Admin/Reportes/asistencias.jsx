@@ -2,13 +2,13 @@ import Date from "../../../components/Date/Date";
 import Checkbox from "antd/es/checkbox/Checkbox";
 import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import SearchButton from "../../../components/SearchButton/SearchButton";
-const InscripcionesActividadReportes = () =>{
+const AsistenciasReportes = () =>{
     return(
         <>
             <div className="grid grid-cols-4 gap-4">
                 <Date />
                 <GenericSelect placeholder={"caja "}/>
-                <Checkbox>Solo c/ Inscrpicones</Checkbox>
+                <Checkbox>Solo ventas registradas</Checkbox>
                 <SearchButton />
 
             </div>
@@ -16,4 +16,4 @@ const InscripcionesActividadReportes = () =>{
     )
 }
 
-export default InscripcionesActividadReportes;
+export default AsistenciasReportes;
