@@ -46,6 +46,9 @@ import AccionesSeguimientoCRM from "./Admin/CRM/acciones.seguimiento";
 import RegistroConsultasCRM from "./Admin/CRM/registro.consultas";
 import ReferentesCRM from "./Admin/CRM/referentes";
 import OriginesCRM from "./Admin/CRM/origines.prospecto";
+import DistribucionUsuarioCRM from "./Admin/CRM/distribucion.usuario";
+import MotivoConsultaCRM from "./Admin/CRM/motivo.consulta";
+import PerfiladosCRM from "./Admin/CRM/perfilados";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -100,6 +103,9 @@ const AdminPage = () =>{
         <Route path='/crm/registro_consultas' element={<RegistroConsultasCRM />} />
         <Route path='/crm/referentes' element={<ReferentesCRM />} />
         <Route path='/crm/origenes_prospecto' element={<OriginesCRM />} />
+        <Route path='/crm/distribucion_usuario' element={<DistribucionUsuarioCRM />} />
+        <Route path='/crm/motivo_consulta' element={<MotivoConsultaCRM />} />
+        <Route path='/crm/perfilados' element={<PerfiladosCRM />} />
 
       </Routes>
            </SideBar>
