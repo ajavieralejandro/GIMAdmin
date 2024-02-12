@@ -68,6 +68,17 @@ import DocumentacionIngresosReportes from "./Admin/Reportes/documentacion.ingres
 import CambiosInscripcionReportes from "./Admin/Reportes/cambios.inscripcion";
 import CalificacionProfesoresReportes from "./Admin/Reportes/calificacion.profesores";
 import CuentasCobrarReportes from "./Admin/Reportes/cuentas.cobrar";
+import TiposTareasConf from "./Admin/Configuracion/tipos.tareas";
+import DatosConfigurablesConf from "./Admin/Configuracion/datos.configurables";
+import ProfesoresConf from "./Admin/Configuracion/profesores";
+import SucursalesConf from "./Admin/Configuracion/sucursales";
+import UsuariosConf from "./Admin/Configuracion/usuarios";
+import RequisitosConf from "./Admin/Configuracion/requisitos";
+import EventosSeguridadConf from "./Admin/Configuracion/eventos.seguridad";
+import GypasssConf from "./Admin/Configuracion/gypasss";
+import PlataformasExternasConf from "./Admin/Configuracion/plataformas.externas";
+import ConeccionZoomConf from "./Admin/Configuracion/coneccion.zoom";
+import CalificacionesConf from "./Admin/Configuracion/calificaciones";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -152,7 +163,22 @@ const AdminPage = () =>{
       getItem('Asistencias por Horario', '/reportes/asistencias_horarios', null,null,null),
       getItem('Cuentas Por Cobrar', '/reportes/cuantas_por_cobrar', null,null,null),
 
+    getItem('Estados de Tareas', '/configuracion/estados_tareas', null,null,null),
+    getItem('Medios de pago', '/configuracion/medios_pago', null,null,null),
+    getItem('Plataformas Externas', '/configuracion/plataformas_externas', null,null,null),
+
 */}  
+    <Route path="/configuracion/tipo_tareas" element={<TiposTareasConf />} />
+    <Route path="/configuracion/datos_configurables" element={<DatosConfigurablesConf />} />
+    <Route path="/configuracion/profesores" element={<ProfesoresConf />} />
+    <Route path="/configuracion/sucursales" element={<SucursalesConf />} />
+    <Route path="/configuracion/usuarios" element={<UsuariosConf />} />
+    <Route path='/configuracion/requisitos' element={<RequisitosConf />} />
+    <Route path='/configuracion/seguridad' element={<EventosSeguridadConf />} />
+    <Route path='/configuracion/gypasss' element={<GypasssConf />} />
+    <Route path='/configuracion/plataformas_externas' element={<PlataformasExternasConf />} />
+    <Route path='/configuracion/zoom' element={<ConeccionZoomConf />} />
+    <Route path='/configuracion/calificaciones' element={<CalificacionesConf />} />
 
       </Routes>
            </SideBar>

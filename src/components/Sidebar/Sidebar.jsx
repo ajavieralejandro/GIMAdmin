@@ -42,7 +42,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 const itemTop=[];
 
 const items3 = [
-    getItem('Clientes', '/clientes', <UserOutlined />,null, null),
+    getItem('Clientes', 'clientes', <UserOutlined />,null, null),
     getItem('Fidelizacion', 'Fidelizacion', <TrophyOutlined />, [
       getItem('Lista de Premios', '/premios', null,null,null),
       getItem('Reglas Puntajes', '/fidelizacion/reglas', null,null,null),
@@ -57,7 +57,7 @@ const items3 = [
 
 
   ]),
-    getItem('Cuentas', 'Cuentas', <CalculatorOutlined />, [
+    getItem('Cuentas', 'cuentas', <CalculatorOutlined />, [
         getItem('Conceptos de Movimientos', '/conceptos_movimiento', null,null,null),
 
         getItem('Movimientos', '/movimientos', null,null,null),
@@ -90,7 +90,7 @@ const items3 = [
         
 
     ]),
-      getItem('Ventas', 'Ventas',<DollarOutlined /> , [
+      getItem('Ventas', 'ventas',<DollarOutlined /> , [
         getItem('Actividades', '/ventas/actividades', null,null,null),
         getItem('Abonos y adiciones', '/ventas/abonos_adicionales', null,null,null),
         getItem('horarios', '/ventas/horarios', null,null,null),
@@ -221,16 +221,14 @@ const items3 = [
    
   ];
 
-const handleClick =()=>{
 
-}
 
 const App = ({children}) => {
     const navigate = useNavigate();
-    const onClick = (e) => {
+    const onClick = (e,items) => {
         let route = e.key.split("/");
         route = route.pop();
-        console.log(e.item3);
+        
         navigate(e.key);
         setPath([e.keyPath[1],route]);
         window.scrollTo(0, 0);
@@ -239,19 +237,26 @@ const App = ({children}) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const [path,setPath]= useState(['Clientes']);
-  const[viewContent,setViewContent] = useState(true);
+  const [openKeys, setOpenKeys] = useState(['clientes']);
+  const onOpenChange = (keys) => {
+    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    if (latestOpenKey && rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
   return (
     <Layout>
     
       <Layout>
         <Sider
-          width={300}
+          width={250}
           breakpoint="lg"
           collapsedWidth="50"
           style={{
             background: colorBgContainer,
           }}
-          onClick={handleClick}
           
         >
       
@@ -265,7 +270,7 @@ const App = ({children}) => {
               borderRight: 0,
             }}
             items={items3}
-            onClick={onClick}
+            onClick={event=>onClick(event,items3)}
           />
         </Sider>
         <Layout
@@ -291,7 +296,10 @@ const App = ({children}) => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {viewContent?children:null}
+            <div className='overflow-scroll'>
+            {children}
+
+            </div>
           </Content>
         </Layout>
       </Layout>

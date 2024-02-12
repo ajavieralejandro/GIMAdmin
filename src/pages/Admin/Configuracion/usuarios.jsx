@@ -7,7 +7,7 @@ const data = [];
 
 const UsuariosConf = () =>{
     return(
-        <>
+        <div>
             <div className="grid grid-cols-5 gap-2">
                 <GenericSelect placeholder={"Administrador"} />
                 <GenericSelect placeholder={"Activo"} />
@@ -17,7 +17,7 @@ const UsuariosConf = () =>{
 
             </div>
             <GenericTable data={data} columns={columns} />
-        </>
+        </div>
     )
 }
 
