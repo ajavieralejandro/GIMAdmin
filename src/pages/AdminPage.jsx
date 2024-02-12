@@ -51,6 +51,19 @@ import MotivoConsultaCRM from "./Admin/CRM/motivo.consulta";
 import PerfiladosCRM from "./Admin/CRM/perfilados";
 import IndicadoresReportes from "./Admin/Reportes/indicadores";
 import VentasProductosReportes from "./Admin/Reportes/ventas.productos";
+import VentasActividadPrincipalReportes from "./Admin/Reportes/ventas.actividad";
+import CobrosRealizadosReportes from "./Admin/Reportes/cobros.realizados";
+import AsistenciasReportes from "./Admin/Reportes/asistencias";
+import InscripcionesActividadReportes from "./Admin/Reportes/inscripciones.actividad";
+import HistorialClienteReportes from "./Admin/Reportes/historial.clientes";
+import IngresosGastosReportes from "./Admin/Reportes/ingresos.gastos";
+import IngresoEstablecimientoReportes from "./Admin/Reportes/ingreso.establecimiento";
+import RecuperacionContraseñaReportes from "./Admin/Reportes/recuperacion.contraseña";
+import ParticipacionClasesReportes from "./Admin/Reportes/participacion.clases";
+import DocumentacionIngresosReportes from "./Admin/Reportes/documentacion.ingreso";
+import CambiosInscripcionReportes from "./Admin/Reportes/cambios.inscripcion";
+import CalificacionProfesoresReportes from "./Admin/Reportes/calificacion.profesores";
+import CuentasCobrarReportes from "./Admin/Reportes/cuentas.cobrar";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -112,6 +125,30 @@ const AdminPage = () =>{
 
         <Route path='/reportes/indicadores' element={<IndicadoresReportes />} />
         <Route path='/reportes/ventas_productos' element={<VentasProductosReportes />} />
+        <Route path='/reportes/ventas_actividad_principal' element={<VentasActividadPrincipalReportes />} />
+        <Route path='/reportes/cobros_realizados' element={<CobrosRealizadosReportes />} />
+        <Route path='/reportes/asistencias' element={<AsistenciasReportes />} />
+        <Route path='/reportes/inscripciones_actividad' element={<InscripcionesActividadReportes />} />
+        <Route path='/reportes/historial_clientes' element={<HistorialClienteReportes />} />
+        <Route path='/reportes/ingresos_gastos' element={<IngresosGastosReportes />} />
+        <Route path='/reportes/ingreso_establecimiento' element={<IngresoEstablecimientoReportes />} />
+        <Route path='/reportes/recuperacion_contraseña' element={<RecuperacionContraseñaReportes />} />
+        <Route path='/reportes/participacion_clases' element={<ParticipacionClasesReportes />} />
+        <Route path='/reportes/documentacion_ingresos' element={<DocumentacionIngresosReportes />} />
+        <Route path='/reportes/cambios_inscripcion' element={<CambiosInscripcionReportes />} />
+        <Route path='/reportes/calificacion_profesores' element={<CalificacionProfesoresReportes />} />
+        <Route path='/reportes/cuantas_por_cobrar' element={<CuentasCobrarReportes />} />
+
+{/* 
+  Multi
+  line
+  comment
+
+      getItem('Padron Clientes', '/reportes/padron_clientes', null,null,null),
+      getItem('Asistencias por Horario', '/reportes/asistencias_horarios', null,null,null),
+      getItem('Cuentas Por Cobrar', '/reportes/cuantas_por_cobrar', null,null,null),
+
+*/}  
 
       </Routes>
            </SideBar>
