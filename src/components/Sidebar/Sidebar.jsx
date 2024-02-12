@@ -216,14 +216,6 @@ const items3 = [
 
 
 
-
-
-
-
-
-
-
-
 ]),
    
   ];
@@ -244,12 +236,7 @@ const App = ({children}) => {
   const [path,setPath]= useState(['Clientes']);
   return (
     <Layout>
-      <Header
-   
-      >
-      
-        <Navbar />
-      </Header>
+    
       <Layout>
         <Sider
           width={200}

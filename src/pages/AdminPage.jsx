@@ -1,11 +1,15 @@
 import SideBar from "../components/Sidebar/Sidebar";
 import Clients from "./Admin/Clients";
 import Movimientos from '../pages/Admin/Cuentas/movimientos';
+import Navbar from "../components/Navbar/navbar";
 import {
     HashRouter as BrowserRouter,
     Route,
     Routes,
   } from "react-router-dom";
+
+
+
 import Cajas from "./Admin/Cuentas/cajas";
 import Categorias from "./Admin/Cuentas/categorias";
 import AperturasCierres from "./Admin/Cuentas/aperturas_cierres";
@@ -67,7 +71,7 @@ import CuentasCobrarReportes from "./Admin/Reportes/cuentas.cobrar";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
-
+        <Navbar />
         <SideBar>
       <Routes>
       <Route  path="/" element={<Clients />} />
