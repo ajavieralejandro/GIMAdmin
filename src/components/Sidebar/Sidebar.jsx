@@ -168,7 +168,33 @@ const items3 = [
 
     
     getItem('Reportes', 'Reportes', <SnippetsOutlined />, [
-      getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
+      getItem('Indicadores', '/reportes/indicadores', null,null,null),
+      getItem('Ventas por Producto', '/reportes/ventas_productos', null,null,null),
+      getItem('Ventas Actividad Principal', '/reportes/ventas_actividad_principal', null,null,null),
+      getItem('Cobros Realizados', '/reportes/cobros_realizados', null,null,null),
+      getItem('Inscripciones por Actividad', '/reportes/inscripciones_actividad', null,null,null),
+      getItem('Asistencias', '/reportes/asistencias', null,null,null),
+      getItem('Padron Clientes', '/reportes/padron_clientes', null,null,null),
+      getItem('Historial Clientes', '/reportes/historial_clientes', null,null,null),
+      getItem('Ingreso Establecimiento', '/reportes/ingreso_establecimiento', null,null,null),
+      getItem('Ingresos y Gastos', '/reportes/ingresos_gastos', null,null,null),
+      getItem('Recuperacion Contraseña', '/reportes/recuperacion_contraseña', null,null,null),
+      getItem('Participacion a Clases', '/reportes/participacion_clases', null,null,null),
+      getItem('Documentacion Ingresos', '/reportes/documentacion_ingresos', null,null,null),
+      getItem('Asistencias por Horario', '/reportes/asistencias_horarios', null,null,null),
+      getItem('Cambios de Inscripcion', '/reportes/cambios_inscripcion', null,null,null),
+      getItem('Calificacion Profesores', '/reportes/calificacion_profesores', null,null,null),
+      getItem('Cuentas Por Cobrar', '/reportes/cuantas_por_cobrar', null,null,null),
+
+
+
+
+
+
+
+
+
+
 
   ]),
   getItem('Configuracion', 'Configuracion', <ToolOutlined />, [
