@@ -198,7 +198,31 @@ const items3 = [
 
   ]),
   getItem('Configuracion', 'Configuracion', <ToolOutlined />, [
-    getItem('Ejercicios', '/entrenamiento/ejercicios', null,null,null),
+    getItem('Datos Configurables', '/configuracion/datos_configurables', null,null,null),
+    getItem('Tipos de Tareas', '/configuracion/tipo_tareas', null,null,null),
+    getItem('Estados de Tareas', '/configuracion/estados_tareas', null,null,null),
+    getItem('Usuarios', '/configuracion/usuarios', null,null,null),
+    getItem('Requisitos', '/configuracion/requisitos', null,null,null),
+    getItem('Profesores', '/configuracion/profesores', null,null,null),
+    getItem('Sucursales', '/configuracion/sucursales', null,null,null),
+    getItem('Medios de pago', '/configuracion/medios_pago', null,null,null),
+    getItem('Calificaciones', '/configuracion/calificaciones', null,null,null),
+    getItem('Gypasss', '/configuracion/gypasss', null,null,null),
+    getItem('Zoom', '/configuracion/zoom', null,null,null),
+    getItem('Plataformas Externas', '/configuracion/plataformas_externas', null,null,null),
+    getItem('Seguridad', '/configuracion/seguridad', null,null,null),
+
+
+
+
+
+
+
+
+
+
+
+
 
 ]),
    
