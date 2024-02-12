@@ -39,6 +39,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
   };
 });
 
+const itemTop=[];
 
 const items3 = [
     getItem('Clientes', '/clientes', <UserOutlined />,null, null),
@@ -100,7 +101,7 @@ const items3 = [
      
         getItem('Acciones Recurrentes', '/ventas/acciones_recurrentes', null,null,null),
         getItem('Descuentos', '/ventas/descuentos', null,null,null),
-        getItem('Ajuste Comprobantes', '/ventas/comprobantes', null,null,null),
+        getItem('Ajuste Comprobantes', '/ventas/ajustes_comprobantes', null,null,null),
         getItem('Reservas Fijas', '/ventas/reservas_fijas', null,null,null),
         getItem('Resumen Ventas', '/ventas/resumen_ventas', null,null,null),
 
@@ -220,12 +221,16 @@ const items3 = [
    
   ];
 
+const handleClick =()=>{
+
+}
+
 const App = ({children}) => {
     const navigate = useNavigate();
     const onClick = (e) => {
         let route = e.key.split("/");
         route = route.pop();
-
+        console.log(e.item3);
         navigate(e.key);
         setPath([e.keyPath[1],route]);
         window.scrollTo(0, 0);
@@ -234,18 +239,22 @@ const App = ({children}) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const [path,setPath]= useState(['Clientes']);
+  const[viewContent,setViewContent] = useState(true);
   return (
     <Layout>
     
       <Layout>
         <Sider
-          width={200}
+          width={300}
           breakpoint="lg"
-          collapsedWidth="0"
+          collapsedWidth="50"
           style={{
             background: colorBgContainer,
           }}
+          onClick={handleClick}
+          
         >
+      
          
           <Menu
             mode="inline"
@@ -282,7 +291,7 @@ const App = ({children}) => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {children}
+            {viewContent?children:null}
           </Content>
         </Layout>
       </Layout>
