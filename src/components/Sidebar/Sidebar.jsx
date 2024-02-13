@@ -58,9 +58,9 @@ const items3 = [
 
   ]),
     getItem('Cuentas', 'cuentas', <CalculatorOutlined />, [
-        getItem('Conceptos de Movimientos', '/conceptos_movimiento', null,null,null),
+        getItem('Conceptos de Movimientos', '/cuentas/conceptos_movimiento', null,null,null),
 
-        getItem('Movimientos', '/movimientos', null,null,null),
+        getItem('Movimientos', '/cuentas/movimientos_internos', null,null,null),
         getItem('Cajas', '/cajas', null,null,null),
         getItem('Apertura/Cierre', '/aperturas_cierres', null,null,null),
         getItem('Categorias de conceptos', '/categorias_concepto', null,null,null),

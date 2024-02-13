@@ -1,6 +1,6 @@
 import SideBar from "../components/Sidebar/Sidebar";
 import Clients from "./Admin/Clients";
-import Movimientos from '../pages/Admin/Cuentas/movimientos';
+import Movimientos from './Admin/Cuentas/conceptos.movimientos';
 import Navbar from "../components/Navbar/navbar";
 import {
     HashRouter as BrowserRouter,
@@ -80,6 +80,8 @@ import PlataformasExternasConf from "./Admin/Configuracion/plataformas.externas"
 import ConeccionZoomConf from "./Admin/Configuracion/coneccion.zoom";
 import CalificacionesConf from "./Admin/Configuracion/calificaciones";
 import MediosPagoConf from "./Admin/Configuracion/medios.pago";
+import ConceptoMovimientosCuentas from "./Admin/Cuentas/conceptos.movimientos";
+import MovimientosInternosCuentas from "./Admin/Cuentas/movimientos.internos";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -87,7 +89,8 @@ const AdminPage = () =>{
         <SideBar>
       <Routes>
       <Route  path="/" element={<Clients />} />
-      <Route  path="/movimientos" element={<Movimientos />} />
+      <Route  path="/cuentas/conceptos_movimiento" element={<ConceptoMovimientosCuentas />} />
+      <Route path='/cuentas/movimientos_internos' element={<MovimientosInternosCuentas />} />
       <Route  path="/categorias_concepto" element={<Categorias />} />
       <Route  path="/aperturas_cierres" element={<AperturasCierres />} />
 

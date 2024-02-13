@@ -1,6 +1,9 @@
 import CajasTables from '../../../components/CajasTables/CajasTables';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
+import GenericSelect from '../../../components/GenericSelect/GenericSelect';
+import {Button} from 'antd';
+import SearchButton from '../../../components/SearchButton/SearchButton';
 
 const columns = [
 
@@ -64,12 +67,21 @@ const data = [
   
  
 ];
-const Cajas = () =>{
+const ConceptoMovimientosCuentas = () =>{
     return(
         <>
+        <div className='text-left w-1/3'>
+          <GenericSelect placeholder={"Categoria"} />
+
+        </div>
+        <div className='text-right'>
+          <SearchButton />
+          <Button className="m-2">Crear </Button>
+
+        </div>
         <CajasTables data={data} columns={columns} />
         </>
     )
 }
 
-export default Cajas;
+export default ConceptoMovimientosCuentas;
