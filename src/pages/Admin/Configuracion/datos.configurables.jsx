@@ -50,7 +50,7 @@ const DatosConfigurablesConf = () =>{
                 </div>
                 <div className="text-right ml-auto "  >
                 <SearchButton />
-                <Button>Crear</Button>
+                <Button className="m-1">Crear</Button>
             </div>
             </div>
          

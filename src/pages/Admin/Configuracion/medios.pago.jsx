@@ -1,20 +1,29 @@
 import SearchButton from "../../../components/SearchButton/SearchButton";
 import { Button } from "antd";
 import GenericTable from "../../../components/GenericTable/GenericTable";
-import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import { Space } from "antd";
-const columns = [
+const columns =[
     {
-        title:'Descripcion',
+        title: 'Descripcion',
         dataIndex: 'descripcion',
-        key:'descripcion'
-    },
-    {
-        title:'Abreviatura',
+        key: 'descripcion',
+      },
+      {
+        title: 'Abreviatura',
         dataIndex: 'abreviatura',
-        key:'abreviatura'
-    },
-    {
+        key: 'abreviatura',
+      },
+      {
+        title: 'Tipo',
+        dataIndex: 'tipo',
+        key: 'tipo',
+      },
+      {
+        title: 'Recargo',
+        dataIndex: 'recargo',
+        key: 'recargo',
+      },
+      {
         title: 'Action',
         key: 'action',
         render: (_, record) => (
@@ -28,27 +37,26 @@ const columns = [
 
 const data =[
     {
-        descripcion:'Clientes',
-        abreviatura:'CONTCLI'
-    },
-    {
-        descripcion:'Mantenimiento',
-        abreviatura:'Mant'
+        descripcion :'Correccion de Caja',
+        abreviatura:'CORRECCION',
+        tipo:'Plataforma Online',
+        recargo:'0%'
     }
 ]
-
-const TiposTareasConf = () =>{
+const MediosPagoConf = () =>{
     return(
         <>
-         
+        <div>
             <div className="text-right">
-                <SearchButton />
+                <SearchButton/>
                 <Button className="m-2">Crear</Button>
-            </div>
 
-            <GenericTable data={data} columns={columns} />
+            </div>
+            <GenericTable columns={columns} data={data} />
+        </div>
+
         </>
     )
 }
 
-export default TiposTareasConf  ;
+export default MediosPagoConf;

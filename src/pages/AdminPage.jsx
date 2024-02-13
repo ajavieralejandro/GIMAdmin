@@ -79,6 +79,7 @@ import GypasssConf from "./Admin/Configuracion/gypasss";
 import PlataformasExternasConf from "./Admin/Configuracion/plataformas.externas";
 import ConeccionZoomConf from "./Admin/Configuracion/coneccion.zoom";
 import CalificacionesConf from "./Admin/Configuracion/calificaciones";
+import MediosPagoConf from "./Admin/Configuracion/medios.pago";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -165,7 +166,6 @@ const AdminPage = () =>{
 
     getItem('Estados de Tareas', '/configuracion/estados_tareas', null,null,null),
     getItem('Medios de pago', '/configuracion/medios_pago', null,null,null),
-    getItem('Plataformas Externas', '/configuracion/plataformas_externas', null,null,null),
 
 */}  
     <Route path="/configuracion/tipo_tareas" element={<TiposTareasConf />} />
@@ -179,6 +179,8 @@ const AdminPage = () =>{
     <Route path='/configuracion/plataformas_externas' element={<PlataformasExternasConf />} />
     <Route path='/configuracion/zoom' element={<ConeccionZoomConf />} />
     <Route path='/configuracion/calificaciones' element={<CalificacionesConf />} />
+    <Route path='/configuracion/plataformas_externas' element={<PlataformasExternasConf />} />
+    <Route path='/configuracion/medios_pago' element={<MediosPagoConf />} />
 
       </Routes>
            </SideBar>
