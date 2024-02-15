@@ -1,5 +1,5 @@
 import { Button } from "antd";
-const ClientCard = () =>{
+const ClientCard = ({name,last_name,phone,email,dni}) =>{
     return(
         <>
             <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl border-transparent hover:border-gray-700 ">
@@ -7,7 +7,7 @@ const ClientCard = () =>{
                     <img className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
 
                     <div className="mt-4 sm:mx-4 sm:mt-0">
-                        <h1 className="text-xl font-semibold text-gray-700 capitalize md:text-2xl  group-hover:text-black">arthur melo</h1>
+                        <h1 className="text-xl font-semibold text-gray-700 capitalize md:text-2xl  group-hover:text-black">{name} {last_name}</h1>
 
                         <p className="mt-2 text-black capitalize text-black group-hover:text-gray-300">Ref.: A637D25A  | ID control de ingreso:  0013553996</p>
                     </div>
@@ -27,7 +27,7 @@ const ClientCard = () =>{
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
 </svg>
-                    <p className="ml-2">35413923</p>
+                    <p className="ml-2">{dni}</p>
 
                     </div>
 
@@ -38,7 +38,7 @@ const ClientCard = () =>{
 
 
 
-<p className="ml-2">154238010</p>
+<p className="ml-2">{phone}</p>
 
                     </div>
 
@@ -49,7 +49,7 @@ const ClientCard = () =>{
 </svg>
 
 
-<p className="ml-2">amorosijavier@gmail.com</p>
+<p className="ml-2">{email}</p>
 
                     </div>
                 </div>

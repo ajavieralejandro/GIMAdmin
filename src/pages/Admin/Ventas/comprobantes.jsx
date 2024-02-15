@@ -7,8 +7,13 @@ const columns = [
     
         {
             title: 'Fecha',
-            dataIndex: 'reservas',
-            key: 'reservas',
+            dataIndex: 'fecha',
+            key: 'fecha',
+          },
+          {
+            title: 'Registrado',
+            dataIndex: 'fecha_registro',
+            key: 'fecha_regristro',
           },
     
 ]

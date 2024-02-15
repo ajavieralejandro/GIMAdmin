@@ -1,5 +1,6 @@
 import Search from "antd/es/input/Search";
 const SearchInput = ({onSearch,placeholder})=>{
+  
     return(
         <>
            <Search

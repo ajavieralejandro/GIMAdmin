@@ -69,15 +69,12 @@ const AperturasCierres = () =>{
     return(
         <>
             <Flex gap="small" wrap="wrap">
-            <SelectCajas />
-         <Button style={{ marginLeft: 'auto' }}>Abrir Caja</Button>
-       
-
-
-  </Flex> 
-  <br />
-         <h1 className="text-left">Monto en Caja Abierta :</h1> 
-         <CajasTables data={data} columns={columns} />
+                <SelectCajas />
+                <Button style={{ marginLeft: 'auto' }}>Abrir Caja</Button>
+            </Flex> 
+        <br />
+          <h1 className="text-left">Monto en Caja Abierta :</h1> 
+              <CajasTables data={data} columns={columns} />
 
    </> )
 }
