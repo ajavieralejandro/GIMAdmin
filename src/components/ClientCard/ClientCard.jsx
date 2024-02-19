@@ -1,5 +1,16 @@
 import { Button } from "antd";
-const ClientCard = ({name,last_name,phone,email,dni}) =>{
+import { useNavigate } from "react-router-dom";
+
+const ClientCard = ({name,last_name,phone,email,dni,key}) =>{
+    const navigate = useNavigate();
+
+    const handleClick = (key) =>{
+        console.log(key);
+        navigate('/clientes/cobro',{
+            clientKey : key
+        })
+    
+    }
     return(
         <>
             <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl border-transparent hover:border-gray-700 ">
@@ -14,7 +25,7 @@ const ClientCard = ({name,last_name,phone,email,dni}) =>{
                 </div>
 
                 <div className=" grid md:grid-cols-4 grid-cols-2 gap-2 pt-6">
-                   <Button>Cobro</Button>
+                   <Button onClick={(key)=>handleClick(key.target)}>Cobro</Button>
                    <Button>Modificar </Button>
                     <Button>Detalle</Button>
                     <Button>Perfil</Button>

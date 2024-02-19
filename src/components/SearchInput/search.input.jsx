@@ -1,12 +1,12 @@
 import Search from "antd/es/input/Search";
-const SearchInput = ({onSearch,placeholder})=>{
+const SearchInput = ({onChange,placeholder})=>{
   
     return(
         <>
            <Search
       placeholder={placeholder}
       allowClear
-      onSearch={onSearch}
+      onChange={onChange}
       style={{
         width: 200,
       }}

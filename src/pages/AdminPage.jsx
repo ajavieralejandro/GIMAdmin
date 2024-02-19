@@ -82,6 +82,7 @@ import CalificacionesConf from "./Admin/Configuracion/calificaciones";
 import MediosPagoConf from "./Admin/Configuracion/medios.pago";
 import ConceptoMovimientosCuentas from "./Admin/Cuentas/conceptos.movimientos";
 import MovimientosInternosCuentas from "./Admin/Cuentas/movimientos.internos";
+import CobroCliente from "./Admin/Clients/Cobro";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -89,6 +90,8 @@ const AdminPage = () =>{
         <SideBar>
       <Routes>
       <Route  path="/" element={<Clients />} />
+      <Route  path="/clientes/cobro" element={<CobroCliente />} />
+
       <Route  path="/cuentas/conceptos_movimiento" element={<ConceptoMovimientosCuentas />} />
       <Route path='/cuentas/movimientos_internos' element={<MovimientosInternosCuentas />} />
       <Route  path="/categorias_concepto" element={<Categorias />} />
