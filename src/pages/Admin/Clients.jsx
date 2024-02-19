@@ -36,8 +36,11 @@ const Clients = () =>{
         
     <>
     <section className="bg-white ">
-   
-        <SearchInput onChange={handleSearch} />
+        <div className="text-left"
+        >
+                  <SearchInput onChange={handleSearch} />
+
+        </div>
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
           {loading?null:
             data.map(client => <ClientCard client={client} 
