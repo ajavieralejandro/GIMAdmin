@@ -1,14 +1,15 @@
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-
-const ClientCard = ({name,last_name,phone,email,dni,key}) =>{
+import { useDispatch } from "react-redux";
+import { setCurrentClient } from "../../store/client/client.actions";
+const ClientCard = ({client}) =>{
+    const dispatch = useDispatch();
+    let {name,last_name,phone,email,dni} = client;
     const navigate = useNavigate();
 
     const handleClick = (key) =>{
-        console.log(key);
-        navigate('/clientes/cobro',{
-            clientKey : key
-        })
+        dispatch(setCurrentClient(client));
+        navigate('/clientes/cobro');
     
     }
     return(

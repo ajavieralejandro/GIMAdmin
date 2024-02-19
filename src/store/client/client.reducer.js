@@ -1,7 +1,4 @@
-export const CLIENT_ACTION_TYPES = {
-    SET_CURRENT_CLIENT : 'SET_CURRENT_CLIENT'
-}
-
+import { CLIENT_ACTION_TYPES } from "./client.action.types";
 const INITIAL_STATE = {
     currentClient : null,
 
