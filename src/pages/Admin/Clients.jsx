@@ -43,7 +43,7 @@ const Clients = () =>{
         </div>
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
           {loading?null:
-            data.map(client => <ClientCard client={client} 
+            data.map(client => <ClientCard key={client.dni} client={client} 
             />)
           }
            
