@@ -1,9 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
-const onChange = (value) => {
-    
-  console.log(`selected ${value}`);
-};
+
 const onSearch = (value) => {
   console.log('search:', value);
 };
@@ -11,7 +8,7 @@ const onSearch = (value) => {
 // Filter `option.label` match the user type `input`
 const filterOption = (input, option) =>
   (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
-const GenericSelect = ({options,placeholder}) => (
+const GenericSelect = ({options,placeholder,onChange}) => (
   
   <Select
     

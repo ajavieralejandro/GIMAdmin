@@ -4,10 +4,12 @@
   import GenericSelectSearch from "../../../components/GenericSelectSearch/GenericSelectSearch";
   import GenericTable from "../../../components/GenericTable/GenericTable";
   import { useState,useEffect } from "react";
-  import { Button,Space } from "antd";
+  import { Button,Space,Modal } from "antd";
+  import ItemsCobros from "../../../components/ItemsCobros/items.cobros";
+  import DeudasModal from "../../../components/DeudasModal/deudas.modal";
   
   const CobroCliente = ({clientKey}) =>{
-    const [items,setItems] = useState([]);
+    const [items,setItems] = useState([<ItemsCobros />]);
     const [loading,setLoading] = useState(true);
     const [data,setData] = useState([ {  
         id : '1',
@@ -25,21 +27,16 @@
 
     }
 
-    const handleClick = () =>{
-        let array = data.concat();
+    const handleClose = (index) =>{
+        console.log("hola");
+        setItems(items.filter((element,position)=>position!=0));}
 
-        array.push(
-            {  
-                id : '2',
-                price : '0'
-        
-            
-        
-            }
-        )
-        setData(array);
-        console.log(data);
+    const handleClick = () =>{
+        setItems([...items,<ItemsCobros />]);
+        console.log(items);
+  
     }
+    const [modal,setModal] = useState(false);
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/items")
@@ -77,20 +74,34 @@
           },
       ];
      
-      
     return(
         <>
+        <div class="w-full bg-slate-100 border-2 border-slate-300">
             <div className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <Input placeholder="Comprobante" />
                     <Date />
                     <GenericSelect options={[]} placeholder={"Vendedor"} />
-                </div>
-                <div className="text-right pt-2">
-                    <Button onClick={handleClick} className="text-rigth" >Agregar Item</Button>
-                    <GenericTable columns={columns} data={data} />
+                    <GenericSelect options={[]} placeholder={"Medio de Pago"} />
 
                 </div>
+                <div className="text-right pt-2">
+                    {items.length>0?items.map((element,index)=><ItemsCobros index={index} handleClose={handleClose} />):null}
+                    <Button type="text"   onClick={handleClick} className="text-rigth" >Agregar Item</Button>
+                    <Button type="text" onClick={()=>setModal(true)}    className="text-rigth" >Deudas</Button>
+
+                </div>
+            </div>
+            <Modal title="Deudas" open={modal} onCancel={()=>setModal(false)}>
+                <DeudasModal />
+      </Modal>
+            
+            </div>
+            
+
+
+          
+            <div className="text-right pt-12">
+                <Button >Cargar Cobro</Button>
             </div>
         </>
     )
