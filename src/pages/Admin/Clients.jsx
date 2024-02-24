@@ -26,8 +26,9 @@ const Clients = () =>{
         .then((data) => { 
           console.log("hola");
             setLoading(false)
-            setData(data.data);
+            console.log(data.data);
             setClients(data.data);
+            setData(data.data);
          })
            
 

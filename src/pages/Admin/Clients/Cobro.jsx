@@ -7,7 +7,7 @@
   import { Button,Space,Modal } from "antd";
   import ItemsCobros from "../../../components/ItemsCobros/items.cobros";
   import DeudasModal from "../../../components/DeudasModal/deudas.modal";
-  
+  import CobrosModal from "../../../components/CobrosModal/cobros.modal";
   const CobroCliente = ({clientKey}) =>{
     const [items,setItems] = useState([<ItemsCobros />]);
     const [loading,setLoading] = useState(true);
@@ -38,24 +38,8 @@
     }
     const [modal,setModal] = useState(false);
 
-    useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/items")
-        .then((response) => response.json())
-        .then((data) => { 
-            setLoading(false);
-             const options = data.map(item=>{return {
-                'value' : item.id,
-                'label' : item.name
-            }});
-            setItems(options);
-
-         })
-
-     }, []);
-
-     useEffect(()=>{
-
-     },[data])
+   
+   
 
      const columns = [
         {
@@ -80,8 +64,22 @@
             <div className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     <Date />
-                    <GenericSelect options={[]} placeholder={"Vendedor"} />
-                    <GenericSelect options={[]} placeholder={"Medio de Pago"} />
+                    <GenericSelect options={[
+                        {
+                            label : 'Monica',
+                            value:1
+                        },
+                        {
+                            label : 'Josefina',
+                            value:2
+                        }
+
+                    ]} placeholder={"Vendedor"} />
+                    <GenericSelect options={[
+                        { value:'mp',
+                            label:'mercado Pago'
+                        }
+                    ]} placeholder={"Medio de Pago"} />
 
                 </div>
                 <div className="text-right pt-2">
@@ -101,7 +99,7 @@
 
           
             <div className="text-right pt-12">
-                <Button >Cargar Cobro</Button>
+                <CobrosModal />
             </div>
         </>
     )

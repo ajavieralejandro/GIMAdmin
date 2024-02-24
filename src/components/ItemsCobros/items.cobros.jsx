@@ -1,29 +1,33 @@
 import GenericTable from "../GenericTable/GenericTable";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import GenericSelect from "../GenericSelect/GenericSelect";
 import Input from "antd/es/input/Input";
 import ItemsElement from "./items.elements";
 import { Button } from "antd";
-const items = [
-    {
-        'value' : 0,
-        'label' : 'abono anual',
-        'price' : 120000
-    },
-    {
-        'value' : 1,
-        'label' : 'abono mensual',
-        'price' : 15000
-    }
-]
+
 
 
 
 const ItemsCobros = ({handleClose,index}) =>{
-    const[item,setItem]=useState(null);
-    const handleChange = (value) => {
-        setItem(items[value]);// { value: "lucy", key: "lucy", label: "Lucy (101)" }
-      };
+    const[items,setItems]=useState([]);
+    const[options,setOptions] = useState([]);
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/api/v1/items")
+       .then((response) => response.json())
+       .then((data) => { 
+        setOptions(data.map((element,index)=>{
+            return {...element,label:element.name,value:index}
+
+        }
+            ));
+
+       
+        }
+        )
+          
+    
+     }, []);
+
 
     return(
         <>
@@ -51,7 +55,7 @@ const ItemsCobros = ({handleClose,index}) =>{
             </tr>
         </thead>
         <tbody>
-                <ItemsElement handleClose={handleClose} />
+                <ItemsElement items={options} handleClose={handleClose} />
         </tbody>
     </table>
 
