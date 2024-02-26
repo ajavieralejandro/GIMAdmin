@@ -82,10 +82,14 @@
                     ]} placeholder={"Medio de Pago"} />
 
                 </div>
-                <div className="text-right pt-2">
-                    {items.length>0?items.map((element,index)=><ItemsCobros index={index} handleClose={handleClose} />):null}
+                <div className="pt-2">
+                {items.length>0?items.map((element,index)=><ItemsCobros index={index} handleClose={handleClose} />):null}
+
+                </div>
+                <div className="text-right pt-8">
                     <Button type="text"   onClick={handleClick} className="text-rigth" >Agregar Item</Button>
                     <Button type="text" onClick={()=>setModal(true)}    className="text-rigth" >Deudas</Button>
+
 
                 </div>
             </div>

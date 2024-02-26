@@ -42,7 +42,14 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 const itemTop=[];
 
 const items3 = [
-    getItem('Clientes', 'clientes', <UserOutlined />,null, null),
+    getItem('Clientes', 'clientes', <UserOutlined />, [
+      getItem('Clientes', '/clientes', null,null,null),
+
+      getItem('Cuenta Corriente', '/clientes/cuenta_corriente', null,null,null),
+   
+
+    
+    ]),
     getItem('Fidelizacion', 'Fidelizacion', <TrophyOutlined />, [
       getItem('Lista de Premios', '/premios', null,null,null),
       getItem('Reglas Puntajes', '/fidelizacion/reglas', null,null,null),

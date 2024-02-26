@@ -1,9 +1,18 @@
+import { useState,useEffect } from "react";
 const DeudasElement = ({debt}) =>{
-    console.log(debt)
+  const [value,setValue] = useState(debt.value);
+  const handleClick = ()=>{
+      setValue(!value);
+  }
+
+  useEffect(()=>{
+    setValue(debt.value);
+
+  },[debt]);
     return(
         <tr  className="even:bg-blue-50">
         <td className="pl-6 w-8">
-          <input id={debt.id} type="checkbox" className="hidden peer" />
+          <input onClick={()=>handleClick()} checked={value ? 'checked' : ''}  value={value}  id={debt.id} type="checkbox" className="hidden peer" />
           <label for={debt.id}
             className="relative flex items-center justify-center p-0.5 peer-checked:before:hidden before:block before:absolute before:w-full before:h-full before:bg-white w-5 h-5 cursor-pointer bg-blue-500 border border-gray-400 rounded overflow-hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-full fill-white" viewBox="0 0 520 520">

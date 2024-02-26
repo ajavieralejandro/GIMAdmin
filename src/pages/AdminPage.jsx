@@ -83,6 +83,7 @@ import MediosPagoConf from "./Admin/Configuracion/medios.pago";
 import ConceptoMovimientosCuentas from "./Admin/Cuentas/conceptos.movimientos";
 import MovimientosInternosCuentas from "./Admin/Cuentas/movimientos.internos";
 import CobroCliente from "./Admin/Clients/Cobro";
+import CuentaCorriente from "./Admin/Clients/cuenta_corrients";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -91,6 +92,8 @@ const AdminPage = () =>{
       <Routes>
       <Route  path="/" element={<Clients />} />
       <Route  path="/clientes/cobro" element={<CobroCliente />} />
+      <Route  path="/clientes/cuenta_corriente" element={<CuentaCorriente  />} />
+
 
       <Route  path="/cuentas/conceptos_movimiento" element={<ConceptoMovimientosCuentas />} />
       <Route path='/cuentas/movimientos_internos' element={<MovimientosInternosCuentas />} />
