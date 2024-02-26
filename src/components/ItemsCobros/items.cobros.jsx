@@ -7,7 +7,6 @@ import { Button } from "antd";
 
 
 
-
 const ItemsCobros = ({handleClose,index}) =>{
     const[items,setItems]=useState([]);
     const[options,setOptions] = useState([]);
@@ -51,6 +50,9 @@ const ItemsCobros = ({handleClose,index}) =>{
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Cancelar
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Agregar
                 </th>
             </tr>
         </thead>

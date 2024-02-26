@@ -44,7 +44,7 @@ const DeudasModal = ()=>{
  }, []);
   let client = useSelector((state)=>state.client);
     return(
-        <div className="overflow-x-auto">
+        <div className="  ">
 
   <table className="min-w-full bg-white font-[sans-serif]">
     <thead className="bg-gray-700 whitespace-nowrap">

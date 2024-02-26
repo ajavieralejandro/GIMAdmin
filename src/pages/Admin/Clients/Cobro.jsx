@@ -5,10 +5,15 @@
   import GenericTable from "../../../components/GenericTable/GenericTable";
   import { useState,useEffect } from "react";
   import { Button,Space,Modal } from "antd";
+  import CobrosList from "../../../components/CobrosList/cobros.list";
   import ItemsCobros from "../../../components/ItemsCobros/items.cobros";
   import DeudasModal from "../../../components/DeudasModal/deudas.modal";
   import CobrosModal from "../../../components/CobrosModal/cobros.modal";
-  const CobroCliente = ({clientKey}) =>{
+  import { useDispatch } from "react-redux";
+import { cancelClientCobro } from "../../../store/client/client.actions";
+
+  const CobroCliente = ({clientKey}) =>{ 
+    let dispatch = useDispatch();
     const [items,setItems] = useState([<ItemsCobros />]);
     const [loading,setLoading] = useState(true);
     const [data,setData] = useState([ {  
@@ -32,9 +37,14 @@
         setItems(items.filter((element,position)=>position!=0));}
 
     const handleClick = () =>{
-        setItems([...items,<ItemsCobros />]);
-        console.log(items);
+        setItems([<ItemsCobros />]);
   
+    }
+
+    const handleCancel = () =>{
+        setItems([]);
+        dispatch(cancelClientCobro());
+
     }
     const [modal,setModal] = useState(false);
 
@@ -93,17 +103,28 @@
 
                 </div>
             </div>
-            <Modal title="Deudas" open={modal} onCancel={()=>setModal(false)}>
+            <Modal  okButtonProps={{
+        type:"text"
+      }} title="Deudas" open={modal} onCancel={()=>setModal(false)}
+                    onOk={()=>{
+                        setModal(false);
+                        
+                    }}
+
+      >
                 <DeudasModal />
       </Modal>
             
             </div>
-            
+            <div className="pt-12">
+            <CobrosList />
 
+            </div>
 
           
             <div className="text-right pt-12">
                 <CobrosModal />
+                <Button onClick={()=>handleCancel()} type="text">Cancelar</Button>
             </div>
         </>
     )

@@ -2,11 +2,35 @@ import GenericSelect from "../GenericSelectSearch/GenericSelectSearch";
 import { Button } from "antd";
 import { useState } from "react";
 
+import {  useDispatch } from "react-redux";
+import { setClientCobro } from "../../store/client/client.actions";
+
 const ItemsElement = ({handleClose,items}) =>{
+    const dispatch = useDispatch();
+    const [cobro,setCobro] = useState(
+        {
+            name : '',
+            price : '',
+            plan : '',
+            cant_cuotas : '',
+        }
+    )
+    const handleOk = ()=>{
+        dispatch(setClientCobro(cobro));
+    }
     
     const[item,setItem] = useState(null)
     const handleChange = (e) =>{
-        setItem(items[e]);
+        console.log("selecciono : ");
+        console.log(items[e]);
+        let aux = (items[e]);
+        setItem(aux);
+        setCobro({
+            ...cobro,
+            name : aux.name,
+            price : aux.price,
+            
+        })
     
     }
     return(
@@ -34,7 +58,11 @@ const ItemsElement = ({handleClose,items}) =>{
 </h1>:null}
 
                 </td>
-                <td className="px-6 py-4"> <Button onClick={handleClose} type="text">Cancelar</Button></td>
+                <td className="px-6 py-4"> <Button onClick={handleClose} type="text">Cancelar</Button>
+                </td>
+                <td className="px-6 py-4">
+                <Button onClick={()=>handleOk()} type="text">Agregar</Button>
+                </td>
 
             </tr>
           

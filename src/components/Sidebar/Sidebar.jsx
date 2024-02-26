@@ -303,7 +303,7 @@ const App = ({children}) => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <div className='overflow-scroll'>
+            <div className=''>
             {children}
 
             </div>
