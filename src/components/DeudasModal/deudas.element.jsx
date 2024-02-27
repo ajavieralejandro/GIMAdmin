@@ -1,8 +1,14 @@
 import { useState,useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addClientDebt } from "../../store/client/client.actions";
 const DeudasElement = ({debt}) =>{
+  let dispatch = useDispatch();
   const [value,setValue] = useState(debt.value);
   const handleClick = ()=>{
+    if(!value)
+    dispatch(addClientDebt(debt));
       setValue(!value);
+   
   }
 
   useEffect(()=>{
@@ -26,7 +32,7 @@ const DeudasElement = ({debt}) =>{
           {debt.name}
         </td>
         <td className="px-6 py-4 text-sm">
-          {debt.status}
+          {debt.price}
         </td>
        
         <td className="px-6 py-4 text-sm">

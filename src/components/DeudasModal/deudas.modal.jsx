@@ -1,14 +1,18 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState} from "react";
 import DeudasElement from "./deudas.element";
+import { useDispatch } from "react-redux";
+import { addClientDebt } from "../../store/client/client.actions";
 
 const DeudasModal = ()=>{
+  let dispatch = useDispatch();
   const selectAll = () =>{
     if(!selected){
       setDebts(debts.map(element=>{
         return{...element,value:true};
       }))
       setSelected(true);
+      dispatch(addClientDebt(debts))
     }
 
     else {
@@ -17,6 +21,8 @@ const DeudasModal = ()=>{
       }))
       setSelected(false);
     }
+
+  
   
 
   }
@@ -75,7 +81,7 @@ const DeudasModal = ()=>{
     </thead>
     <tbody className="whitespace-nowrap">
        {
-        debts.map(element => <DeudasElement value={element.value} key={element.id} debt={element} />)
+        debts.map(element => <DeudasElement  value={element.value} key={element.id} debt={element} />)
       }
      
     

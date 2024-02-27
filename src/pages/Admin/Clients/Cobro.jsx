@@ -47,6 +47,7 @@ import { cancelClientCobro } from "../../../store/client/client.actions";
 
     }
     const [modal,setModal] = useState(false);
+    const [debts,setDebts] = useState([]);
 
    
    
@@ -108,11 +109,13 @@ import { cancelClientCobro } from "../../../store/client/client.actions";
       }} title="Deudas" open={modal} onCancel={()=>setModal(false)}
                     onOk={()=>{
                         setModal(false);
+                        console.log("Deudas es : ");
+                        cconsole.log(debts);
                         
                     }}
 
       >
-                <DeudasModal />
+                <DeudasModal cargarDeudas={setDebts}  />
       </Modal>
             
             </div>

@@ -1,12 +1,18 @@
 import GenericSelect from "../GenericSelectSearch/GenericSelectSearch";
 import { Button } from "antd";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import {  useDispatch } from "react-redux";
 import { setClientCobro } from "../../store/client/client.actions";
+import { Input } from 'antd';
 
 const ItemsElement = ({handleClose,items}) =>{
+   
     const dispatch = useDispatch();
+    const [planes,setPlanes]=useState([]);
+    const [plan,setPlan]=useState([]);
+
+  
     const [cobro,setCobro] = useState(
         {
             name : '',
@@ -16,14 +22,19 @@ const ItemsElement = ({handleClose,items}) =>{
         }
     )
     const handleOk = ()=>{
+   
         dispatch(setClientCobro(cobro));
+        handleClose();
     }
-    
-    const[item,setItem] = useState(null)
+    const[item,setItem] = useState(null);
+    const [cantidad,setCantidad] = useState(0);
     const handleChange = (e) =>{
-        console.log("selecciono : ");
-        console.log(items[e]);
+        
         let aux = (items[e]);
+        if (aux.type == 'Producto')
+            setPlan(planes.filter(element=>element.name=="Abono Total"));
+        else    
+            setPlan(planes);
         setItem(aux);
         setCobro({
             ...cobro,
@@ -33,6 +44,34 @@ const ItemsElement = ({handleClose,items}) =>{
         })
     
     }
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/api/v1/planes_abonos")
+       .then((response) => response.json())
+       .then((data) => { 
+        setPlanes(data.map((element,index)=>{
+            return {...element,value:element.name,key:index}
+        }))
+    
+     })}, []);
+
+     const handlePlan = (e) =>{
+  
+        setCobro({
+            ...cobro,
+            plan : e
+        })
+
+     }
+
+     const handleCantChange = (e) =>{
+        console.log("cantidad : ");
+        console.log(e.target.value);
+        setCantidad(e.target.value);
+        setCobro({
+            ...cobro,cantidad:e.target.value
+        })
+     }
     return(
         <>
              <tr className="bg-white border-b dark:bg-white dark:border-gray-100">
@@ -40,21 +79,18 @@ const ItemsElement = ({handleClose,items}) =>{
                     <GenericSelect  onChange={handleChange} options={items} placeholder={"Items"} />
                 </th>
                 <td className="px-6 py-4">
-                   {item!=null?<GenericSelect placeholder={"Seleccionar Plan"} 
-                     options={[
-                        {value : 1,
-                        label:'12 cuotas'},
-                        {value : 2,
-                            label:'Abono Completo'}
-                     ]}
+                   {item!=null?<GenericSelect onChange={handlePlan} options={plan} placeholder={"Seleccionar Plan"} 
+                    
                    
                    />:null}
                 </td>
                 <td className="px-6 py-4">
-                    {item!=null?<h1>3/6</h1>:null}
+                    {(item!=null)?<Input onChange={handleCantChange
+                        } placeholder="Cantidad" />:null}
                 </td>
                 <td className="px-6 py-4">
-                {item!=null?<h1>                    {item.price}
+                {item!=null?<h1> 
+                    {cobro.price * cobro.cantidad}
 </h1>:null}
 
                 </td>

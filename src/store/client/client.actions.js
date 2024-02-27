@@ -24,3 +24,10 @@ export const cancelClientCobro = ()=>{
         }
     )
 }
+
+export const addClientDebt = (debt) =>{
+    return({
+            type : CLIENT_ACTION_TYPES.ADD_CLIENT_DEBT,
+            payload : debt
+    })
+}
