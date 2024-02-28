@@ -84,6 +84,8 @@ import ConceptoMovimientosCuentas from "./Admin/Cuentas/conceptos.movimientos";
 import MovimientosInternosCuentas from "./Admin/Cuentas/movimientos.internos";
 import CobroCliente from "./Admin/Clients/Cobro";
 import CuentaCorriente from "./Admin/Clients/cuenta_corrients";
+import CrearActividad from "./Admin/Ventas/crear.actividad";
+import CrearAbonoVenta from "./Admin/Ventas/crear.abono";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -126,6 +128,10 @@ const AdminPage = () =>{
 
 
         <Route path='/ventas/actividades' element={<ActividadesVentas />} />
+        <Route path='/ventas/crear_actividad' element={<CrearActividad />} />
+        <Route path='/ventas/crear_abono' element={<CrearAbonoVenta />} />
+
+
         <Route path='/ventas/horarios' element={<HorariosVentas />} />
         <Route path='/ventas/abonos_adicionales' element={<AbonosVentas />} />
         <Route path='/ventas/clases_programadas' element={<ClasesProgramadasVentas />} />

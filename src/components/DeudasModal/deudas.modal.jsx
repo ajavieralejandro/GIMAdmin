@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState} from "react";
 import DeudasElement from "./deudas.element";
 import { useDispatch } from "react-redux";
-import { addClientDebt } from "../../store/client/client.actions";
+import { addClientDebt, removeClientDebts } from "../../store/client/client.actions";
 
 const DeudasModal = ()=>{
   let dispatch = useDispatch();
@@ -19,6 +19,8 @@ const DeudasModal = ()=>{
       setDebts(debts.map(element=>{
         return{...element,value:false};
       }))
+      dispatch(removeClientDebts());
+
       setSelected(false);
     }
 
@@ -28,12 +30,16 @@ const DeudasModal = ()=>{
   }
   const [debts,setDebts] = useState([]);
   const [selected,setSelected]=useState(false);
+  const [total,setTotal] = useState(0);
   let total_debt = 0;
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/v1/client/debts/1")
    .then((response) => response.json())
    .then((data) => { 
+      
       setDebts(data.map(element=>{
+        if(!element.status)
+          setTotal(total+parseFloat(element.price));
         return {...element,value:false}
       }));
       data.map(element=>{
@@ -42,7 +48,6 @@ const DeudasModal = ()=>{
         if(!element.status)
           total_debt = total_debt+ 10;
       })
-      console.log("Deuda total es :",total_debt);
     }
     )
       
@@ -51,7 +56,7 @@ const DeudasModal = ()=>{
   let client = useSelector((state)=>state.client);
     return(
         <div className="  ">
-
+          <h1>Deuda total vencida : {total}</h1>
   <table className="min-w-full bg-white font-[sans-serif]">
     <thead className="bg-gray-700 whitespace-nowrap">
       <tr>

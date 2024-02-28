@@ -1,12 +1,15 @@
 import { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addClientDebt } from "../../store/client/client.actions";
+import { addClientDebt,removeClientDebt } from "../../store/client/client.actions";
+
 const DeudasElement = ({debt}) =>{
   let dispatch = useDispatch();
   const [value,setValue] = useState(debt.value);
   const handleClick = ()=>{
     if(!value)
     dispatch(addClientDebt(debt));
+    else
+    dispatch(removeClientDebt(debt.id));
       setValue(!value);
    
   }

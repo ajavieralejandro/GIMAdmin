@@ -5,6 +5,7 @@ import {Button,Space} from 'antd';
 import {Checkbox} from 'antd';
 import GenericTable from '../../../components/GenericTable/GenericTable';
 import { CheckCircleOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 const columns=[
     {
         title: 'Descripcion',
@@ -60,6 +61,11 @@ const data = [
 ]
 
 const AbonosVentas = () =>{
+  const navigate = useNavigate();
+
+  const handleClick = () =>{
+    navigate('/ventas/crear_abono');
+  }
     return(
         <>
 
@@ -83,7 +89,7 @@ const AbonosVentas = () =>{
                     Solo Disponibles</Checkbox> 
                 </div>
               
-                <Button >Crear</Button>
+                <Button onClick={()=>handleClick()} >Crear</Button>
                 <Button >Buscar</Button>
           
 

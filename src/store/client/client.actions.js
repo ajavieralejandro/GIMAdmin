@@ -31,3 +31,20 @@ export const addClientDebt = (debt) =>{
             payload : debt
     })
 }
+
+export const removeClientDebts = () =>{
+    return(
+        {
+            type : CLIENT_ACTION_TYPES.REMOVE_DEBTS
+        }
+    )
+}
+
+export const removeClientDebt = (id) =>{
+    return(
+        {
+            type : CLIENT_ACTION_TYPES.REMOVE_DEBT,
+            payload : id
+        }
+    )
+}

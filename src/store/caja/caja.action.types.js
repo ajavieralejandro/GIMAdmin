@@ -1,0 +1,4 @@
+export const CAJA_ACTION_TYPES = {
+    SET_COBRO_CAJA : 'SET_COBRO_CAJA',
+
+}

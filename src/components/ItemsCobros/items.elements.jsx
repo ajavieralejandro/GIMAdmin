@@ -89,7 +89,7 @@ const ItemsElement = ({handleClose,items}) =>{
                         } placeholder="Cantidad" />:null}
                 </td>
                 <td className="px-6 py-4">
-                {item!=null?<h1> 
+                {item!=null && cobro.cantidad?<h1> 
                     {cobro.price * cobro.cantidad}
 </h1>:null}
 

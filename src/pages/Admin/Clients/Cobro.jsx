@@ -11,6 +11,9 @@
   import CobrosModal from "../../../components/CobrosModal/cobros.modal";
   import { useDispatch } from "react-redux";
 import { cancelClientCobro } from "../../../store/client/client.actions";
+import { setCobroCaja } from "../../../store/caja/caja.actions";
+import { useSelector } from "react-redux";
+
 
   const CobroCliente = ({clientKey}) =>{ 
     let dispatch = useDispatch();
@@ -71,7 +74,7 @@ import { cancelClientCobro } from "../../../store/client/client.actions";
      
     return(
         <>
-        <div class="w-full bg-slate-100 border-2 border-slate-300">
+        <div className="w-full bg-slate-100 border-2 border-slate-300">
             <div className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     <Date />
@@ -108,9 +111,7 @@ import { cancelClientCobro } from "../../../store/client/client.actions";
         type:"text"
       }} title="Deudas" open={modal} onCancel={()=>setModal(false)}
                     onOk={()=>{
-                        setModal(false);
-                        console.log("Deudas es : ");
-                        cconsole.log(debts);
+                        setModal(false);                 
                         
                     }}
 
@@ -120,7 +121,7 @@ import { cancelClientCobro } from "../../../store/client/client.actions";
             
             </div>
             <div className="pt-12">
-            <CobrosList />
+            <CobrosList  />
 
             </div>
 

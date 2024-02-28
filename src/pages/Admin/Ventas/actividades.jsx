@@ -2,7 +2,15 @@ import SearchInput from "../../../components/SearchInput/search.input";
 import GenericTable from "../../../components/GenericTable/GenericTable";
 import { Flex,Button, Space } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
+import { useNavigate } from 'react-router-dom';
+
 const ActividadesVentas = () =>{
+    const navigate = useNavigate();
+
+    const handleClick = () =>{
+      navigate('/ventas/crear_actividad');
+    }
+
     const data =[{
         descripcion : '8 clases',
         active : true,
@@ -46,7 +54,7 @@ const ActividadesVentas = () =>{
         <>
             <Flex gap="small" wrap="wrap">
                         <SearchInput placeholder={"Buscar"} />
-                        <Button style={{ marginLeft: 'auto' }} >Crear</Button>
+                        <Button onClick={()=>handleClick()} style={{ marginLeft: 'auto' }} >Crear</Button>
 
                         </Flex>
                         <GenericTable data={data} columns={columns} />

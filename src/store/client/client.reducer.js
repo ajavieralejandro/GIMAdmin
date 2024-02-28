@@ -2,7 +2,8 @@ import { CLIENT_ACTION_TYPES } from "./client.action.types";
 const INITIAL_STATE = {
     currentClient : null,
     cobros : [],
-    debts : []
+    debts : [],
+    total : 0
 
 }
 
@@ -24,6 +25,14 @@ export const clientReducer = (state = INITIAL_STATE,action)=>{
         case CLIENT_ACTION_TYPES.ADD_CLIENT_DEBT:
             return{
                 ...state,debts : [...state.debts,payload]
+            }
+        case CLIENT_ACTION_TYPES.REMOVE_DEBTS :
+            return {
+                ...state,debts : []
+            }
+        case CLIENT_ACTION_TYPES.REMOVE_DEBT :
+            return{
+                ...state, debts:state.debts.filter(element=> element.id!=payload)
             }
             default : return state;
         
