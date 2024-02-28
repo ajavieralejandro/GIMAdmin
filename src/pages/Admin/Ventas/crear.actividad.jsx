@@ -1,8 +1,22 @@
 import Input from "antd/es/input/Input";
 import Checkbox from "antd/es/checkbox/Checkbox";
 import TextArea from "antd/es/input/TextArea";
+import { useState } from "react";
 import { Button } from "antd";
+import { useDispatch } from "react-redux";
+import { addActividad } from "../../../store/ventas/ventas.actions";
+import { useNavigate } from "react-router-dom";
 const CrearActividad = () =>{
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
+  const [actividad,setActividad] = useState({
+      nombre : '',
+      reserva : false,
+      cant_reservas : 0,
+      comentarios : "",
+      recomendaciones : ""
+
+  })
     return(
         <>
             <div>
@@ -14,19 +28,23 @@ const CrearActividad = () =>{
   </div>
   <div className="p-6 text-black">
     <div className="grid grid-cols-3 gap-4">
-        <Input placeholder="Nombre" />
-        <Input placeholder="Reservas por día cliente" />
-        <Checkbox>Permitir Reserva y anulación</Checkbox>
+        <Input onChange={(e)=>setActividad({...actividad,nombre:e.target.value})} placeholder="Nombre" />
+        <Input onChange={e=>setActividad({...actividad,cant_reservas:e.target.value})}placeholder="Reservas por día cliente" />
+        <Checkbox onChange={e=>setActividad({...actividad,reserva:e.target.checked})}>Permitir Reserva y anulación</Checkbox>
 
     </div>
     <div className="grid grid-cols-3 gap-4 pt-12">
-      <TextArea placeholder="Comentarios" />
-      <TextArea placeholder="Recomendaciones Reserva" />
+      <TextArea  onChange={(e)=>setActividad({...actividad,comentarios:e.target.value})} placeholder="Comentarios" />
+      <TextArea  onChange={(e)=>setActividad({...actividad,recomendaciones:e.target.value})} placeholder="Recomendaciones Reserva" />
 
 
     </div>
     <div className="text-right ml-2">
-          <Button > Guardar</Button>
+          <Button onClick={()=>{
+            dispatch(addActividad(actividad));
+            navigate('/ventas/actividades')
+                                
+          }} > Guardar</Button>
         </div>
   </div>
       

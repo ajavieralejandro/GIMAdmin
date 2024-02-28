@@ -3,8 +3,13 @@ import GenericTable from "../../../components/GenericTable/GenericTable";
 import { Flex,Button, Space } from "antd";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteActividad } from "../../../store/ventas/ventas.actions";
 const ActividadesVentas = () =>{
+    let dispatch = useDispatch();
+    let selector = useSelector(state=>state.ventas.actividades);
+    console.log(selector);
     const navigate = useNavigate();
 
     const handleClick = () =>{
@@ -20,32 +25,32 @@ const ActividadesVentas = () =>{
     ];
     const columns = [
         {
-            title: 'Descripcion',
-            dataIndex: 'descripcion',
-            key: 'descripcion',
+            title: 'Nombre',
+            dataIndex: 'nombre',
+            key: 'nombre',
           },
           {
             title: 'Reserva y anulacion',
-            key: 'active',
-            dataIndex: 'active',
-            render: (_, { active }) => (
+            key: 'reserva',
+            dataIndex: 'reserva',
+            render: (_, { reserva }) => (
               <>
-                {active?<CheckCircleOutlined />:null}
+                {reserva?<CheckCircleOutlined />:null}
               </>
             ),
           },
           {
             title: 'Cant. Reservas',
-            dataIndex: 'reservas',
-            key: 'reservas',
+            dataIndex: 'cant_reservas',
+            key: 'cant_reservas',
           },
           {
             title: 'Action',
             key: 'action',
-            render: (_, record) => (
+            render: (actividad) => (
               <Space size="middle">
-                <a>Editar {record.name}</a>
-                <a>Borrar</a>
+                <a >Editar</a>
+                <a onClick={()=>dispatch(deleteActividad(actividad))}>Borrar</a>
               </Space>
             ),
           },
@@ -57,7 +62,7 @@ const ActividadesVentas = () =>{
                         <Button onClick={()=>handleClick()} style={{ marginLeft: 'auto' }} >Crear</Button>
 
                         </Flex>
-                        <GenericTable data={data} columns={columns} />
+                        <GenericTable data={selector} columns={columns} />
         </>
     )
 }
