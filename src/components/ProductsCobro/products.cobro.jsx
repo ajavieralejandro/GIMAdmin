@@ -3,7 +3,7 @@ import ItemsElement from "../ItemsCobros/items.elements";
 const ProductsCobros = () =>{
     const [options,setOptions] = useState([]);
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/items")
+        fetch("http://127.0.0.1:8000/api/v1/items/")
        .then((response) => response.json())
        .then((data) => { 
         let aux = (data.filter((element,index)=>{
@@ -12,10 +12,7 @@ const ProductsCobros = () =>{
 
         }
             ))
-        setOptions(aux.map(element,index=>{
-            return element;
-        }));
-            
+   
             ;
 
        

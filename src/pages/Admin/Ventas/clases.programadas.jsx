@@ -3,6 +3,8 @@ import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import { Checkbox, Button,Space } from "antd";
 import GenericTable from "../../../components/GenericTable/GenericTable";
 import { CheckCircleOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const data = [
 
     {
@@ -69,6 +71,20 @@ const columns = [
     
 ]
 const ClasesProgramadasVentas = () =>{
+  let selector = useSelector(state=>state.clases.clases);
+  const array_aux = selector.map(element=>{
+    return {
+      actividad : element.actividades[1],
+      profesor : element.profesores[0],
+      sucursal : element.sucursal,
+      reservas : element.cupo
+
+    }
+  })
+  let navigate = useNavigate();
+  const handleClick = () =>{
+    navigate('/ventas/crear_clase');
+  }
     return(
         <>
             <div>
@@ -91,7 +107,7 @@ const ClasesProgramadasVentas = () =>{
                     <GenericSelect />
                 </div>
                 <div className="grid grid-cols-4 gap-2 pt-6">
-                    <Button>Crear</Button>
+                    <Button onClick={()=>handleClick()}>Crear</Button>
                     <Button>Programar</Button>
                     <Button>Modificacion Masiva</Button>
                     <Button>Borrar</Button>
@@ -99,7 +115,7 @@ const ClasesProgramadasVentas = () =>{
                     
                 </div>
                 <div className="pt-12">
-                <GenericTable data={data} columns={
+                <GenericTable data={array_aux} columns={
                     columns
                 } />
                 </div>

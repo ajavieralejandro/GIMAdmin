@@ -1,3 +1,6 @@
+
+import { useSelector } from "react-redux";
+
 const ClientDebts = () =>{
     return(
         <></>
