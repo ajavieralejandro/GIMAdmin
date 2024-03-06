@@ -11,7 +11,7 @@ const ItemsCobros = ({handleClose,index}) =>{
     const[items,setItems]=useState([]);
     const[options,setOptions] = useState([]);
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/items")
+        fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/items")
        .then((response) => response.json())
        .then((data) => { 
         setOptions(data.map((element,index)=>{

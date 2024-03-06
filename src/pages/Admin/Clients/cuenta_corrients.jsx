@@ -63,7 +63,8 @@ const CuentaCorriente = ({clientKey}) =>{
       <> 
     <div class="w-full bg-slate-100 border-2 border-slate-300">
           <div className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-3  gap-2">
+                <GenericSelect options={[]} placeholder={"Cliente"} />
                   <GenericSelect options={[
                       {
                           label : 'Monica',

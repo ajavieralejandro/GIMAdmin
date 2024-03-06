@@ -13,12 +13,14 @@
 import { cancelClientCobro } from "../../../store/client/client.actions";
 import { setCobroCaja } from "../../../store/caja/caja.actions";
 import { useSelector } from "react-redux";
+import ProductsCobros from "../../../components/ProductsCobro/products.cobro";
 
 
   const CobroCliente = ({clientKey}) =>{ 
     let dispatch = useDispatch();
     const [items,setItems] = useState([<ItemsCobros />]);
     const [loading,setLoading] = useState(true);
+    const [page,setPage] = useState(0);
     const [data,setData] = useState([ {  
         id : '1',
         price : '0'
@@ -88,20 +90,36 @@ import { useSelector } from "react-redux";
                             value:2
                         }
 
-                    ]} placeholder={"Vendedor"} />
+                    ]} placeholder={"Referido"} />
                     <GenericSelect options={[
                         { value:'mp',
                             label:'mercado Pago'
-                        }
+                        },
+                        { value:'Debito',
+                        label:'Debito'
+                    },
+                    { value:'Efectivo',
+                    label:'efectivo'
+                },{
+                    value:'Credito',
+                    label : 'Credito'
+                }, {
+                    value:'Mixto',
+                    label : 'Mixto'
+                }
+                
+
                     ]} placeholder={"Medio de Pago"} />
 
                 </div>
                 <div className="pt-2">
-                {items.length>0?items.map((element,index)=><ItemsCobros index={index} handleClose={handleClose} />):null}
+                {page == 0 ? <ProductsCobros onExit={()=>setPage(1)} /> : null }
+                
 
                 </div>
                 <div className="text-right pt-8">
-                    <Button type="text"   onClick={handleClick} className="text-rigth" >Agregar Item</Button>
+                    <Button  type="text"   onClick={()=>setPage(0)} className="text-rigth" >Agregar Producto</Button>
+                    <Button type="text"   onClick={handleClick} className="text-rigth" >Agregar Abono</Button>
                     <Button type="text" onClick={()=>setModal(true)}    className="text-rigth" >Deudas</Button>
 
 

@@ -7,6 +7,7 @@ const CobrosList = () =>{
     const [total,setTotal] = useState(0);
     let selector = useSelector(state=>state.client.cobros);
     let selector2 = useSelector(state=>state.client.debts);
+ 
 
     useEffect(()=>{
         setCobros(selector);
@@ -37,7 +38,7 @@ const CobrosList = () =>{
   {cobros.map(element=><tr>
             <td> {element.name}</td>
             <td> {element.cantidad}</td>
-            <td> {element.price}</td>
+            <td> {element.total}</td>
             </tr>)
          }
           {debts.map(element=><tr>
