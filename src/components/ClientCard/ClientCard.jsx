@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentClient } from "../../store/client/client.actions";
 const ClientCard = ({client}) =>{
     const dispatch = useDispatch();
-    let {name,last_name,phone,email,dni} = client;
+    let {name,last_name,phone_number,email,dni} = client;
     const navigate = useNavigate();
 
     const handleClick = (key) =>{
@@ -50,7 +50,7 @@ const ClientCard = ({client}) =>{
 
 
 
-<p className="ml-2">{phone}</p>
+<p className="ml-2">{phone_number}</p>
 
                     </div>
 

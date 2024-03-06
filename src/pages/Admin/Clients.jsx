@@ -21,12 +21,11 @@ const Clients = () =>{
 
 
     useEffect(() => {
-         fetch("http://127.0.0.1:8000/api/v1/clients")
+         fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/clients")
         .then((response) => response.json())
         .then((data) => { 
-          console.log("hola");
             setLoading(false)
-            console.log(data.data);
+            
             setClients(data.data);
             setData(data.data);
          })
