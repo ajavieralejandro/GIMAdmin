@@ -14,7 +14,13 @@ const ItemsCobros = ({handleClose,index}) =>{
         fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/items")
        .then((response) => response.json())
        .then((data) => { 
-        setOptions(data.map((element,index)=>{
+        let aux = data.filter(element => {
+            if(element.type!="Producto")
+            return element;
+        }
+           
+            );
+        setOptions(aux.map((element,index)=>{
             return {...element,label:element.name,value:index}
 
         }

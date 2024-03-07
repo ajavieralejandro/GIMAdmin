@@ -46,7 +46,7 @@ const ItemsElement = ({handleClose,items}) =>{
     }
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/planes_abonos")
+        fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/planes_abonos")
        .then((response) => response.json())
        .then((data) => { 
         setPlanes(data.map((element,index)=>{

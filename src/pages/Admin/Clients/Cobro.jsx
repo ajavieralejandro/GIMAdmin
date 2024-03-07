@@ -53,7 +53,7 @@ import ProductsCobros from "../../../components/ProductsCobro/products.cobro";
     }
     const [modal,setModal] = useState(false);
     const [debts,setDebts] = useState([]);
-
+    const [isMixto,setIsMixto] = useState(false);
    
    
 
@@ -91,7 +91,16 @@ import ProductsCobros from "../../../components/ProductsCobro/products.cobro";
                         }
 
                     ]} placeholder={"Referido"} />
-                    <GenericSelect options={[
+                    <GenericSelect
+                    onChange={e=>{
+                        
+                        setIsMixto (e=='Mixto');
+                        console.log("Selecciono mixto");
+                        console.log(isMixto);
+                
+
+                    }}                     
+                    options={[
                         { value:'mp',
                             label:'mercado Pago'
                         },
@@ -113,13 +122,15 @@ import ProductsCobros from "../../../components/ProductsCobro/products.cobro";
 
                 </div>
                 <div className="pt-2">
-                {page == 0 ? <ProductsCobros onExit={()=>setPage(1)} /> : null }
+                {page == 1 ? <ProductsCobros onExit={()=>setPage(1)} /> : null }
+                {page == 2   ? <ItemsCobros handleClose={()=>setPage(0)}/> : null }
+
                 
 
                 </div>
                 <div className="text-right pt-8">
-                    <Button  type="text"   onClick={()=>setPage(0)} className="text-rigth" >Agregar Producto</Button>
-                    <Button type="text"   onClick={handleClick} className="text-rigth" >Agregar Abono</Button>
+                    <Button  type="text"   onClick={()=>setPage(1)} className="text-rigth" >Agregar Producto</Button>
+                    <Button type="text"   onClick={()=>setPage(2)} className="text-rigth" >Agregar Abono</Button>
                     <Button type="text" onClick={()=>setModal(true)}    className="text-rigth" >Deudas</Button>
 
 
@@ -145,7 +156,7 @@ import ProductsCobros from "../../../components/ProductsCobro/products.cobro";
 
           
             <div className="text-right pt-12">
-                <CobrosModal />
+                <CobrosModal isMixto={isMixto} />
                 <Button onClick={()=>handleCancel()} type="text">Cancelar</Button>
             </div>
         </>

@@ -1,7 +1,10 @@
 import { Button, Modal } from 'antd';
 import React, { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux';
-const CobrosModal = () => {
+import CobrosModalMixto from './cobros.modal.mixto';
+const CobrosModal = ({isMixto}) => {
+  console.log("Mixto es : ");
+  console.log(isMixto);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -38,13 +41,15 @@ const CobrosModal = () => {
       console.log("amount es : ",amount);
       setTotal(amount);
       
-  },[selector,selector2])
+  },[selector,selector2]);
+  
   return (
     <>
       <Button type="text" onClick={showModal}>
         Cargar Cobro
       </Button>
       <Modal title="Confirmar Cobro" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      {isMixto?<CobrosModalMixto monto={total} />  : null}
         <p>Confirmar Cobro</p>
         <p>Medio de Pago : Mercado Pago</p>
         <p>Vendedor : Josefina</p>
