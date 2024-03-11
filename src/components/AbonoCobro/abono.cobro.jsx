@@ -1,6 +1,7 @@
 const AbonoCobro = () =>{
     return(
         <>
+        
         </>
     )
 }
