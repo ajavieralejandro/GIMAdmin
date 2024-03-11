@@ -1,7 +1,9 @@
 
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../../store/user/user.actions";
 const UserPage = () =>{
+	let dispatch = useDispatch();
 
     const [user,setUser] = useState({
         email : '',
@@ -19,7 +21,14 @@ const UserPage = () =>{
         };
          fetch('https://stingray-app-4224s.ondigitalocean.app/api/auth/login', requestOptions)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data =>{
+				 console.log(data);
+				 if(data.message!="Unathorized")
+				 dispatch(setCurrentUser(data))
+				else 
+					Alert("Usuario invalido");
+				}
+				  );
       }
 
     return (

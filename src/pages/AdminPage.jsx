@@ -87,6 +87,7 @@ import CuentaCorriente from "./Admin/Clients/cuenta_corrients";
 import CrearActividad from "./Admin/Ventas/crear.actividad";
 import CrearAbonoVenta from "./Admin/Ventas/crear.abono";
 import CrearClase from "./Admin/Ventas/crear.clase";
+import CreateUserConf from "./Admin/Configuracion/create.user";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -198,6 +199,8 @@ const AdminPage = () =>{
     <Route path='/configuracion/calificaciones' element={<CalificacionesConf />} />
     <Route path='/configuracion/plataformas_externas' element={<PlataformasExternasConf />} />
     <Route path='/configuracion/medios_pago' element={<MediosPagoConf />} />
+    <Route path='/configuracion/crear_usuario' element={<CreateUserConf />} />
+
 
       </Routes>
            </SideBar>
