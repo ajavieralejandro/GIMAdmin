@@ -4,7 +4,8 @@ import { Space } from 'antd';
 import GenericSelect from '../../../components/GenericSelect/GenericSelect';
 import {Button} from 'antd';
 import SearchButton from '../../../components/SearchButton/SearchButton';
-
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 const columns = [
 
   {
@@ -68,6 +69,13 @@ const data = [
  
 ];
 const ConceptoMovimientosCuentas = () =>{
+  let navigate = useNavigate();
+  const handleClick = () =>{
+    navigate('/cuentas/crear_movimiento');
+  }
+  const handleCreate = () =>{
+    dispatch();
+  }
     return(
         <>
         <div className='text-left w-1/3'>
@@ -76,7 +84,7 @@ const ConceptoMovimientosCuentas = () =>{
         </div>
         <div className='text-right'>
           <SearchButton />
-          <Button className="m-2">Crear </Button>
+          <Button onClick={()=>handleClick()} className="m-2">Crear </Button>
 
         </div>
         <CajasTables data={data} columns={columns} />

@@ -88,6 +88,9 @@ import CrearActividad from "./Admin/Ventas/crear.actividad";
 import CrearAbonoVenta from "./Admin/Ventas/crear.abono";
 import CrearClase from "./Admin/Ventas/crear.clase";
 import CreateUserConf from "./Admin/Configuracion/create.user";
+import CrearConceptoCaja from "./Admin/Cuentas/crear.concepto.caja";
+import CrearCategoriaConcepto from "./Admin/Cuentas/crear.categoria.concepto";
+import CrearMovimientoCaja from "./Admin/Cuentas/caja.crear.movimiento";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -100,6 +103,9 @@ const AdminPage = () =>{
 
 
       <Route  path="/cuentas/conceptos_movimiento" element={<ConceptoMovimientosCuentas />} />
+      <Route  path="/cuentas/crear_movimiento" element={<CrearConceptoCaja />} />
+      <Route path="/cuentas/crear_categoria_concepto" element={<CrearCategoriaConcepto />} />
+      <Route path="/cuentas/registrar_movimiento" element={<CrearMovimientoCaja />} />
       <Route path='/cuentas/movimientos_internos' element={<MovimientosInternosCuentas />} />
       <Route  path="/categorias_concepto" element={<Categorias />} />
       <Route  path="/aperturas_cierres" element={<AperturasCierres />} />

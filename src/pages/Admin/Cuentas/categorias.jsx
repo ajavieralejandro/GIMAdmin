@@ -1,17 +1,21 @@
 import CajasTables from '../../../components/CajasTables/CajasTables'
-import { Space } from 'antd';
+import { Space,Button,} from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect,useState
+ } from 'react';
 const columns = [
 
     {
-      title: 'Descripcion',
-      dataIndex: 'descripcion',
-      key: 'descripcion',
+      title: 'Nombre',
+      dataIndex: 'nombre',
+      key: 'nombre',
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Abreviatura',
-      dataIndex: 'abreviatura',
-      key: 'abreviatura',
+      title: 'Tipo',
+      dataIndex: 'tipo',
+      key: 'tipo',
     },
    
   
@@ -38,8 +42,30 @@ const columns = [
    
   ];
 const Categorias = () =>{
+  /*
+    const [user,setUser] = useState(null);
+  let user_selector = useSelector(state=>state.user.currentUser);
+  useEffect(() => {
+      if(user_selector!=null)
+        setUser(user_selector);
+    }, [user_selector])
+
+  */ 
+  const [categorias,setCategorias] = useState([]);
+  let categorias_selector = useSelector(state=>state.caja.categorias);
+  useEffect(()=>{
+    console.log(categorias_selector);
+    setCategorias(categorias_selector);
+  },[categorias_selector]);
+  let navigate =  useNavigate();
+  const handleClick = () =>{
+    navigate('/cuentas/crear_categoria_concepto');
+  }
     return <>
-                <CajasTables data={data} columns={columns} />
+                <div className='text-right'>
+                  <Button onClick={()=>handleClick()}>Crear Categoria Concepto</Button>
+                </div>
+                <CajasTables data={categorias} columns={columns} />
 
     </>
 }

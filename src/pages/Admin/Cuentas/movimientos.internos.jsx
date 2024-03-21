@@ -5,6 +5,9 @@ import Checkbox from "antd/es/checkbox/Checkbox";
 import { Button } from "antd";
 import GenericTable from "../../../components/GenericTable/GenericTable";
 import { Space } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 const columns =[
     {
         title: 'Fecha',
@@ -27,9 +30,9 @@ const columns =[
         key: 'estado',
       },
       {
-        title: 'Descripcion',
-        dataIndex: 'descripcion',
-        key: 'descripcion',
+        title: 'Nombre',
+        dataIndex: 'nombre',
+        key: 'nombre',
       },
       {
         title: 'Medio de Pago',
@@ -67,10 +70,16 @@ const data = [
     }
 ];
 const MovimientosInternosCuentas = () =>{
+  let navigate = useNavigate(); 
+  let selector = useSelector(state=>state.caja.movimientos);
+  const handleClick = () =>{
+    navigate('/cuentas/registrar_movimiento');
+
+  }
     return(
         <>
            <div className="text-right">
-                    <Button>Crear</Button>
+                    <Button onClick={()=>handleClick()}>Crear</Button>
             </div>
             <div className="pt-8 grid grid-cols-1 md:grid-cols-3 gap-2">
                 <SearchInput />
@@ -86,7 +95,7 @@ const MovimientosInternosCuentas = () =>{
             </div>
          
             <div className="pt-8">
-                <GenericTable data={data} columns={columns} />
+                <GenericTable data={selector} columns={columns} />
             </div>
         </>
     )
