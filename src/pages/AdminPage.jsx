@@ -91,6 +91,7 @@ import CreateUserConf from "./Admin/Configuracion/create.user";
 import CrearConceptoCaja from "./Admin/Cuentas/crear.concepto.caja";
 import CrearCategoriaConcepto from "./Admin/Cuentas/crear.categoria.concepto";
 import CrearMovimientoCaja from "./Admin/Cuentas/caja.crear.movimiento";
+import CrearSucursal from "./Admin/Configuracion/crear.sucursal";
 const AdminPage = () =>{
     return(
         <>        <BrowserRouter>
@@ -206,7 +207,7 @@ const AdminPage = () =>{
     <Route path='/configuracion/plataformas_externas' element={<PlataformasExternasConf />} />
     <Route path='/configuracion/medios_pago' element={<MediosPagoConf />} />
     <Route path='/configuracion/crear_usuario' element={<CreateUserConf />} />
-
+    <Route path="/configuracion/crear_sucursal" element={<CrearSucursal />} />
 
       </Routes>
            </SideBar>

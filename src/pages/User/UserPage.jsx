@@ -22,8 +22,9 @@ const UserPage = () =>{
          fetch('https://stingray-app-4224s.ondigitalocean.app/api/auth/login', requestOptions)
             .then(response => response.json())
             .then(data =>{
-				 console.log(data);
-				 if(data.message!="Unathorized")
+				console.log("Holaaa estoy aca");	
+				console.log(data.message);
+				 if(data.message!=="Unauthorized")
 				 dispatch(setCurrentUser(data))
 				else 
 					Alert("Usuario invalido");

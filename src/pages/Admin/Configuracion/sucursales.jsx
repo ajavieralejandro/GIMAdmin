@@ -1,75 +1,66 @@
 import SearchButton from "../../../components/SearchButton/SearchButton";
 import GenericTable from "../../../components/GenericTable/GenericTable";
 import { CheckCircleOutlined } from "@ant-design/icons";
-const data = [
-    {
-        sucursal : 'Lomas de Zamora',
-        capacidad : '35',
-        reserva : true,
-        condicional:true,
-        minutos : '30',
-        control_dni:true,
-        control_edad:true,
-    }
-];
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
+
+import { useEffect,useState} from "react";
+
+
+
+
 const columns = [
     
         {
             title: 'Sucursal',
-            dataIndex: 'sucursal',
-            key: 'sucursal',
+            dataIndex: 'nombre',
+            key: 'nombre',
           },
           {
             title: 'Capacidad Maxima',
             dataIndex: 'capacidad',
             key: 'capacidad',
           },
-          {
-            title: 'Reserva Obligatoria',
-            key: 'reserva',
-            dataIndex: 'reserva',
-            render: (_, { reserva }) => (
-              <>
-                {reserva?<CheckCircleOutlined />:null}
-              </>
-            ),
-          },
-          {
-            title: 'Ingreso Reserva condicional',
-            key: 'condicional',
-            dataIndex: 'condicional',
-            render: (_, { condicional }) => (
-              <>
-                {condicional?<CheckCircleOutlined />:null}
-              </>
-            ),
-          },
+          
+          
           {
             title: 'Minutos margen reserva',
             dataIndex: 'minutos',
             key: 'minutos',
-          },
-          {
-            title: 'Control DNI',
-            key: 'control_dni',
-            dataIndex: 'control_dni',
-            render: (_, { control_dni }) => (
-              <>
-                {control_dni?<CheckCircleOutlined />:null}
-              </>
-            ),
-          },
+          }
 
 
     
 ]
 const SucursalesConf = () =>{
+  const [sucursales,setSucursales] = useState([]);
+
+  useEffect(()=>{
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
+    .then(response=>response.json())
+    .then(data=>setSucursales(data.data));
+
+  },
+    [sucursales]);
+  
+  let navigate = useNavigate();
+  console.log("Sucursales es : ",sucursales);
+  const handleClick = () =>{
+    navigate('/configuracion/crear_sucursal');
+  }
+
     return(
         <>
-            <div className="text-left">
-                <SearchButton />
-            </div>
-            <GenericTable data={data} columns={columns} />
+        <div>
+        <div className="text-left ">
+        <div className="text-right pt-12 pb-12">
+        <Button onClick={()=>handleClick()}>Crear Sucursal</Button>
+      </div>
+    </div>
+  
+        </div>
+         
+            <GenericTable data={sucursales} columns={columns} />
 
         </>
     )
