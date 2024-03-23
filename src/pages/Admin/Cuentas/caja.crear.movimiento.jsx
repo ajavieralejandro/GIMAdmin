@@ -16,6 +16,16 @@ const CrearMovimientoCaja = () =>{
     ,[])
     const handleClick = () =>{
         console.log("El movimiento es : ",movimiento);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body :JSON.stringify({
+                email : user.email,
+                password :user.password
+            })
+        };
+         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos', requestOptions)
+            .then(response => response.json())
         //dispatch(setMovimientoInterno(movimiento));
         navigate('/cuentas/movimientos_internos');
 
