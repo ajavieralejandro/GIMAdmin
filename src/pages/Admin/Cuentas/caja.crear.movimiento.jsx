@@ -1,7 +1,7 @@
 import { DatePicker } from "antd";
 import {Select,Input, Button} from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setMovimientoInterno } from "../../../store/caja/caja.actions";
@@ -10,8 +10,13 @@ const CrearMovimientoCaja = () =>{
     let selector_conceptos = useSelector(state => state.caja.conceptos);
     let navigate = useNavigate();
     let dispatch = useDispatch();
+    useEffect(()=>{
+
+    }
+    ,[])
     const handleClick = () =>{
-        dispatch(setMovimientoInterno   (movimiento));
+        console.log("El movimiento es : ",movimiento);
+        //dispatch(setMovimientoInterno(movimiento));
         navigate('/cuentas/movimientos_internos');
 
     }

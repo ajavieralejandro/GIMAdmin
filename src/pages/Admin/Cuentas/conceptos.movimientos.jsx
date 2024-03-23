@@ -6,6 +6,7 @@ import {Button} from 'antd';
 import SearchButton from '../../../components/SearchButton/SearchButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 const columns = [
 
   {
@@ -69,6 +70,13 @@ const data = [
  
 ];
 const ConceptoMovimientosCuentas = () =>{
+  const [movimientos,setMovimientos] = useState([]);
+  useEffect(()=>{
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos')
+    .then(response=>response.json())
+    .then(data=>setMovimientos(data.data));
+  }
+  ,[])
   let navigate = useNavigate();
   const handleClick = () =>{
     navigate('/cuentas/crear_movimiento');
@@ -87,7 +95,7 @@ const ConceptoMovimientosCuentas = () =>{
           <Button onClick={()=>handleClick()} className="m-2">Crear </Button>
 
         </div>
-        <CajasTables data={data} columns={columns} />
+        <CajasTables data={movimientos} columns={columns} />
         </>
     )
 }
