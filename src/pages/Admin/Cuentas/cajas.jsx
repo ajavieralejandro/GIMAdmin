@@ -2,6 +2,7 @@ import CajasTables from '../../../components/CajasTables/CajasTables';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { Space,Button } from 'antd';
 import { useEffect,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const columns = [
 
   {
@@ -53,14 +54,19 @@ const data = [
  
 ];
 const Cajas = () =>{
+  let navigate = useNavigate();
   const [cajas,setCajas] = useState([]);  
   useEffect(()=>{
     
-  },[])
+  },[]);
+
+  const handleClick = () =>{
+    navigate('/cajas/crear_caja');
+  }
     return(
         <>
         <div className="p-6 text-right">
-          <Button>Crear Caja</Button>
+          <Button onClick={()=>handleClick()} >Crear Caja</Button>
         </div>
         <CajasTables data={data} columns={columns} />
         </>

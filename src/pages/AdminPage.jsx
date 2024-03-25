@@ -98,6 +98,7 @@ import CrearSucursal from "./Admin/Configuracion/crear.sucursal";
 
 
 import { fetchCategoriasConceptos } from "../utils/fetchs";
+import CrearCaja from "./Admin/Cuentas/crear.caja";
 
 const AdminPage = () =>{
   useEffect(()=>{
@@ -125,6 +126,8 @@ const AdminPage = () =>{
 
         <Route  path="/clientes" element={<Clients />} />
         <Route  path="/cajas" element={<Cajas />} />
+        <Route  path="/cajas/crear_caja" element={<CrearCaja />} />
+
 
         <Route path='/premios' element={<ListaPremios/>} />
         <Route path='/covertura' element={<CoverturaPuntos />} />
