@@ -31,13 +31,13 @@ const CrearCaja = () =>{
         <div className="m-auto pt-6">
         <h1 className="pb-6">Crear Caja</h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Input placeholder="Nombre Caja" />
-            <Select options={sucursales} placeholder="Sucursal" />
-            <Checkbox>Activa</Checkbox>
+            <Input onChange={e=>setCaja({...caja,nombre:e.target.value})} placeholder="Nombre Caja" />
+            <Select onSelect={(index,element)=>setCaja({...caja,sucursal:element.id})} options={sucursales} placeholder="Sucursal" />
+            <Checkbox onChange={e=>setCaja({...caja,activa:e.target.checked})}>Activa</Checkbox>
             </div>
 
             <div className="text-right pt-12">
-            <Button>Crear Caja</Button>
+            <Button onClick={()=>console.log(caja)}>Crear Caja</Button>
             </div>
 
         </div>
