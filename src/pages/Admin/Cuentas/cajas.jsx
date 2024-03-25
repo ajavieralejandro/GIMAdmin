@@ -1,7 +1,7 @@
 import CajasTables from '../../../components/CajasTables/CajasTables';
 import { CheckCircleOutlined } from '@ant-design/icons';
-import { Space } from 'antd';
-
+import { Space,Button } from 'antd';
+import { useEffect,useState } from 'react';
 const columns = [
 
   {
@@ -53,8 +53,15 @@ const data = [
  
 ];
 const Cajas = () =>{
+  const [cajas,setCajas] = useState([]);  
+  useEffect(()=>{
+    
+  },[])
     return(
         <>
+        <div className="p-6 text-right">
+          <Button>Crear Caja</Button>
+        </div>
         <CajasTables data={data} columns={columns} />
         </>
     )

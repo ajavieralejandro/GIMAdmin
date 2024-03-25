@@ -10,19 +10,17 @@ const CrearMovimientoCaja = () =>{
     let selector_conceptos = useSelector(state => state.caja.conceptos);
     let navigate = useNavigate();
     let dispatch = useDispatch();
-    useEffect(()=>{
-
-    }
-    ,[])
+    
     const handleClick = () =>{
+        
         console.log("El movimiento es : ",movimiento);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body :JSON.stringify({
-                email : user.email,
-                password :user.password
-            })
+                nombre : movimiento.nombre,
+                
+                        })
         };
          fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos', requestOptions)
             .then(response => response.json())

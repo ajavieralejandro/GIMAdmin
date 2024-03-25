@@ -2,6 +2,7 @@ import SideBar from "../components/Sidebar/Sidebar";
 import Clients from "./Admin/Clients";
 import Movimientos from './Admin/Cuentas/conceptos.movimientos';
 import Navbar from "../components/Navbar/navbar";
+import { useEffect } from "react";
 import {
     HashRouter as BrowserRouter,
     Route,
@@ -92,7 +93,18 @@ import CrearConceptoCaja from "./Admin/Cuentas/crear.concepto.caja";
 import CrearCategoriaConcepto from "./Admin/Cuentas/crear.categoria.concepto";
 import CrearMovimientoCaja from "./Admin/Cuentas/caja.crear.movimiento";
 import CrearSucursal from "./Admin/Configuracion/crear.sucursal";
+
+//fetchs
+
+
+import { fetchCategoriasConceptos } from "../utils/fetchs";
+
 const AdminPage = () =>{
+  useEffect(()=>{
+    let res = fetchCategoriasConceptos().then(
+     data =>console.log(data));
+     console.log("res es : ",res);
+  },[])
     return(
         <>        <BrowserRouter>
         <Navbar />

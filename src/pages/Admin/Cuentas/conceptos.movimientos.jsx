@@ -7,6 +7,7 @@ import SearchButton from '../../../components/SearchButton/SearchButton';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { fetchMovimientos } from '../../../utils/fetchs';
 const columns = [
 
   {
@@ -72,6 +73,8 @@ const data = [
 const ConceptoMovimientosCuentas = () =>{
   const [movimientos,setMovimientos] = useState([]);
   useEffect(()=>{
+    console.log("Hola");
+    fetchMovimientos();
     fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos')
     .then(response=>response.json())
     .then(data=>setMovimientos(data.data));

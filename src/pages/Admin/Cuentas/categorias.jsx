@@ -2,8 +2,10 @@ import CajasTables from '../../../components/CajasTables/CajasTables'
 import { Space,Button,} from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect,useState
  } from 'react';
+ import { setCategoriaConcepto } from '../../../store/caja/caja.actions';
 const columns = [
 
     {
@@ -22,9 +24,9 @@ const columns = [
     {
       title: 'Action',
       key: 'action',
-      render: (_, record) => (
+      render: () => (
         <Space size="middle">
-          <a>Editar {record.name}</a>
+          <a>Editar</a>
           <a>Saldos</a>
         </Space>
       ),
@@ -42,6 +44,7 @@ const columns = [
    
   ];
 const Categorias = () =>{
+
   /*
     const [user,setUser] = useState(null);
   let user_selector = useSelector(state=>state.user.currentUser);
@@ -52,17 +55,24 @@ const Categorias = () =>{
 
   */ 
   const [categorias,setCategorias] = useState([]);
-  let categorias_selector = useSelector(state=>state.caja.categorias);
+
+  //let categorias_selector = useSelector(state=>state.caja.categorias);
   useEffect(()=>{
-    console.log(categorias_selector);
-    setCategorias(categorias_selector);
-  },[categorias_selector]);
+    console.log("hola soy yo");
+    fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/conceptos")
+    .then(res=>res.json())
+    .then(data=>{
+
+      setCategorias(data[0]);
+
+    });
+  },[]);
   let navigate =  useNavigate();
   const handleClick = () =>{
     navigate('/cuentas/crear_categoria_concepto');
   }
     return <>
-                <div className='text-right'>
+                <div className='text-right pb-12'>
                   <Button onClick={()=>handleClick()}>Crear Categoria Concepto</Button>
                 </div>
                 <CajasTables data={categorias} columns={columns} />

@@ -33,10 +33,10 @@ const CrearConceptoCaja = () =>{
            
   <div className="block rounded-lg  text-center shadow-secondary-1 dark:bg-surface-dark dark:text-white text-surface">
   <div
-    className="border-b-2 bg-blue-300 border-neutral-100 px-6 py-3 dark:border-white/10">
+    className="border-b-2 bg-blue-300 border-neutral-100 px-6 py-3 dark:border-white/10 pt-6">
     Crear Concepto
       </div>
-  <div className="p-6">
+  <div className="pt-6">
   <div className="grid grid-cols-4 gap-4">
                 <Input onChange={e=>setConcepto({...concepto,nombre:e.target.value})} placeholder={"descripcion"} />
                 <Select onSelect={e=>setConcepto({...concepto,categoria:e})} options={categorias} placeholder="categoria" />

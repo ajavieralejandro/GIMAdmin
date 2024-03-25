@@ -1,0 +1,5 @@
+export const CAJAS_ACTION_TYPES = {
+    SET_CAJA_ACTUAL : 'SET_CAJA_ACTUAL',
+    ADD_CAJA : 'ADD_CAJA'
+    
+}
