@@ -10,10 +10,12 @@ const CrearMovimientoCaja = () =>{
     let selector_conceptos = useSelector(state => state.caja.conceptos);
     let navigate = useNavigate();
     let dispatch = useDispatch();
+    const [cajas,setCajas] = useState([]);
     
     const handleClick = () =>{
+
+ 
         
-        console.log("El movimiento es : ",movimiento);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -37,7 +39,14 @@ const CrearMovimientoCaja = () =>{
         iva : '',
         monto : '',
         descripcion : ''
-    })
+    });
+
+    useEffect(()=>{
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/cajas')
+        .then(res=>res.json())
+        .then(data=>setCajas(data.data));
+
+    },[])
     return(
         <>
             <div>
@@ -52,7 +61,7 @@ const CrearMovimientoCaja = () =>{
     <Input onChange={e=>setMovimiento({...movimiento,nombre:e.target.value})} placeholder="Nombre" />
     <DatePicker />
     <Select placeholder="Concepto" />
-    <Select placeholder="Caja" />
+    <Select  placeholder="Caja" />
         
     </div>
     <div className="grid grid-cols-4 gap-4 pt-8"

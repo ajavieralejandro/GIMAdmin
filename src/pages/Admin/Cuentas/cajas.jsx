@@ -6,20 +6,16 @@ import { useNavigate } from 'react-router-dom';
 const columns = [
 
   {
-    title: 'Descripcion',
-    dataIndex: 'descripcion',
-    key: 'descripcion',
+    title: 'nombre',
+    dataIndex: 'name',
+    key: 'name',
     render: (text) => <a>{text}</a>,
   },
-  {
-    title: 'Punto de Venta',
-    dataIndex: 'venta',
-    key: 'venta',
-  },
+
   {
     title: 'Sucursal',
-    dataIndex: 'address',
-    key: 'address',
+    dataIndex: 'sucursal',
+    key: 'sucursal',
   },
   {
     title: 'Activa',
@@ -56,8 +52,15 @@ const data = [
 const Cajas = () =>{
   let navigate = useNavigate();
   const [cajas,setCajas] = useState([]);  
+  //traigo las cajas
   useEffect(()=>{
-    
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/cajas')
+    .then(res=>res.json())
+    .then(data=>{
+      let aux = data.map((element)=>{return{...element,sucursal:element.sucursal.nombre}})
+      console.log("aux es : ",aux);
+      setCajas(aux);
+    });
   },[]);
 
   const handleClick = () =>{
@@ -68,7 +71,7 @@ const Cajas = () =>{
         <div className="p-6 text-right">
           <Button onClick={()=>handleClick()} >Crear Caja</Button>
         </div>
-        <CajasTables data={data} columns={columns} />
+        <CajasTables data={cajas} columns={columns} />
         </>
     )
 }

@@ -17,6 +17,24 @@ const CrearCategoriaConcepto = () =>{
         navigate('/categorias_concepto');
 
     }
+
+    const handleClick2 = () =>{
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body :JSON.stringify({
+                nombre : categoria.nombre,
+                tipo : categoria.tipo
+                        })
+        };
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/conceptos',requestOptions)
+        .then(res=>res.json())
+        .then(data=>navigate('/categorias_concepto')
+        );
+        
+
+    }
+
     return(
         <>
                      
@@ -45,7 +63,7 @@ const CrearCategoriaConcepto = () =>{
 
 </div>
 <div className="text-right">
-                        <Button onClick={()=>handleClick()}>Crear</Button>
+                        <Button onClick={()=>handleClick2()}>Crear</Button>
                     </div>
 </div> 
 </div>
