@@ -7,7 +7,8 @@ import GenericTable from "../../../components/GenericTable/GenericTable";
 import { Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { setMovimientoInterno } from "../../../store/caja/caja.actions";
 const columns =[
     {
         title: 'Fecha',
@@ -16,13 +17,13 @@ const columns =[
       },
       {
         title: 'Registrado',
-        dataIndex: 'registrado',
-        key: 'registrado',
+        dataIndex: 'caja',
+        key: 'caja',
       },
       {
         title: 'NRO',
-        dataIndex: 'numero',
-        key: 'numero',
+        dataIndex: 'id',
+        key: 'id',
       },
       {
         title: 'Estado',
@@ -70,6 +71,12 @@ const data = [
     }
 ];
 const MovimientosInternosCuentas = () =>{
+  const [movimientos,setMovimientos] = useState([]);
+  useState(()=>{
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos')
+    .then(res=>res.json())
+    .then(data=>setMovimientos(data))
+  },[]);
   let navigate = useNavigate(); 
   let selector = useSelector(state=>state.caja.movimientos);
   const handleClick = () =>{
@@ -95,7 +102,7 @@ const MovimientosInternosCuentas = () =>{
             </div>
          
             <div className="pt-8">
-                <GenericTable data={selector} columns={columns} />
+                <GenericTable data={movimientos} columns={columns} />
             </div>
         </>
     )

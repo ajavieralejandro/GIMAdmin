@@ -11,6 +11,7 @@ const CrearMovimientoCaja = () =>{
     let navigate = useNavigate();
     let dispatch = useDispatch();
     const [cajas,setCajas] = useState([]);
+    const [conceptos,setConceptos] = useState([]);
     
     const handleClick = () =>{
 
@@ -42,9 +43,25 @@ const CrearMovimientoCaja = () =>{
     });
 
     useEffect(()=>{
+        //fetch cajas
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/cajas')
         .then(res=>res.json())
-        .then(data=>setCajas(data.data));
+        .then(data=>{
+            let aux = data.map(element=>{return {...element,key:element.id,value:element.name}});
+            console.log("Cajas es : ",aux);
+            setCajas(aux);
+
+        });
+
+        //fetch conceptos, Esto esta mal es en concepto movimientos...
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/conceptos')
+        .then(res=>res.json())
+        .then(data=>{
+            let aux = data.map(element=>{return {...element,key:element.id,value:element.nombre}});
+            setConceptos(aux);
+
+        });
+
 
     },[])
     return(
@@ -60,8 +77,8 @@ const CrearMovimientoCaja = () =>{
     <div className="grid grid-cols-4 gap-4">
     <Input onChange={e=>setMovimiento({...movimiento,nombre:e.target.value})} placeholder="Nombre" />
     <DatePicker />
-    <Select placeholder="Concepto" />
-    <Select  placeholder="Caja" />
+    <Select options={conceptos} placeholder="Concepto" />
+    <Select options={cajas} placeholder="Caja" />
         
     </div>
     <div className="grid grid-cols-4 gap-4 pt-8"

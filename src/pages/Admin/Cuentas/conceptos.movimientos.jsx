@@ -11,28 +11,18 @@ import { fetchMovimientos } from '../../../utils/fetchs';
 const columns = [
 
   {
-    title: 'Descripcion',
-    dataIndex: 'descripcion',
-    key: 'descripcion',
+    title: 'Nombre',
+    dataIndex: 'name',
+    key: 'name',
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Abreviatura',
-    dataIndex: 'abreviatura',
-    key: 'abreviatura',
-  },
-  {
-    title: 'Categoria',
-    dataIndex: 'categoria',
-    key: 'categoria',
-  },
-  {
     title: 'Real',
-    key: 'active',
-    dataIndex: 'active',
-    render: (_, { active }) => (
+    key: 'real',
+    dataIndex: 'real',
+    render: (_, { real }) => (
       <>
-        {active?<CheckCircleOutlined />:null}
+        {real?<CheckCircleOutlined />:null}
       </>
     ),
   },
@@ -43,8 +33,8 @@ const columns = [
   },
   {
     title: 'Aplica a CAC',
-    dataIndex: 'CAC',
-    key: 'CAC',
+    dataIndex: 'cac',
+    key: 'cac',
   },
 
   {
@@ -72,12 +62,17 @@ const data = [
 ];
 const ConceptoMovimientosCuentas = () =>{
   const [movimientos,setMovimientos] = useState([]);
+  const [conceptos,setConceptos] = useState([]);
   useEffect(()=>{
     console.log("Hola");
     fetchMovimientos();
-    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos')
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/conceptos_movimiento')
     .then(response=>response.json())
-    .then(data=>setMovimientos(data.data));
+    .then(data=>{
+      console.log("Hola");
+      console.log(data);
+      setConceptos(data);
+    });
   }
   ,[])
   let navigate = useNavigate();
@@ -98,7 +93,7 @@ const ConceptoMovimientosCuentas = () =>{
           <Button onClick={()=>handleClick()} className="m-2">Crear </Button>
 
         </div>
-        <CajasTables data={movimientos} columns={columns} />
+        <CajasTables data={conceptos} columns={columns} />
         </>
     )
 }

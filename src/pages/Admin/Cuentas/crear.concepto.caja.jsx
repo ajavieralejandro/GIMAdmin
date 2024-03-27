@@ -9,18 +9,32 @@ import { useNavigate } from "react-router-dom";
 
 const CrearConceptoCaja = () =>{
     let navigate = useNavigate();
-    let dispatch = useDispatch();
     const handleClick = () =>{
-        console.log("Hola");
-        dispatch(setConceptoCategoria(concepto));
-        navigate('/cuentas/conceptos_movimiento');
+        console.log("Concepto a crear es : ",concepto);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body :JSON.stringify({
+                name : concepto.nombre,
+                categoria_concepto_id: concepto.categoria,
+                real : concepto.real,
+                cac : concepto.cac
+
+                        })
+        };
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/conceptos_movimiento',requestOptions)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log("Lo que traigo es : ",data);
+            navigate('/cuentas/conceptos_movimiento');
+        });
     }
 
     const [concepto,setConcepto] = useState({
-        categoria:'',
+        categoria:1,
         nombre:'',
-        real: '',
-        cac : ''
+        real: false,
+        cac : false
     })
     const [categorias,setCategorias] = useState([]);
     let categorias_selector = useSelector(state=>state.caja.categorias);
@@ -40,8 +54,8 @@ const CrearConceptoCaja = () =>{
   <div className="grid grid-cols-4 gap-4">
                 <Input onChange={e=>setConcepto({...concepto,nombre:e.target.value})} placeholder={"descripcion"} />
                 <Select onSelect={e=>setConcepto({...concepto,categoria:e})} options={categorias} placeholder="categoria" />
-                <Checkbox>Real</Checkbox>
-                <Checkbox>Aplica a CAC</Checkbox>
+                <Checkbox onChange={e=>setConcepto({...concepto,real:e.target.checked})} >Real</Checkbox>
+                <Checkbox onChange={e=>setConcepto({...concepto,cac:e.target.checked})} >Aplica a CAC</Checkbox>
                 <div>
                 
 </div>
