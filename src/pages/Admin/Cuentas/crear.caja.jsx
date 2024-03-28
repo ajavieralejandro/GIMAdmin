@@ -45,7 +45,7 @@ const handleClick = () =>{
     .then(res=>res.json())
     .then(data=>navigate('/cajas'));
     
-}
+} 
 
     let navigate = useNavigate();
 

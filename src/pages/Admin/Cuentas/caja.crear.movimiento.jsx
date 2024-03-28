@@ -12,6 +12,23 @@ const CrearMovimientoCaja = () =>{
     let dispatch = useDispatch();
     const [cajas,setCajas] = useState([]);
     const [conceptos,setConceptos] = useState([]);
+    const options_pago = [
+        {key:1,value:'efectivo'},
+        {key:2,value:'debito'},
+        {key:3,value:'credito'},
+        {key:4,value:'mercado pago'},
+
+
+
+
+    ]
+
+    const options_iva = [
+        {key:1,value:'21%'},
+        {key:2,value:'discriminado'},
+        {key:3,value:'0%'},
+
+    ]
     
     const handleClick = () =>{
 
@@ -57,7 +74,7 @@ const CrearMovimientoCaja = () =>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/conceptos')
         .then(res=>res.json())
         .then(data=>{
-            let aux = data.map(element=>{return {...element,key:element.id,value:element.nombre}});
+            let aux = data[0].map(element=>{return {...element,key:element.id,value:element.nombre}});
             setConceptos(aux);
 
         });
@@ -83,9 +100,9 @@ const CrearMovimientoCaja = () =>{
     </div>
     <div className="grid grid-cols-4 gap-4 pt-8"
     >
-            <Select placeholder="Medio de pago" />
+            <Select options={options_pago} placeholder="Medio de pago" />
 
-        <Select placeholder="IVA" />
+        <Select options={options_iva}  placeholder="IVA" />
         <Input onChange={e=>setMovimiento({...movimiento,monto:e.target.value})} placeholder="Monto Total" />
     </div>
     <div className="pt-12">
