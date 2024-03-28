@@ -32,20 +32,27 @@ const CrearMovimientoCaja = () =>{
     
     const handleClick = () =>{
 
- 
+        console.log("Movimiento es : ",movimiento);
         
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body :JSON.stringify({
                 nombre : movimiento.nombre,
+                fecha: movimiento.fecha,
+                concepto: movimiento.concepto,
+                caja : movimiento.caja,
+                medio_pago : movimiento.medio_pago,
+                iva : movimiento.iva,
+                monto : movimiento.iva,
+                descripcion : movimiento.descripcion
                 
                         })
         };
          fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/movimientos', requestOptions)
-            .then(response => response.json())
+            .then(response => {response.json()})
+            .then(()=>navigate('/cuentas/movimientos_internos'));
         //dispatch(setMovimientoInterno(movimiento));
-        navigate('/cuentas/movimientos_internos');
 
     }
     const [movimiento,setMovimiento] = useState({
@@ -93,20 +100,20 @@ const CrearMovimientoCaja = () =>{
   <div className="p-6">
     <div className="grid grid-cols-4 gap-4">
     <Input onChange={e=>setMovimiento({...movimiento,nombre:e.target.value})} placeholder="Nombre" />
-    <DatePicker />
-    <Select options={conceptos} placeholder="Concepto" />
-    <Select options={cajas} placeholder="Caja" />
+    <DatePicker onChange={(date, dateString)=>setMovimiento({...movimiento,fecha:dateString})}  />
+    <Select onSelect={e=>setMovimiento({...movimiento,concepto:e})} options={conceptos} placeholder="Concepto" />
+    <Select onSelect={e=>setMovimiento({...movimiento,caja:e})} options={cajas} placeholder="Caja" />
         
     </div>
     <div className="grid grid-cols-4 gap-4 pt-8"
     >
-            <Select options={options_pago} placeholder="Medio de pago" />
+            <Select onSelect={e=>setMovimiento({...movimiento,medio_pago:e})} options={options_pago} placeholder="Medio de pago" />
 
-        <Select options={options_iva}  placeholder="IVA" />
+        <Select onSelect={e=>setMovimiento({...movimiento,iva:e})}  options={options_iva}  placeholder="IVA" />
         <Input onChange={e=>setMovimiento({...movimiento,monto:e.target.value})} placeholder="Monto Total" />
     </div>
     <div className="pt-12">
-    <TextArea placeholder="Descripción" />
+    <TextArea onChange={e=>setMovimiento({...movimiento,descripcion:e.target.value})} placeholder="Descripción" />
 
     </div>
       
