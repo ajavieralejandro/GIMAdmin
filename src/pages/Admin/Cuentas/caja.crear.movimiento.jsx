@@ -44,7 +44,7 @@ const CrearMovimientoCaja = () =>{
                 caja : movimiento.caja,
                 medio_pago : movimiento.medio_pago,
                 iva : movimiento.iva,
-                monto : movimiento.iva,
+                monto : movimiento.monto,
                 descripcion : movimiento.descripcion
                 
                         })
