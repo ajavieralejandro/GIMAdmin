@@ -32,7 +32,7 @@ const CrearMovimientoCaja = () =>{
     
     const handleClick = () =>{
 
-        console.log("Movimiento es : ",movimiento);
+        //console.log("Movimiento es : ",movimiento);
         
         const requestOptions = {
             method: 'POST',
