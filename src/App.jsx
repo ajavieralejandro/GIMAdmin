@@ -10,6 +10,8 @@ export default function App() {
   useEffect(() => {
       if(user_selector!=null)
         setUser(user_selector);
+      else 
+        setUser(null);
     }, [user_selector])
 
   return (

@@ -6,3 +6,10 @@ export const setCurrentUser = (User) =>{
     })
 
 }
+
+export const userLogout = () =>{
+    return({
+        type : USER_ACTION_TYPES.LOGOUT_USER,
+        payload : null
+    })
+}
