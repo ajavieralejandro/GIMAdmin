@@ -6,10 +6,16 @@ import { useNavigate } from "react-router-dom";
 const Clients = () =>{
     let navigate = useNavigate();
     const handleSearch = (text)=>{
+      console.log("Text es : ",text);
+      console.log(isNaN(text));
       console.log(clientes);
-      setData(clientes.filter(client => client.name.toLowerCase().includes(text.target.value.toLowerCase()) || client.last_name.toLowerCase().includes(text.target.value.toLowerCase() 
-              )
-      ));
+      if(isNaN(text.target.value) && text.target.value!=="")
+        setData(clientes.filter(client => client.name.toLowerCase().includes(text.target.value.toLowerCase()) || client.last_name.toLowerCase().includes(text.target.value.toLowerCase() 
+              )))
+      else
+        setData(clientes.filter(client => client.dni.toString().includes(text.target.value)  
+      )
+      );
       if(text.target.value==='') setData(clientes);
     }
     const [data,setData] = useState([]);
