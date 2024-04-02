@@ -2,19 +2,11 @@ import AvatarUploader from "../../../components/AvatarUploader/avatar.uploader";
 import { useState } from "react";
 import ClientPage1 from "./cliente.crear.page1";
 import ClientPage2 from "./cliente.crear.page2";
+import ClientPage3 from "./cliente.crear.page3";
 const CrearCliente = () =>{
     const [page,setPage] = useState(1);
     const [client,setClient]=useState({
-        name : "",
-        lastName : "",
-        address : "",
-        city : "",
-        genre : "",
-        tel: "",
-        other_tel :"",
-        prof : "",
-        email : "",
-        img : "",
+       
     })
     return(
         <>
@@ -38,7 +30,10 @@ const CrearCliente = () =>{
           {page==2?
                 <ClientPage2 client={client} setClient={setClient} setPage={setPage} />
                 : null}
-        
+          {page==3?
+                  <ClientPage3 client={client} setClient={setClient} setPage={setPage} />
+                  : null}
+          
    
       </div>
     </div>
