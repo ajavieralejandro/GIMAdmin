@@ -3,7 +3,30 @@ import { DatePicker,Select } from "antd";
 const ClientPage2 = ({setClient,client,setPage}) =>{
     const handleClick = () =>{
         console.log("El cliente en pagina 2 es : ",client);
-        setPage(3);
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body :JSON.stringify({
+            "name": client.name,
+            "last_name": client.lastName,
+            "dni": client.dni,
+            "gender": client.genero,
+            "email": client.email,
+            "phone_number": client.tel,
+            "birth": client.nacimiento,
+            "profession": client.ocupacion,
+            "address": client.address+" "+client.city+" "
+
+          })
+      };
+       fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/clients', requestOptions)
+          .then(response => response.json())
+          .then(data=>{ 
+              alert(data);
+          })
+
+        setPage(5);
+
     }
     return(
         <div className="lg:col-span-2">

@@ -3,6 +3,8 @@ import { useState } from "react";
 import ClientPage1 from "./cliente.crear.page1";
 import ClientPage2 from "./cliente.crear.page2";
 import ClientPage3 from "./cliente.crear.page3";
+import ClientPage4 from "./cliente.crear.page4";
+import ClientPage5 from "./cliente.crear.page5";
 const CrearCliente = () =>{
     const [page,setPage] = useState(1);
     const [client,setClient]=useState({
@@ -33,6 +35,14 @@ const CrearCliente = () =>{
           {page==3?
                   <ClientPage3 client={client} setClient={setClient} setPage={setPage} />
                   : null}
+
+          {page==4?
+                    <ClientPage4 client={client} setClient={setClient} setPage={setPage} />
+                    : null}
+        
+          {page==5?
+                      <ClientPage5 client={client} setClient={setClient} setPage={setPage} />
+                      : null}
           
    
       </div>

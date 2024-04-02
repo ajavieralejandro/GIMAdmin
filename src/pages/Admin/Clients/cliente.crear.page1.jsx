@@ -34,7 +34,7 @@ const ClientPage1 = ({setClient,client,setPage}) =>{
           <div className="md:col-span-2">
             <label >Pais</label>
             <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-              <input onChange={e=>setClient({...client,pais:e.target.value})} name="country" id="country" placeholder="País" className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"  />
+              <input onChange={e=>setClient({...client,pais:"pais :"+e.target.value})} name="country" id="country" placeholder="País" className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"  />
               <button className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
                 <svg className="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18"></line>

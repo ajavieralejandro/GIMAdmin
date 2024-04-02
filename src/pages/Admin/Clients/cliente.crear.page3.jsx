@@ -45,14 +45,14 @@ const ClientPage3 = ({setClient,client,setPage}) =>{
           <div className="col-span-5 grid grid-cols-1  md:grid-cols-2 gap-2 pt-6">
           <div className=" text-left">
           
-          <button type="text" onClick={()=>setPage(1)}  className=" hover:text-blue-600 text-blue-400 font-bold py-2 px-4 rounded">Atras</button>
+          <button type="text" onClick={()=>setPage(2)}  className=" hover:text-blue-600 text-blue-400 font-bold py-2 px-4 rounded">Atras</button>
      
       </div>
 
 
         <div className="text-right">
         
-            <button type="text" onClick={()=>handleClick()}  className=" hover:text-blue-600 text-blue-400 font-bold py-2 px-4 rounded">Siguiente</button>
+            <button type="text" onClick={()=>setPage(4)}  className=" hover:text-blue-600 text-blue-400 font-bold py-2 px-4 rounded">Siguiente</button>
        
         </div>
           </div>
