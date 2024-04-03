@@ -12,6 +12,11 @@ const ClientCard = ({client}) =>{
         navigate('/clientes/cobro');
     
     }
+
+    const modificarCliente = () =>{
+        navigate('/clientes/modificar_cliente');
+      }
+
     return(
         <>
             <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl border-transparent hover:border-green-700 ">
@@ -27,7 +32,7 @@ const ClientCard = ({client}) =>{
 
                 <div className=" grid md:grid-cols-4 grid-cols-2 gap-2 pt-6">
                    <Button onClick={(key)=>handleClick(key.target)}>Cobro</Button>
-                   <Button>Modificar </Button>
+                   <Button onClick={()=>modificarCliente()} >Modificar </Button>
                     <Button>Detalle</Button>
                     <Button>Perfil</Button>
 

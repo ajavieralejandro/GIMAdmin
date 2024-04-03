@@ -30,6 +30,8 @@ const Clients = () =>{
       navigate('/clientes/crear_cliente');
     }
 
+ 
+
 
     useEffect(() => {
          fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/clients")
