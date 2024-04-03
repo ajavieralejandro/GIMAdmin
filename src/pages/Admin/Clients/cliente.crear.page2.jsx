@@ -31,8 +31,8 @@ const ClientPage2 = ({setClient,client,setPage}) =>{
     return(
         <div className="lg:col-span-2">
 
-        <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-          <div className="md:col-span-5">
+        <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 ">
+          <div className="col-span-5">
           <div>
           <label >DNI</label>
           <input onChange={e=>setClient({...client,dni:e.target.value})} type="text" name="dni" id="dni" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
@@ -40,7 +40,7 @@ const ClientPage2 = ({setClient,client,setPage}) =>{
           
           </div>
 
-          <div className="md:col-span-5">
+          <div className="col-span-5">
           <div>  <label >Genero</label>
           <Select onSelect={e=>setClient({...client,genero:e})
           } style={{width:'100%'}} options={[
@@ -52,7 +52,7 @@ const ClientPage2 = ({setClient,client,setPage}) =>{
           
           </div>
 
-          <div className="md:col-span-5">
+          <div className="col-span-5">
             <label >Nacimiento </label>
             <DatePicker onChange={(e=>setClient({...client,nacimiento:e.$d}))} style={{width:'100%'}} />
           </div>
@@ -68,7 +68,7 @@ const ClientPage2 = ({setClient,client,setPage}) =>{
           </div>
 
      
-          <div className="md:col-span-5 pt-2">
+          <div className="col-span-5 pt-2">
          <Select onSelect={e=>setClient({...client,ref:e})} placeholder={"Como nos conociste?"} style={{width:'100%'}} options={[
             {key : 1, value:'Referidos'},
             {key : 2, value:'Publicidad'},
