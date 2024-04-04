@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { DatePicker,Select } from "antd";
 const ClientPage2 = ({setClient,client,setPage}) =>{
     const handleClick = () =>{
-        console.log("El cliente en pagina 2 es : ",client);
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
