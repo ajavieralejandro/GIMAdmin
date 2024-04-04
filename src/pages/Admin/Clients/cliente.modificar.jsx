@@ -3,6 +3,7 @@ import ClientAvatar from "../../../components/ClientAvatar/client.avatar";
 import { useState } from "react";
 import ClienteModificarCards from "./cliente.modificar.cards";
 import ClienteAsociarMenor from "./cliente.asociar.menor";
+import ClienteDatosMedicos from "./cliente.datos.medicos";
 const ModificarCliente = () =>{
     const [page,setPage] = useState(0);
     return(
@@ -14,7 +15,7 @@ const ModificarCliente = () =>{
           
         {page==0?<ClienteModificarCards setPage={setPage} />:null}
         {page==1?<ClienteAsociarMenor setPage={setPage} />:null}
-
+        {page==2?<ClienteDatosMedicos />:null}
         
       </div>
         </div>
