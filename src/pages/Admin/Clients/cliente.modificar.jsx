@@ -10,8 +10,8 @@ const ModificarCliente = () =>{
         <div>
         <ClientAvatar />
         </div>
-        <div className=" grid grid-cols-1  content-around gap-4">
-
+        <div >
+          
         {page==0?<ClienteModificarCards setPage={setPage} />:null}
         {page==1?<ClienteAsociarMenor setPage={setPage} />:null}
 
