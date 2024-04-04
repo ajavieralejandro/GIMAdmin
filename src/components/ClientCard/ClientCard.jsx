@@ -7,13 +7,15 @@ const ClientCard = ({client}) =>{
     let {name,last_name,phone_number,email,dni} = client;
     const navigate = useNavigate();
 
-    const handleClick = (key) =>{
+    const handleClick = () =>{
         dispatch(setCurrentClient(client));
         navigate('/clientes/cobro');
     
     }
 
     const modificarCliente = () =>{
+
+        dispatch(setCurrentClient(client));
         navigate('/clientes/modificar_cliente');
       }
 
@@ -31,7 +33,7 @@ const ClientCard = ({client}) =>{
                 </div>
 
                 <div className=" grid md:grid-cols-4 grid-cols-2 gap-2 pt-6">
-                   <Button onClick={(key)=>handleClick(key.target)}>Cobro</Button>
+                   <Button onClick={()=>handleClick()}>Cobro</Button>
                    <Button onClick={()=>modificarCliente()} >Modificar </Button>
                     <Button>Detalle</Button>
                     <Button>Perfil</Button>

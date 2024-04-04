@@ -1,5 +1,5 @@
 
-const CreateClientCard = ({title,text,icon}) =>{
+const CreateClientCard = ({title,text,handleClick}) =>{
     return(
  
 
@@ -36,7 +36,7 @@ className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition h
   {text}
 </p>
 
-<a href="#" className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+<a onClick={()=>handleClick()}  className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
   Ingresar
 
   <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
