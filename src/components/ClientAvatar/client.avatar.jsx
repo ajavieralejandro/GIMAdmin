@@ -1,8 +1,11 @@
 
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const ClientAvatar = () => {
     let client = useSelector(state => state.client.currentClient);
+    /*useEffect(()=>{
+    },[client])*/
     return(
         <div>
         <div className="flex rounded  shadow-md justify-center items-center">
