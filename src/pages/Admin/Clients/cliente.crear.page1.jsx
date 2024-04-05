@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 const ClientPage1 = ({setClient,client,setPage}) =>{
+  let currentClient = useSelector(state=>state.client.currentClient);
     const handleClick = () =>{
         console.log("El cliente es : ",client);
         setPage(2);
@@ -8,22 +10,22 @@ const ClientPage1 = ({setClient,client,setPage}) =>{
         <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
           <div className="md:col-span-5">
             <label >Nombre</label>
-            <input onChange={e=>setClient({...client,name:e.target.value})} type="text" name="name" id="name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+            <input value={currentClient?currentClient.name:null} onChange={e=>setClient({...client,name:e.target.value})} type="text" name="name" id="name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
           </div>
 
           <div className="md:col-span-5">
             <label >Apellido</label>
-            <input onChange={e=>setClient({...client,lastName:e.target.value})}  type="text" name="last_name" id="last_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+            <input value={currentClient?currentClient.last_name:null} onChange={e=>setClient({...client,lastName:e.target.value})}  type="text" name="last_name" id="last_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
           </div>
 
           <div className="md:col-span-5">
             <label >Email </label>
-            <input onChange={e=>setClient({...client,email:e.target.value})} type="text" name="email" id="email" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  placeholder="email@domain.com" />
+            <input value={currentClient?currentClient.email:null} onChange={e=>setClient({...client,email:e.target.value})} type="text" name="email" id="email" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  placeholder="email@domain.com" />
           </div>
 
           <div className="md:col-span-3">
             <label >Address / Street</label>
-            <input onChange={e=>setClient({...client,adress:e.target.value})} type="text" name="address" id="address" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  placeholder="" />
+            <input value={currentClient?currentClient.address:null} onChange={e=>setClient({...client,adress:e.target.value})} type="text" name="address" id="address" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  placeholder="" />
           </div>
 
           <div className="md:col-span-2">

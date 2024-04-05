@@ -4,8 +4,11 @@ import { useState } from "react";
 import ClienteModificarCards from "./cliente.modificar.cards";
 import ClienteAsociarMenor from "./cliente.asociar.menor";
 import ClienteDatosMedicos from "./cliente.datos.medicos";
+import ClienteDatos from "./cliente.datos";
+import ClientPage1 from "./cliente.crear.page1";
 const ModificarCliente = () =>{
     const [page,setPage] = useState(0);
+    const [client,setClient]= useState({});
     return(
         <div className="grid grid-cols-2 gap-4">
         <div>
@@ -16,7 +19,9 @@ const ModificarCliente = () =>{
         {page==0?<ClienteModificarCards setPage={setPage} />:null}
         {page==1?<ClienteAsociarMenor setPage={setPage} />:null}
         {page==2?<ClienteDatosMedicos setPage={setPage} />:null}
-        
+        {page==3?<ClientPage1 client={client} setClient={setClient} setPage={setPage} />:null}
+
+        {page==4?<ClienteDatos />:null}
       </div>
         </div>
         

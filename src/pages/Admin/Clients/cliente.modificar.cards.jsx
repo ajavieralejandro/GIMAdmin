@@ -5,8 +5,8 @@ const ClienteModificarCards = ({setPage}) =>{
 
         <CreateClientCard handleClick={()=>setPage(1)} title="Asociar Menor" text="Asociar menores responsables a cargo de este usuario" />
         <CreateClientCard handleClick={()=>setPage(2)} title="Registrar Datos medicos" text="Registra y actualiza los distintos datos medicos del usuario" />
-        <CreateClientCard title="Editar Datos Cliente" text="Registra y actualiza los distintos datos asociados al cliente actual" />
-        <CreateClientCard title="Registrar + datos" text="Registra y actualiza los datos especificos del cliente, promociones,etc..." />
+        <CreateClientCard handleClick={()=>setPage(3)} title="Editar Datos Cliente" text="Registra y actualiza los distintos datos asociados al cliente actual" />
+        <CreateClientCard handleClick={()=>setPage(4)} title="Registrar + datos" text="Registra y actualiza los datos especificos del cliente, promociones,etc..." />
 
         </div>
     )

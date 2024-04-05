@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import SearchInput from '../../components/SearchInput/search.input';
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentClient } from "../../store/client/client.actions";
 const Clients = () =>{
+    let dispatch = useDispatch();
     let navigate = useNavigate();
     const handleSearch = (text)=>{
       console.log("Text es : ",text);
@@ -27,6 +30,7 @@ const Clients = () =>{
     }
 
     const crearCliente = () =>{
+      dispatch(setCurrentClient(null));
       navigate('/clientes/crear_cliente');
     }
 
@@ -38,7 +42,6 @@ const Clients = () =>{
         .then((response) => response.json())
         .then((data) => { 
             setLoading(false)
-            
             setClients(data.data);
             setData(data.data);
          })

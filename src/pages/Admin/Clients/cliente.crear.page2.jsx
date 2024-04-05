@@ -67,17 +67,7 @@ const ClientPage2 = ({setClient,client,setPage}) =>{
           </div>
 
      
-          <div className="col-span-5 pt-2">
-         <Select onSelect={e=>setClient({...client,ref:e})} placeholder={"Como nos conociste?"} style={{width:'100%'}} options={[
-            {key : 1, value:'Referidos'},
-            {key : 2, value:'Publicidad'},
-            {key : 3, value:'Redes'},
-            {key : 4, value:'Otros'}
-
-            
-          ]}></Select>
-        </div>
-        
+         
 
      
           <div className="col-span-5 grid grid-cols-1  md:grid-cols-2 gap-2 pt-6">

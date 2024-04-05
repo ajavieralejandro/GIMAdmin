@@ -7,11 +7,12 @@ const ClientAvatar = () => {
         <div>
         <div className="flex rounded  shadow-md justify-center items-center">
         <div className="bg-white px-4 py-5 rounded-lg  text-center w-48">
+        <h1 className="text-xl m-auto pb-2">{client.name} {client.last_name}</h1>
+
             <div className="mb-4">
                 <img className="w-auto mx-auto rounded-full object-cover object-center" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Avatar Upload" />
             </div>
             <div className="mb-4">
-                <h1 className="text-xl">{client.name} {client.last_name}</h1>
                 <div className="grid grid-cols-1 mt-4 -mx-2">
             
                 <div className="flex" aria-label="Facebook">
