@@ -15,7 +15,7 @@ const ModificarCliente = () =>{
           
         {page==0?<ClienteModificarCards setPage={setPage} />:null}
         {page==1?<ClienteAsociarMenor setPage={setPage} />:null}
-        {page==2?<ClienteDatosMedicos />:null}
+        {page==2?<ClienteDatosMedicos setPage={setPage} />:null}
         
       </div>
         </div>

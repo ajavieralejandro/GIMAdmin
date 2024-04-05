@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Switch,Input,Button } from "antd";
 import { DatePicker } from "antd";
-const ClienteDatosMedicos = () =>{
+import { useSelector } from "react-redux";
+const ClienteDatosMedicos = ({setPage}) =>{
+    let client = useSelector(state=>state.client.currentClient);
     const [fumador,setFumador] = useState(false);
     const [medicamentos,setMedicamentos] = useState(false);
     const [alergico,setAlergico] = useState(false)
@@ -13,9 +15,37 @@ const ClienteDatosMedicos = () =>{
         fumador: "",
         medicamentos : "",
         lesiones:"",
-        obra_social:""
+        obra_social:"",
+        enfermedad_cronica:"",
+        enfermedad_cardiaca: "",
+        control_medico:"",
+        alergico:"",
+        client_id : client.id
+
 
     })
+
+    const cargarCliente = () =>{
+        alert('Registro Datos Medicos');
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body :JSON.stringify({
+              "fumador": datos.fumador,
+              "obra_social": datos.obra_social,
+              "medicamentos": datos.medicamentos,
+              "client_id": client.id,
+  
+            })
+        };
+        console.log("Request Options es : ",requestOptions);
+         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/medicals', requestOptions)
+            .then(response => response.json())
+            .then(data=>{ 
+                alert(data);
+                setPage(0);
+            })
+    }
     return(
         <div>
         <div className=" rounded  shadow-md">
@@ -71,7 +101,7 @@ const ClienteDatosMedicos = () =>{
             
         </div>
         <div className="text-right pb-2 m-2">
-        <button className="text-blue-500" type="submit">Cargar Datos</button>
+        <button onClick={()=>cargarCliente()} className="text-blue-500" type="submit">Cargar Datos</button>
     </div>
         </div>
        
