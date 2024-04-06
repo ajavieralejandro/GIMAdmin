@@ -9,17 +9,22 @@ const Clients = () =>{
     let dispatch = useDispatch();
     let navigate = useNavigate();
     const handleSearch = (text)=>{
-      console.log("Text es : ",text);
+      setLoading(true);
+      console.log("Text es : ",text.target.value);
       console.log(isNaN(text));
-      console.log(clientes);
+      let aux = clientes.filter(client => client.name.toLowerCase().includes(text.target.value.toLowerCase()) || client.last_name.toLowerCase().includes(text.target.value.toLowerCase() 
+      ));
+      //let dniArray =  client.dni.toString().includes(text.target.value)
       if(isNaN(text.target.value) && text.target.value!=="")
-        setData(clientes.filter(client => client.name.toLowerCase().includes(text.target.value.toLowerCase()) || client.last_name.toLowerCase().includes(text.target.value.toLowerCase() 
-              )))
-      else
+        setData([...aux])
+      //if(!isNaN(text.target.value))
+        //setData([...dniArray]);
+      /*if(!isNaN(text.target.value))
         setData(clientes.filter(client => client.dni.toString().includes(text.target.value)  
       )
-      );
-      if(text.target.value==='') setData(clientes);
+      );*/
+      if(text.target.value==='') setData([...clientes]);
+      setLoading(false);
     }
     const [data,setData] = useState([]);
     const [loading,setLoading] = useState(true);
@@ -47,7 +52,7 @@ const Clients = () =>{
          })
            
 
-      }, []);
+      }, []); 
     return(
         
     <>
@@ -65,7 +70,7 @@ const Clients = () =>{
       
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
           {loading?null:
-            data.map(client => <ClientCard key={client.dni} client={client} 
+            data.map((client,index) => <ClientCard key={index} client={client} 
             />)
           }
            
