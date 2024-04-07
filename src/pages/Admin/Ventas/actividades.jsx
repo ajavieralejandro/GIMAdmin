@@ -5,13 +5,23 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { deleteActividad } from "../../../store/ventas/ventas.actions";
 const ActividadesVentas = () =>{
     let dispatch = useDispatch();
     let selector = useSelector(state=>state.ventas.actividades);
-    console.log(selector);
     const navigate = useNavigate();
+    useEffect(()=>{
+      if(!selector){
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
+        .then(response=>response.json())
+        .then(data=>{
+          console.log(data);
+          })
+        }}
+      
 
+    ,[])
     const handleClick = () =>{
       navigate('/ventas/crear_actividad');
     }
@@ -57,12 +67,15 @@ const ActividadesVentas = () =>{
     ];
     return(
         <>
-            <Flex gap="small" wrap="wrap">
+            <Flex gap="small m-2 pt-8" wrap="wrap">
                         <SearchInput placeholder={"Buscar"} />
                         <Button onClick={()=>handleClick()} style={{ marginLeft: 'auto' }} >Crear</Button>
 
                         </Flex>
+                        <div className="pt-12">
                         <GenericTable data={selector} columns={columns} />
+
+                        </div>
         </>
     )
 }

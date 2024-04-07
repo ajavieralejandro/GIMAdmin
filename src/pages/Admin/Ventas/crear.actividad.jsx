@@ -1,14 +1,17 @@
 import Input from "antd/es/input/Input";
 import Checkbox from "antd/es/checkbox/Checkbox";
 import TextArea from "antd/es/input/TextArea";
-import { useState } from "react";
-import { Button } from "antd";
+import { useState,useEffect} from "react";
+import { Button,Select} from "antd";
 import { useDispatch } from "react-redux";
 import { addActividad } from "../../../store/ventas/ventas.actions";
 import { useNavigate } from "react-router-dom";
 const CrearActividad = () =>{
   let dispatch = useDispatch();
   let navigate = useNavigate();
+
+  const [sucursales,setSucursales] = useState([]);
+
   const [actividad,setActividad] = useState({
       nombre : '',
       reserva : false,
@@ -17,6 +20,19 @@ const CrearActividad = () =>{
       recomendaciones : ""
 
   })
+  useEffect(()=>{
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
+    .then(res=>res.json())
+    .then(data=>{
+      let aux = data.data.map(element=>{
+        return(
+          {...element,key:element.id,value:element.id,label:element.nombre}
+        )
+      })
+      setSucursales(aux);
+    })
+
+  },[])
     return(
         <>
             <div>
@@ -29,7 +45,7 @@ const CrearActividad = () =>{
   <div className="p-6 text-black">
     <div className="grid grid-cols-3 gap-4">
         <Input onChange={(e)=>setActividad({...actividad,nombre:e.target.value})} placeholder="Nombre" />
-        <Input onChange={e=>setActividad({...actividad,cant_reservas:e.target.value})}placeholder="Reservas por día cliente" />
+        <Select mode="multiple" placeholder="Sucursales" options={sucursales} />
         <Checkbox onChange={e=>setActividad({...actividad,reserva:e.target.checked})}>Permitir Reserva y anulación</Checkbox>
 
     </div>
