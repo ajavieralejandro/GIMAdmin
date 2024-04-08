@@ -5,20 +5,21 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect,useState} from "react";
 import { deleteActividad } from "../../../store/ventas/ventas.actions";
 const ActividadesVentas = () =>{
+    const [actividades,setActividades] = useState([]);
     let dispatch = useDispatch();
     let selector = useSelector(state=>state.ventas.actividades);
     const navigate = useNavigate();
     useEffect(()=>{
-      if(!selector){
-        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
+     
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades')
         .then(response=>response.json())
         .then(data=>{
-          console.log(data);
+          setActividades(data);
           })
-        }}
+        }
       
 
     ,[])
@@ -26,18 +27,12 @@ const ActividadesVentas = () =>{
       navigate('/ventas/crear_actividad');
     }
 
-    const data =[{
-        descripcion : '8 clases',
-        active : true,
-        reservas : '8 reservas'
-    }
-       
-    ];
+
     const columns = [
         {
             title: 'Nombre',
-            dataIndex: 'nombre',
-            key: 'nombre',
+            dataIndex: 'name',
+            key: 'name',
           },
           {
             title: 'Reserva y anulacion',
@@ -49,11 +44,7 @@ const ActividadesVentas = () =>{
               </>
             ),
           },
-          {
-            title: 'Cant. Reservas',
-            dataIndex: 'cant_reservas',
-            key: 'cant_reservas',
-          },
+
           {
             title: 'Action',
             key: 'action',
@@ -73,7 +64,7 @@ const ActividadesVentas = () =>{
 
                         </Flex>
                         <div className="pt-12">
-                        <GenericTable data={selector} columns={columns} />
+                        <GenericTable data={actividades} columns={columns} />
 
                         </div>
         </>
