@@ -15,11 +15,32 @@ const CrearActividad = () =>{
   const [actividad,setActividad] = useState({
       nombre : '',
       reserva : false,
-      cant_reservas : 0,
-      comentarios : "",
-      recomendaciones : ""
-
+      sucursales : [],
+      comentarios : ""
   })
+
+  const handleClick = () =>{
+    console.log("La actividad a crearse es : ",actividad);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body :JSON.stringify({
+        "nombre": actividad.nombre,
+        "comentarios": actividad.comentarios,
+        "reserva" : actividad.reserva,
+        "sucursales":actividad.sucursales
+
+      })
+  };
+  fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades",
+  requestOptions)
+  .then(res=>res.json()
+  .then(data=>{
+    alert(data);
+    navigate('/ventas/actividades');
+  }))
+}
+
   useEffect(()=>{
     fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
     .then(res=>res.json())
@@ -39,26 +60,26 @@ const CrearActividad = () =>{
             <div
   className="block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
   <div
-    className="border-b-2 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50 dark:bg-blue-400">
+    className="border-b-2 bg-blue-200 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50 dark:bg-blue-400">
     Crear Actividad
   </div>
   <div className="p-6 text-black">
     <div className="grid grid-cols-3 gap-4">
         <Input onChange={(e)=>setActividad({...actividad,nombre:e.target.value})} placeholder="Nombre" />
-        <Select mode="multiple" placeholder="Sucursales" options={sucursales} />
+        <Select onChange={e=>{setActividad({...actividad,sucursales:[e]})}} mode="multiple" placeholder="Sucursales" options={sucursales} />
         <Checkbox onChange={e=>setActividad({...actividad,reserva:e.target.checked})}>Permitir Reserva y anulación</Checkbox>
 
     </div>
     <div className="grid grid-cols-3 gap-4 pt-12">
       <TextArea  onChange={(e)=>setActividad({...actividad,comentarios:e.target.value})} placeholder="Comentarios" />
-      <TextArea  onChange={(e)=>setActividad({...actividad,recomendaciones:e.target.value})} placeholder="Recomendaciones Reserva" />
 
 
     </div>
     <div className="text-right ml-2">
           <Button onClick={()=>{
-            dispatch(addActividad(actividad));
-            navigate('/ventas/actividades')
+            handleClick()
+            //dispatch(addActividad(actividad));
+            //navigate('/ventas/actividades')
                                 
           }} > Guardar</Button>
         </div>
