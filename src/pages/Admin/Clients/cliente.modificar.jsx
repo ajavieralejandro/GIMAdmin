@@ -6,6 +6,7 @@ import ClienteAsociarMenor from "./cliente.asociar.menor";
 import ClienteDatosMedicos from "./cliente.datos.medicos";
 import ClienteDatos from "./cliente.datos";
 import ClienteEditar from "./client.editar";
+import ClienteMenor from "./Menores/client.menor";
 const ModificarCliente = () =>{
     const [page,setPage] = useState(0);
     const [client,setClient]= useState({});
@@ -17,7 +18,7 @@ const ModificarCliente = () =>{
         <div >
           
         {page==0?<ClienteModificarCards setPage={setPage} />:null}
-        {page==1?<ClienteAsociarMenor setPage={setPage} />:null}
+        {page==1?<ClienteMenor setPage={setPage} />:null}
         {page==2?<ClienteDatosMedicos setPage={setPage} />:null}
         {page==3?<ClienteEditar client={client} setClient={setClient} setPage={setPage} />:null}
 
