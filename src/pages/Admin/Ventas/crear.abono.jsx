@@ -8,6 +8,18 @@ import {Button} from "antd";
 import ActividadesTabla from "../../../components/Ventas/ActividadesTable/actividades.table";
 const CrearAbonoVenta = () =>{
     const [actividades,setActividades] = useState([]);
+    const [abono,setAbono]= useState({
+      nombre:"",
+      precio:"",
+      IVA:"",
+      venta:"",
+      formato:"",
+      tipo:"",
+      duracion:"",
+      horarios:"",
+      disponibilidad:""
+
+    })
     const sucursales = [{key:1,value:'Lomas'},{key:2,value:"Palermo"}];
     const condiciones = [{key:1,value:'Venta Restringida'},{key:2,value:'Matricula'},{key:3,value:"Mantener Precio Original"}
                             , {key:4,value:"renovación automática"},{key:5,value:"Seleccionar Periodos"}
@@ -74,16 +86,17 @@ const CrearAbonoVenta = () =>{
   </div>
   <div className="p-6 text-black">
     <div className="grid grid-cols-4 gap-4">
-        <Input placeholder="Nombre" />
+        <Input onChange={e=>setAbono({...abono,nombre:e.target.value})} placeholder="Nombre" />
         <div className="block">
             <h1>Precio :  <InputNumber
+          onChange={e=>setAbono({...abono,precio:e.target.value})}
       defaultValue={1000}
       formatter={(value) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
     /> </h1>
           
         </div>
-        <GenericSelect options={iva_option}  placeholder={"IVA"} />
+        <GenericSelect onChange={e=>setAbono({...abono,IVA:e.target.value})} options={iva_option}  placeholder={"IVA"} />
         <Checkbox><p className="text-sm m-1">Disp. Venta</p></Checkbox>
      
     </div>
@@ -113,8 +126,14 @@ const CrearAbonoVenta = () =>{
        placeholder={"Disponibilidad"} />
 
     </div>
-
-
+      <h1 className="text-xl text-left pt-6">Comentarios</h1>
+    <div className="pt-6">
+    <TextArea placeholder="comentarios" />
+  
+    </div>
+    <div className="text-right pt-6">
+      <Button type="text" >Siguiente</Button>
+    </div>
     
   </div>
 
@@ -203,14 +222,8 @@ const CrearAbonoVenta = () =>{
   </div>
   <div
   className="pt-12 pb-12 block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
-  <div
-    className="border-b-2 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50 dark:bg-blue-400">
-    Comentarios
-  </div>
-  <div className="pt-6">
-  <TextArea placeholder="comentarios" />
-
-  </div>
+  
+  
   </div>
         </>
     )
