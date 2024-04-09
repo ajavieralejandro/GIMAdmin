@@ -6,11 +6,13 @@ import {Checkbox} from 'antd';
 import GenericTable from '../../../components/GenericTable/GenericTable';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useEffect,useState } from 'react';
+
 const columns=[
     {
         title: 'Descripcion',
-        dataIndex: 'descripcion',
-        key: 'descripcion',
+        dataIndex: 'name',
+        key: 'name',
       },
       {
         title: 'Tipo',
@@ -19,23 +21,23 @@ const columns=[
       },
       {
         title: 'Precio',
-        dataIndex: 'precio',
-        key: 'precio',
+        dataIndex: 'price',
+        key: 'price',
       },
       {
         title: 'Disponible',
-        key: 'active',
-        dataIndex: 'active',
-        render: (_, { active }) => (
+        key: 'venta',
+        dataIndex: 'venta',
+        render: (_, { venta }) => (
           <>
-            {active?<CheckCircleOutlined />:null}
+            {venta?<CheckCircleOutlined />:null}
           </>
         ),
       },
       {
         title: 'Condiciones y Comentarios',
-        dataIndex: 'condiciones',
-        key: 'condiciones',
+        dataIndex: 'comentarios',
+        key: 'comentarios',
       },
       {
         title: 'Action',
@@ -61,6 +63,13 @@ const data = [
 ]
 
 const AbonosVentas = () =>{
+  const [abonos,setAbonos]=useState([]);
+  useEffect(()=>{
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos')
+    .then(res=>res.json())
+    .then(data=>setAbonos(data))
+
+  },[])
   const navigate = useNavigate();
 
   const handleClick = () =>{
@@ -96,7 +105,7 @@ const AbonosVentas = () =>{
 
                 </div>
                 <div className='pt-8'>
-                    <GenericTable columns={columns} data={data} />
+                    <GenericTable columns={columns} data={abonos} />
 
                 </div>
         </>
