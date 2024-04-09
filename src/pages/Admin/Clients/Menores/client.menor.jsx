@@ -2,8 +2,12 @@ import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 import ClienteAsociarMenor from "../cliente.asociar.menor";
 import Spinner from "../../../../components/Spinner/spinner";
-
+import ClientMenoresList from "./client.menores.list";
+import { Button } from "antd";
 const ClienteMenor = ({setPage}) =>{
+    const handleClick = () =>{
+        setMenores([]);
+    }
     let client = useSelector(state=>state.client.currentClient);
     const [menores,setMenores] = useState([]);
     const [loading,setLoading] = useState(true);
@@ -20,9 +24,13 @@ const ClienteMenor = ({setPage}) =>{
         <div>
         {loading?<Spinner />:
 
-        menores.length>0?<h1>Tengo menores asociados</h1>:<ClienteAsociarMenor />
+        menores.length>0?<ClientMenoresList menores={menores} />:<ClienteAsociarMenor />
     
         }
+
+        <div className="text-right pt-12">
+            <Button type="text" onClick={()=>handleClick()}>Registrar Nuevo Menor</Button>
+        </div>
         
         </div>
     )
