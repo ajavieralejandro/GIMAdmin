@@ -46,6 +46,8 @@ const AbonoCondiciones = ({sucursales,condiciones}) =>{
         
           />    
           <Input placeholder={"Periodos"} />
+          <Input placeholder={"Puntos Referido"} />
+
             </div>
         
         </div>

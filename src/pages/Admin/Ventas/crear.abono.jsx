@@ -1,6 +1,8 @@
 import Input from "antd/es/input/Input";
 import { InputNumber, Space,Select } from 'antd';
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCurrentAbono } from "../../../store/Abonos/abonos.actions";
 import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import Checkbox from "antd/es/checkbox/Checkbox";
 import TextArea from "antd/es/input/TextArea";
@@ -9,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ActividadesTabla from "../../../components/Ventas/ActividadesTable/actividades.table";
 import { stringify } from "postcss";
 const CrearAbonoVenta = () =>{
+  let dispatch = useDispatch();
   let navigate = useNavigate();
     const [actividades,setActividades] = useState([]);
     const [abono,setAbono]= useState({
@@ -102,8 +105,9 @@ const CrearAbonoVenta = () =>{
     };
       fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos',requestOptions)
       .then(res=>res.json())
-      .then(data=>{
-        alert(data);
+      .then((data)=>{
+          dispatch(setCurrentAbono(data));
+          navigate('/ventas/actividades_abono');
       })
       //
     }
@@ -173,76 +177,8 @@ const CrearAbonoVenta = () =>{
   
 
   </div>
-  <div>
-  <div
-  className="pt-12 pb-12 block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
-  <div
-    className="border-b-2 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50 dark:bg-blue-400">
-    Condiciones
-  </div>
-  <div className="p-2 text-black"></div> 
+  
 
-      <div className="grid grid-cols-4 gap-2">
-      <Select
-      mode="multiple"
-      allowClear
-      style={{
-        width: '100%',
-        height:'100%'
-      }}
-      options={sucursales}
-      placeholder="Sucursales comercializar"
-  
-    />    
-     <Select
-      mode="multiple"
-      allowClear
-      style={{
-        width: '100%',
-        height:'100%'
-      }}
-      placeholder="Sucursales ingresar"
-      options={sucursales}
-  
-    />    
-     <Select
-      mode="multiple"
-      allowClear
-      style={{
-        width: '100%',
-        height:'100%'
-      }}
-      placeholder="Condiciones"
-      options={condiciones}
-  
-    />    
-    <Input placeholder={"Periodos"} />
-      </div>
-  
-  </div>
-  
-  </div>
-  <div
-  className="pt-12 pb-12 block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
-  <div
-    className="border-b-2 border-neutral-100 px-6 py-3 dark:border-neutral-600 dark:text-neutral-50 dark:bg-blue-400">
-    Opciones
-  </div>
-      <div className="p-2">
-        <div className="grid grid-cols-3 gap-2">
-            <Input placeholder="Puntos Referido"></Input>
-            <Input placeholder="Puntos Referido"></Input>
-            <Checkbox><p className="m-1">Disp. Venta Online</p></Checkbox>
-
-        </div>
-
-      </div>
-  </div>
-  <div
-  className="pt-12 pb-12 block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
-  
-  
-  </div>
         </>
     )
 }
