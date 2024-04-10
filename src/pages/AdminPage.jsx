@@ -101,6 +101,7 @@ import { fetchCategoriasConceptos } from "../utils/fetchs";
 import CrearCaja from "./Admin/Cuentas/crear.caja";
 import CrearCliente from "./Admin/Clients/cliente.crear";
 import ModificarCliente from "./Admin/Clients/cliente.modificar";
+import RegistroActividadesAbono from "./Admin/Ventas/Abonos/registrar.actividades.abono";
 
 const AdminPage = () =>{
   useEffect(()=>{
@@ -157,7 +158,7 @@ const AdminPage = () =>{
         <Route path='/ventas/actividades' element={<ActividadesVentas />} />
         <Route path='/ventas/crear_actividad' element={<CrearActividad />} />
         <Route path='/ventas/crear_abono' element={<CrearAbonoVenta />} />
-
+        <Route path='/ventas/actividades_abono' element={<RegistroActividadesAbono />} />
 
         <Route path='/ventas/horarios' element={<HorariosVentas />} />
         <Route path='/ventas/abonos_adicionales' element={<AbonosVentas />} />
