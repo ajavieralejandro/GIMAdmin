@@ -7,17 +7,19 @@ import TextArea from "antd/es/input/TextArea";
 import {Button} from "antd";
 import { useNavigate } from "react-router-dom";
 import ActividadesTabla from "../../../components/Ventas/ActividadesTable/actividades.table";
+import { stringify } from "postcss";
 const CrearAbonoVenta = () =>{
   let navigate = useNavigate();
     const [actividades,setActividades] = useState([]);
     const [abono,setAbono]= useState({
       nombre:"",
-      precio:"",
+      precio:1000,
       IVA:"",
       venta:"",
       formato:"",
       tipo:"",
-      duracion:"",
+      duracion:0,
+      tiempo:"",
       horarios:"",
       disponibilidad:""
 
@@ -79,7 +81,31 @@ const CrearAbonoVenta = () =>{
     const disponibilidad_options = [{key:1,value:"Libre"},{key:2,value:"Por Mes"}]
 
     const handleClick = () =>{
-      navigate('/ventas/actividades_abono');
+      //alert(JSON.stringify(abono));
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body :JSON.stringify({
+          "name": abono.nombre,
+          "price": abono.precio,
+          "IVA" : abono.IVA,
+          "venta":abono.venta,
+          "format":abono.formato,
+          "duracion": abono.duracion+" "+abono.tiempo,
+          "tipo":abono.tipo,
+          "disponibilidad":abono.disponibilidad,
+          "horarios" : abono.horarios,
+          "comentarios":abono.comentarios
+
+  
+        })
+    };
+      fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos',requestOptions)
+      .then(res=>res.json())
+      .then(data=>{
+        alert(data);
+      })
+      //
     }
     return (
         <>
@@ -94,27 +120,28 @@ const CrearAbonoVenta = () =>{
         <Input onChange={e=>setAbono({...abono,nombre:e.target.value})} placeholder="Nombre" />
         <div className="block">
             <h1>Precio :  <InputNumber
-          onChange={e=>setAbono({...abono,precio:e.target.value})}
+          onChange={e=>setAbono({...abono,precio:e})}
       defaultValue={1000}
       formatter={(value) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
     /> </h1>
           
         </div>
-        <GenericSelect onChange={e=>setAbono({...abono,IVA:e.target.value})} options={iva_option}  placeholder={"IVA"} />
-        <Checkbox><p className="text-sm m-1">Disp. Venta</p></Checkbox>
+        <Select onSelect={e=>setAbono({...abono,IVA:e})} options={iva_option}  placeholder={"IVA"} />
+        <Checkbox onChange={e=>setAbono({...abono,venta:e.target.checked})}><p className="text-sm m-1">Disp. Venta</p></Checkbox>
      
     </div>
     <div className="grid grid-cols-4 gap-4 pt-4">
-        <GenericSelect options={formato_option} placeholder={"Formato"} />
+        <Select onSelect={e=>setAbono({...abono,formato:e})} options={formato_option} placeholder={"Formato"} />
 
-        <GenericSelect options={tipo_options} placeholder={"Tipo"} />
-        <Input placeholder="Duracion" />
-        <GenericSelect options={duracion_options} placeholder={"DIA"} />
+        <Select onSelect={e=>setAbono({...abono,tipo:e})} options={tipo_options} placeholder={"Tipo"} />
+        <Input onChange={e=>setAbono({...abono,duracion:e.target.value})} placeholder="Duracion" />
+        <Select onSelect={e=>setAbono({...abono,tiempo:e})}  options={duracion_options} placeholder={"DIA"} />
     </div>
 
     <div className="grid grid-cols-4 gap-4 pt-4">
         <Select
+        onSelect={e=>setAbono({...abono,disponibilidad:e})}
       mode="multiple"
       allowClear
       style={{
@@ -123,17 +150,18 @@ const CrearAbonoVenta = () =>{
       }}
       placeholder="Horarios"
   
-    />        <GenericSelect   style={{
+    />        <Select   style={{
         width: '100%',
         height:'100%'
       }}
+        onChange={e=>setAbono({...abono,disponibilidad:e})}
         options={disponibilidad_options}
        placeholder={"Disponibilidad"} />
 
     </div>
       <h1 className="text-xl text-left pt-6">Comentarios</h1>
     <div className="pt-6">
-    <TextArea placeholder="comentarios" />
+    <TextArea  onChange={e=>setAbono({...abono,comentarios:e.target.value})} placeholder="comentarios" />
   
     </div>
     <div className="text-right pt-6">

@@ -8,59 +8,7 @@ import { CheckCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useEffect,useState } from 'react';
 
-const columns=[
-    {
-        title: 'Descripcion',
-        dataIndex: 'name',
-        key: 'name',
-      },
-      {
-        title: 'Tipo',
-        dataIndex: 'tipo',
-        key: 'tipo',
-      },
-      {
-        title: 'Precio',
-        dataIndex: 'price',
-        key: 'price',
-      },
-      {
-        title: 'Disponible',
-        key: 'venta',
-        dataIndex: 'venta',
-        render: (_, { venta }) => (
-          <>
-            {venta?<CheckCircleOutlined />:null}
-          </>
-        ),
-      },
-      {
-        title: 'Condiciones y Comentarios',
-        dataIndex: 'comentarios',
-        key: 'comentarios',
-      },
-      {
-        title: 'Action',
-        key: 'action',
-        render: (_, record) => (
-          <Space size="middle">
-            <a>Editar {record.name}</a>
-            <a>Borrar</a>
-          </Space>
-        ),
-      },
-];
 
-
-const data = [
-    {
-        descripcion : '1 Clase Lomas',
-        tipo : 'Abono',
-        precio : '400',
-        active : true,
-        condiciones : 'Puntos por Venta Suma 1500'
-    }
-]
 
 const AbonosVentas = () =>{
   const [abonos,setAbonos]=useState([]);
@@ -75,6 +23,65 @@ const AbonosVentas = () =>{
   const handleClick = () =>{
     navigate('/ventas/crear_abono');
   }
+
+  const handleBorrar = (e) =>{
+    fetch(`https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos/${e.id}
+      `,{ method: 'DELETE' })
+      .then(res=>res.text())
+      .then(()=>{
+        setAbonos(abonos.filter(abono=>abono.id!=e.id))
+      });
+  
+  }
+
+
+
+const columns=[
+  {
+      title: 'Descripcion',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Tipo',
+      dataIndex: 'tipo',
+      key: 'tipo',
+    },
+    {
+      title: 'Precio',
+      dataIndex: 'price',
+      key: 'price',
+    },
+    {
+      title: 'Disponible',
+      key: 'venta',
+      dataIndex: 'venta',
+      render: (_, { venta }) => (
+        <>
+          {venta?<CheckCircleOutlined />:null}
+        </>
+      ),
+    },
+    {
+      title: 'Condiciones y Comentarios',
+      dataIndex: 'comentarios',
+      key: 'comentarios',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Space size="middle">
+          <a >Editar {record.name}</a>
+          <button onClick={()=>handleBorrar(record)} >Borrar</button>
+        </Space>
+      ),
+    },
+];
+
+
+
+
     return(
         <>
 

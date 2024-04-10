@@ -20,7 +20,6 @@ const CrearActividad = () =>{
   })
 
   const handleClick = () =>{
-    console.log("La actividad a crearse es : ",actividad);
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
