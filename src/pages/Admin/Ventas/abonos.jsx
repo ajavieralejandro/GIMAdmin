@@ -72,7 +72,7 @@ const columns=[
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <a >Editar {record.name}</a>
+          <a >Editar</a>
           <button onClick={()=>handleBorrar(record)} >Borrar</button>
         </Space>
       ),

@@ -3,6 +3,7 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import SearchInput from "../../../components/SearchInput/search.input";
 import { Space,Checkbox, Button } from "antd";
+import { useEffect ,useState} from "react";
 const data = [
     {
         descripcion : 'Cod : 00',
@@ -17,9 +18,9 @@ const data = [
 ];
 const columns = [
     {
-        title: 'Descripcion',
-        dataIndex: 'descripcion',
-        key: 'descripcion',
+        title: 'nombre',
+        dataIndex: 'name',
+        key: 'name',
       },
       {
         title: 'Disponible',
@@ -33,28 +34,18 @@ const columns = [
       },
       {
         title: 'Precio',
-        dataIndex: 'precio',
-        key: 'precio',
+        dataIndex: 'price',
+        key: 'price',
       },
       {
         title: 'Costo Unit.',
-        dataIndex: 'costo',
-        key: 'costo',
+        dataIndex: 'cost',
+        key: 'cost',
       },
       {
-        title: 'Usa Stock',
-        key: 'Tiene stock',
+        title: 'stock',
         dataIndex: 'stock',
-        render: (_, { stock }) => (
-          <>
-            {stock?<CheckCircleOutlined />:null}
-          </>
-        ),
-      },
-      {
-        title: 'Stock',
-        dataIndex: 'cant_stock',
-        key: 'cant_stock',
+        key: 'stock',
       },
       {
         title: 'Comentarios',
@@ -64,9 +55,9 @@ const columns = [
       {
         title: 'Action',
         key: 'action',
-        render: (_, record) => (
+        render: (e) => (
           <Space size="middle">
-            <a>Editar {record.name}</a>
+            <a>Editar</a>
             <a>Borrar</a>
           </Space>
         ),
@@ -76,6 +67,12 @@ const columns = [
 ];
 
 const ProductosVentas = ()=>{
+  const [productos,setProductos] = useState([]);
+  useEffect(()=>{
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/productos')
+    .then(res=>res.json())
+    .then(data=>setProductos(data));
+  },[]);
     return(
         <>
             <div className="grid grid-cols-4 gap-2">
@@ -98,7 +95,7 @@ const ProductosVentas = ()=>{
                             <Button>Crear</Button>
 
             </div>
-            <GenericTable data={data} columns={columns} />
+            <GenericTable data={productos} columns={columns} />
         </>
     )
 }
