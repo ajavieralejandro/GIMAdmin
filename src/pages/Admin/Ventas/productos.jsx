@@ -4,18 +4,7 @@ import GenericSelect from "../../../components/GenericSelect/GenericSelect";
 import SearchInput from "../../../components/SearchInput/search.input";
 import { Space,Checkbox, Button } from "antd";
 import { useEffect ,useState} from "react";
-const data = [
-    {
-        descripcion : 'Cod : 00',
-        disponible : true,
-        precio :'0.00',
-        costo : '0',
-        stock : true,
-        cant_stock : '70.000',
-        comentarios : 'Puntos por venta : USA REGLA'
-
-    }
-];
+import { useNavigate } from "react-router-dom";
 const columns = [
     {
         title: 'nombre',
@@ -67,6 +56,10 @@ const columns = [
 ];
 
 const ProductosVentas = ()=>{
+  let navigate = useNavigate();
+  const handleClick = () =>{
+    navigate("/ventas/crear_producto");
+  }
   const [productos,setProductos] = useState([]);
   useEffect(()=>{
     fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/productos')
@@ -75,27 +68,21 @@ const ProductosVentas = ()=>{
   },[]);
     return(
         <>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 gap-2">
                 <SearchInput placeholder={"Buscar..."} />
-                <GenericSelect />
-                <GenericSelect />
-                <GenericSelect />
+                <div></div>
+                <div className="text-right"
+                >
+                                <Button onClick={()=>handleClick()}>Crear</Button>
+    
+                </div>
 
             </div>
-            <div className="grid grid-cols-4 gap-2">
-                <Checkbox>No usa Stock</Checkbox>
-                <Checkbox>Sin stock</Checkbox>
-                <Checkbox>Stock bajo</Checkbox>
-                <Checkbox>Stock normal</Checkbox>
-
+        
+            <div className="pt-12">
+              <GenericTable  data={productos} columns={columns} />
 
             </div>
-            <div className="text-right"
-            >
-                            <Button>Crear</Button>
-
-            </div>
-            <GenericTable data={productos} columns={columns} />
         </>
     )
 }

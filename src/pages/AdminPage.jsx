@@ -103,6 +103,7 @@ import CrearCliente from "./Admin/Clients/cliente.crear";
 import ModificarCliente from "./Admin/Clients/cliente.modificar";
 import RegistroActividadesAbono from "./Admin/Ventas/Abonos/registrar.actividades.abono";
 import AbonoCondiciones from "./Admin/Ventas/Abonos/abonos.condiciones";
+import VentasCrearProductos from "./Admin/Ventas/Productos/ventas.crear.productos";
 
 const AdminPage = () =>{
   useEffect(()=>{
@@ -172,6 +173,8 @@ const AdminPage = () =>{
         <Route path='/ventas/reservas_fijas' element={<ReservasFijasVentas />} />
         <Route path='/ventas/acciones_recurrentes' element={<AccionesVentas />} />
         <Route path='/ventas/crear_clase' element={<CrearClase />} />
+        <Route path='/ventas/crear_producto' element={<VentasCrearProductos />} />
+
 
         <Route path='/crm/seguimiento' element={<SeguimientoCRM />} />
         <Route path='/crm/control_seguimiento'element={<ControlSeguimientoCRM />} />
