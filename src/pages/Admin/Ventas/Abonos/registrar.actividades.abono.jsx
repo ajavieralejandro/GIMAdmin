@@ -16,6 +16,42 @@ const RegistroActividadesAbono = () =>{
     const handleBack = () =>{
         navigate('/ventas/crear_abono');
     }
+
+    const handleNext = () =>{
+      /**
+       * {
+
+    "abono_id":3,
+    "actividades" : [
+        {
+            "actividad_id":4,
+            "principal":true,
+            "pase_libre":false,
+            "cant_clases":5
+        }
+
+
+    ]
+
+
+}
+       */
+const requestOptions = {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body :JSON.stringify({
+    "abono_id": actividad.nombre,
+    "comentarios": actividad.comentarios,
+    "reserva" : actividad.reserva,
+    "sucursales":actividad.sucursales
+
+  })
+};
+
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades_abonos',requestOptions)
+        .then(res=>res.json())
+        .then(data=>alert(data))
+    }
     return(
         <div
         className="pt-12 pb-12 block rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">        <div
