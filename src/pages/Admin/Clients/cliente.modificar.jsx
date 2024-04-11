@@ -8,6 +8,7 @@ import ClienteDatos from "./cliente.datos";
 import ClienteEditar from "./client.editar";
 import ClienteMenor from "./Menores/client.menor";
 
+
 const ModificarCliente = () =>{
     const [page,setPage] = useState(0);
     const [client,setClient]= useState({});

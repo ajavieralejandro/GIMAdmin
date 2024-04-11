@@ -4,10 +4,7 @@ import Input from "antd/es/input/Input";
 import { Button } from "antd";
 import { useSelector } from "react-redux";
 const ActividadesTabla = ({actividades,setActividades}) =>{
-    let selector = useSelector(state=>state.ventas.actividades);
-    let options = selector.map((element,index)=>{return{...element,key:index,value:element.nombre}})
-    console.log(selector);
-    console.log(options);
+   
     const removeActivity = (table_index) =>{
         let array_aux = actividades.filter((element,index)=> table_index!=index );
         setActividades(array_aux);
@@ -31,7 +28,8 @@ const ActividadesTabla = ({actividades,setActividades}) =>{
           <tbody>
             {actividades.map((element,index)=>{
                 return(    <tr className="border-b dark:border-neutral-500">
-                <td className="whitespace-nowrap px-6 py-4 font-medium"><GenericSelect  options={options} placeholder={"Actividad"} /></td>
+                <td className="whitespace-nowrap px-6 py-4 font-medium">
+                <GenericSelect  options={actividades} placeholder={"Actividad"} /></td>
                 <td className="whitespace-nowrap px-6 py-4"><Checkbox /></td>
                 <td className="whitespace-nowrap px-6 py-4"><Checkbox /></td>
                 <td className="whitespace-nowrap px-6 py-4"><Input placeholder="cant clases" /></td>

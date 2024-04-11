@@ -16,7 +16,17 @@ const RegistroActividadesAbono = () =>{
         }
     ]);
     const [actividades,setActividades]= useState([]);
-    
+    useEffect(()=>{
+      fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades')
+      .then(res=>res.json())
+      .then(data=>{
+        console.log("Estoy recibiendo las actividades :",data);
+        let aux = data.map(element=>{return {...element,key:element.id,value:element.name,label:element.name}});
+        console.log("Aux es :",aux);
+        setActividades(aux)
+
+      });
+    },[])
     const handleBack = () =>{
         navigate('/ventas/crear_abono');
     }
@@ -61,7 +71,7 @@ const requestOptions = {
         Registrar Actividades
       </div>
       <div className="p-2 ">
-        {actividadesAbono.length>0?<ActividadesTabla actividades={actividadesAbono} setActividades={setActividadesAbono}  />:null}
+        {actividadesAbono.length>0?<ActividadesTabla actividades={actividades} setActividades={setActividadesAbono}  />:null}
         <div className="text-right"
         >
                 <Button onClick={()=>setActividadesAbono([...actividadesAbono,{}])}>Agregar Actividad</Button>
