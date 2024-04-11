@@ -27,7 +27,7 @@ const AbonosVentas = () =>{
   const handleBorrar = (e) =>{
     fetch(`https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos/${e.id}
       `,{ method: 'DELETE' })
-      .then(res=>res.text())
+      .then(res=>res.json())
       .then(()=>{
         setAbonos(abonos.filter(abono=>abono.id!=e.id))
       });

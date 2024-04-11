@@ -1,11 +1,13 @@
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import ActividadesTabla from "../../../../components/Ventas/ActividadesTable/actividades.table";
+import { useSelector } from "react-redux";
 const RegistroActividadesAbono = () =>{
+    let abono = useSelector(state=>state.abono.currentAbono);
     let navigate = useNavigate();
-    const [actividades,setActividades]= useState([
+    const [actividadesAbono,setActividadesAbono]= useState([
         {
             actividad_id:'',
             es_principal:false,
@@ -13,6 +15,8 @@ const RegistroActividadesAbono = () =>{
             cant_clases:0
         }
     ]);
+    const [actividades,setActividades]= useState([]);
+    
     const handleBack = () =>{
         navigate('/ventas/crear_abono');
     }
@@ -40,11 +44,9 @@ const requestOptions = {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body :JSON.stringify({
-    "abono_id": actividad.nombre,
-    "comentarios": actividad.comentarios,
-    "reserva" : actividad.reserva,
-    "sucursales":actividad.sucursales
-
+    "abono_id": abono.id,
+    "actividades": actividadesAbono
+  
   })
 };
 
@@ -59,10 +61,10 @@ const requestOptions = {
         Registrar Actividades
       </div>
       <div className="p-2 ">
-        {actividades.length>0?<ActividadesTabla actividades={actividades} setActividades={setActividades}  />:null}
+        {actividadesAbono.length>0?<ActividadesTabla actividades={actividadesAbono} setActividades={setActividadesAbono}  />:null}
         <div className="text-right"
         >
-                <Button onClick={()=>setActividades([...actividades,{}])}>Agregar Actividad</Button>
+                <Button onClick={()=>setActividadesAbono([...actividadesAbono,{}])}>Agregar Actividad</Button>
     
         </div>
     

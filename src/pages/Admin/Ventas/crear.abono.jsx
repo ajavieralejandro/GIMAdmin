@@ -106,7 +106,7 @@ const CrearAbonoVenta = () =>{
       fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos',requestOptions)
       .then(res=>res.json())
       .then((data)=>{
-          dispatch(setCurrentAbono(data));
+          dispatch(setCurrentAbono(data.data));
           navigate('/ventas/actividades_abono');
       })
       //
