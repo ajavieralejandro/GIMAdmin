@@ -104,6 +104,7 @@ import ModificarCliente from "./Admin/Clients/cliente.modificar";
 import RegistroActividadesAbono from "./Admin/Ventas/Abonos/registrar.actividades.abono";
 import AbonoCondiciones from "./Admin/Ventas/Abonos/abonos.condiciones";
 import VentasCrearProductos from "./Admin/Ventas/Productos/ventas.crear.productos";
+import ClienteCobros from "./Admin/Clients/Cobros/cliente.cobros";
 
 const AdminPage = () =>{
   useEffect(()=>{
@@ -117,7 +118,7 @@ const AdminPage = () =>{
         <SideBar>
       <Routes>
       <Route  path="/" element={<Clients />} />
-      <Route  path="/clientes/cobro" element={<CobroCliente />} />
+      <Route  path="/clientes/cobro" element={<ClienteCobros />} />
       <Route  path="/clientes/cuenta_corriente" element={<CuentaCorriente  />} />
       <Route path="/clientes/crear_cliente" element={<CrearCliente />} />
       <Route path="/clientes/modificar_cliente" element={<ModificarCliente />} />
