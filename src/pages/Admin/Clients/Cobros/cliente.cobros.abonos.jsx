@@ -2,8 +2,19 @@ import SearchInput from '../../../../components/SearchInput/search.input'
 import { useState,useEffect } from 'react';
 import { Select } from 'antd';
 import { DatePicker } from 'antd';
+import {Button} from 'antd';
+import DialogModalCobro from '../../../../components/Dialog/dialog.modal.cobro';
 const ClientesCobrosAbono = () =>{
+    const [cobroAbono,setCobroAbono]=useState({
+        abonos : [],
+        fecha_inicio:"",
+        referido:"",
+        medio_pago:"",
+        forma_pago:"",
+        cant_cuotas : ""
 
+    })
+    const [registrar,setRegistrar] = useState(false);
     const [abonos,setAbonos]=useState([]);
     const [arrayAux,setArrayAux]=useState([]);
     useEffect(()=>{
@@ -31,15 +42,39 @@ const ClientesCobrosAbono = () =>{
             mode="multiple"
             style={{width:'100%'}}
             placeholder={"Abono"}
+            onChange={e=>setCobroAbono({...cobroAbono,abonos:[...abonos,e]})}
             options={abonos}
             showSearch
                     
               />
-            <DatePicker style={{width:'100%'}} placeholder="Inicio" />
-            </div>
+              <div>
+              <h1 className='text-left m-2'>Inicio del abono</h1>
+
+              <DatePicker style={{width:'100%'}} placeholder="Inicio" />
+              
+              </div>
+           </div>
             <div className='pt-4'>
+            <h1 className='text-left m-2'>Seleccionar Medio de Pago</h1>
+
             <Select style={{width:'100%'}} placeholder="Medio de pago"/>
 
+            </div>
+            <div className='pt-4'>
+            <h1 className='text-left m-2'>Forma de Pago</h1>
+
+            <Select style={{width:'100%'}} placeholder="Forma de Pago"/>
+
+            </div>
+            <div className='pt-4'>
+            <h1 className='text-left m-2'>Referido</h1>
+
+            <Select style={{width:'100%'}} placeholder="Referido"/>
+
+            </div>
+   
+            <div className='text-right pt-6' >
+            <DialogModalCobro abono={cobroAbono}/>
             </div>
         </article>
         </div>
