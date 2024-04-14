@@ -52,9 +52,10 @@ export default function DialogModalCobro({abono}) {
                         Registrar Cobro
                       </Dialog.Title>
                       <div className="mt-2">
+                      {abono.abonos.length>0?<AbonoCobroDialogTable abonos={abono.abonos} />:null}
+
                       <div className='grid grid-cols-1 gap-4'>
 
-                           {abono.abonos.length>0?<AbonoCobroDialogTable abonos={abono.abonos} />:null}
                            {abono.forma_pago=="cuotas "?<Select placeholder="Cantidad de Cuotas" />:null}
                           <Select placeholder="Aplicar  Descuento" />
                         </div>
