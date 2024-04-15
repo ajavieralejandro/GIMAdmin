@@ -32,11 +32,10 @@ const ClientCard = ({client}) =>{
                     </div>
                 </div>
 
-                <div className=" grid md:grid-cols-4 grid-cols-2 gap-2 pt-6">
-                   <Button onClick={()=>handleClick()}>Cobro</Button>
-                   <Button onClick={()=>modificarCliente()} >Modificar </Button>
-                    <Button>Detalle</Button>
-                    <Button>Perfil</Button>
+                <div className=" grid md:grid-cols-2 grid-cols-1 gap-2 pt-6">
+                   <Button type="text" onClick={()=>handleClick()}>Cobro</Button>
+                   <Button type="text" onClick={()=>modificarCliente()} >Modificar </Button>
+                    
 
                     </div>
 

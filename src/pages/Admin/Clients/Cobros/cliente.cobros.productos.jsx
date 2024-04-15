@@ -10,6 +10,7 @@ const ClienteCobrosProductos = ({setPage}) =>{
         fecha : "",
         concepto : "",
         caja : "",
+        productos : [],
         descripcion:"Cobro de Producto",
         iva : "",
         monto : "",
@@ -39,12 +40,19 @@ const ClienteCobrosProductos = ({setPage}) =>{
         >
         <div className="grid grid-cols-1">
             <h1 className="text-left">Seleccionar Productos</h1>
-            <Select onChange={(e)=>setCobro({...cobro,medio_pago:e})} options={productos} placeholder="Seleccionar Producto" />
+            <Select mode="multiple"  onChange={(e)=>setCobro({...cobro,productos:[e]})} options={productos} placeholder="Seleccionar Producto" />
         </div>
         <div className='pt-4'>
         <h1 className='text-left m-2'>Seleccionar Medio de Pago</h1>
 
         <Select
+         options={[
+            {key:1,value:"Efectivo"},
+            {key:2,value:"Debito"},
+            {key:3,value:"Credito"}
+
+
+         ]}
          onChange={e=>setCobro({...cobro,medio_pago:e})}
          style={{width:'100%'}} placeholder="Medio de pago"/>
 
@@ -54,6 +62,13 @@ const ClienteCobrosProductos = ({setPage}) =>{
         <h1 className='text-left m-2'>Seleccionar IVA </h1>
 
         <Select
+        options={[
+            {key:1,value:"0%"},
+            {key:2,value:"21%"},
+            {key:3,value:"10%"}
+
+
+         ]}
          onChange={e=>setCobro({...cobro,iva:e})}
          style={{width:'100%'}} placeholder="IVA"/>
 
@@ -63,6 +78,13 @@ const ClienteCobrosProductos = ({setPage}) =>{
         <h1 className='text-left m-2'>Aplicar Descuento</h1>
 
         <Select
+        options={[
+            {key:1,value:"10%"},
+            {key:2,value:"100%"},
+            {key:3,value:"Sin Descuento"}
+
+
+         ]}
          onChange={e=>setCobro({...cobro,descuento:e})}
          style={{width:'100%'}} placeholder="descuento"/>
 
@@ -73,7 +95,7 @@ const ClienteCobrosProductos = ({setPage}) =>{
             <Button onClick={()=>setPage(0)}>Atras</Button>
         </div>
         <div></div>
-        <div>                            <Button>Registrar Cobro </Button>
+        <div>                            <Button onClick={()=>registrarProducto()}>Registrar Cobro </Button>
 
         </div>
 

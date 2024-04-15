@@ -22,7 +22,7 @@ const ClientesCobrosAbono = ({setPage}) =>{
         .then(res=>res.json())
         .then(data=>{
             let aux = data.map(element=>{
-                return {...element,key:element.id,value:element.name,
+                return {...element,key:element.id,value:element.id,
                     label:element.name
                 }
             })
@@ -31,6 +31,15 @@ const ClientesCobrosAbono = ({setPage}) =>{
         });
     },[])
 
+    const insertarAbonos = (e)=>{
+        let array = [];
+        e.forEach(element => {
+            let aux =  abonos.find(item=>{return item.id==element});
+            array.push(aux);
+
+        });
+        setCobroAbono({...cobroAbono,abonos:array});
+    }
     return(
         <div>
      
@@ -43,7 +52,7 @@ const ClientesCobrosAbono = ({setPage}) =>{
             mode="multiple"
             style={{width:'100%'}}
             placeholder={"Abono"}
-            onChange={e=>setCobroAbono({...cobroAbono,abonos:[...abonos,e]})}
+            onChange={e=>insertarAbonos(e)}
             options={abonos}
             showSearch
                     
