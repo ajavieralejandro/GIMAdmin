@@ -1,14 +1,27 @@
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../store/user/user.actions";
+import { Select } from "antd";
 const UserPage = () =>{
 	let dispatch = useDispatch();
 
     const [user,setUser] = useState({
         email : '',
-        password : ''
+        password : '',
+		caja :""
     });
+	const [cajas,setCajas] = useState([]);
+	useEffect(()=>{
+		fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/cajas')
+		.then(res=>res.json())
+		.then(data=>{
+			let aux = data.map(element=>{
+				return {...element,key:element.id,value:element.id,label:element.name}
+			})
+			setCajas(aux);
+		})
+	})
     const clickLogin = async (e) => {
         console.log("Hola user es : ",user);
         const requestOptions = {
@@ -22,12 +35,11 @@ const UserPage = () =>{
          fetch('https://stingray-app-4224s.ondigitalocean.app/api/auth/login', requestOptions)
             .then(response => response.json())
             .then(data =>{
-				console.log("Holaaa estoy aca");	
-				console.log(data.message);
+				 let aux = {...user,password:''};
 				 if(data.message!=="Unauthorized")
-				 dispatch(setCurrentUser(data))
+				 dispatch(setCurrentUser(aux))
 				else 
-					Alert("Usuario invalido");
+					alert("Usuario invalido");
 				}
 				  );
       }
@@ -52,6 +64,9 @@ const UserPage = () =>{
 						<div className="relative">
 							<input onChange={e=>setUser({...user,password:e.target.value})} autocomplete="off" id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
 							<label for="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">password</label>
+						</div>
+						<div className="relative">
+							<Select onChange={e=>setUser({...user,caja:e})} options={cajas} style={{width:'100%'}} placeholder="Caja" />
 						</div>
 						<div className="relative">
 							<button onClick={(e)=>clickLogin(e)} className="bg-blue-500 text-white rounded-md px-2 py-1">Ingresar</button>

@@ -4,7 +4,7 @@ import { Select } from 'antd';
 import { DatePicker } from 'antd';
 import {Button} from 'antd';
 import DialogModalCobro from '../../../../components/Dialog/dialog.modal.cobro';
-const ClientesCobrosAbono = () =>{
+const ClientesCobrosAbono = ({setPage}) =>{
     const [cobroAbono,setCobroAbono]=useState({
         abonos : [],
         fecha_inicio:"",
@@ -33,6 +33,7 @@ const ClientesCobrosAbono = () =>{
 
     return(
         <div>
+     
         <article
             className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6"
             >
@@ -72,9 +73,14 @@ const ClientesCobrosAbono = () =>{
             <Select style={{width:'100%'}} placeholder="Referido"/>
 
             </div>
-   
-            <div className='text-right pt-6' >
-            <DialogModalCobro abono={cobroAbono}/>
+            <div className="grid grid-cols-3 gap-2 pt-6">
+                <div className='text-left'>
+                    <Button onClick={()=>setPage(0)}>Atras</Button>
+                </div>
+                <div></div>
+                <div>                <DialogModalCobro abono={cobroAbono}/>
+                </div>
+
             </div>
         </article>
         </div>

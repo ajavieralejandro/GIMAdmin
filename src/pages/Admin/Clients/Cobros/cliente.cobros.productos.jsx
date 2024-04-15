@@ -1,7 +1,18 @@
 import { Select,Button } from "antd";
 import { useState,useEffect } from "react";
-const ClienteCobrosProductos = () =>{
+import { useSelector } from "react-redux";
+const ClienteCobrosProductos = ({setPage}) =>{
     const [productos,setProductos]= useState([]);
+    const [cobro,setCobro] = useState({
+        nombre : "",
+        fecha : "",
+        concepto : "",
+        caja : "",
+        descripcion:"Cobro de Producto",
+        iva : "",
+        monto : "",
+        medio_pago : ""
+    })
     useEffect(()=>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/productos')
         .then(res=>res.json())
@@ -11,7 +22,22 @@ const ClienteCobrosProductos = () =>{
             })
             setProductos(aux);
         })
-    },[])
+    },[]);
+
+    const registrarProducto = () =>{
+        /* 'nombre'  => $request->nombre,
+            'fecha' => $request->fecha,
+            'concepto' => $request->concepto,
+            'caja' => $request->caja,
+            'medio_pago' => $request->medio_pago,
+            'iva'=>$request->iva,
+            'monto'=>$request->monto,
+            'descripcion'=>$request->descripcion
+         
+        */ 
+       console.log("El cobro a registrar  es :",cobro);
+    }
+
     return(
         <div>
         <article
@@ -19,20 +45,47 @@ const ClienteCobrosProductos = () =>{
         >
         <div className="grid grid-cols-1">
             <h1 className="text-left">Seleccionar Productos</h1>
-            <Select options={productos} placeholder="Seleccionar Producto" />
+            <Select onChange={(e)=>setCobro({...cobro,medio_pago:e})} options={productos} placeholder="Seleccionar Producto" />
         </div>
         <div className='pt-4'>
         <h1 className='text-left m-2'>Seleccionar Medio de Pago</h1>
 
         <Select
-         
+         onChange={e=>setCobro({...cobro,medio_pago:e})}
          style={{width:'100%'}} placeholder="Medio de pago"/>
 
         </div>
-        <div className="text-right pt-6">
-            <Button>Registrar Cobro Productos</Button>
+
+        <div className='pt-4'>
+        <h1 className='text-left m-2'>Seleccionar IVA </h1>
+
+        <Select
+         onChange={e=>setCobro({...cobro,iva:e})}
+         style={{width:'100%'}} placeholder="IVA"/>
+
         </div>
+
+        <div className='pt-4'>
+        <h1 className='text-left m-2'>Aplicar Descuento</h1>
+
+        <Select
+         onChange={e=>setCobro({...cobro,descuento:e})}
+         style={{width:'100%'}} placeholder="descuento"/>
+
+        </div>
+        
+        <div className="grid grid-cols-3 gap-2 pt-6">
+        <div className='text-left'>
+            <Button onClick={()=>setPage(0)}>Atras</Button>
+        </div>
+        <div></div>
+        <div>                            <Button>Registrar Cobro </Button>
+
+        </div>
+
+    </div>
         </article>
+    
         </div>
     )
 }
