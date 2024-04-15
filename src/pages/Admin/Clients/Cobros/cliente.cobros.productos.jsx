@@ -2,16 +2,19 @@ import { Select,Button } from "antd";
 import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 const ClienteCobrosProductos = ({setPage}) =>{
+    let client_id = useSelector(state=>state.client.currentClient.id);
+    let caja_id = useSelector(state=>state.user.currentUser.caja);
     const [productos,setProductos]= useState([]);
     const [cobro,setCobro] = useState({
-        nombre : "",
+        nombre : "Cobro producto : ",
         fecha : "",
         concepto : "",
         caja : "",
         descripcion:"Cobro de Producto",
         iva : "",
         monto : "",
-        medio_pago : ""
+        medio_pago : "",
+        cantidad : 0,
     })
     useEffect(()=>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/productos')
@@ -25,16 +28,7 @@ const ClienteCobrosProductos = ({setPage}) =>{
     },[]);
 
     const registrarProducto = () =>{
-        /* 'nombre'  => $request->nombre,
-            'fecha' => $request->fecha,
-            'concepto' => $request->concepto,
-            'caja' => $request->caja,
-            'medio_pago' => $request->medio_pago,
-            'iva'=>$request->iva,
-            'monto'=>$request->monto,
-            'descripcion'=>$request->descripcion
-         
-        */ 
+     
        console.log("El cobro a registrar  es :",cobro);
     }
 
