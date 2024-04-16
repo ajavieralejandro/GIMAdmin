@@ -5,9 +5,7 @@ import { Button,Select } from 'antd';
 import AbonoCobroDialogTable from '../AbonoCobroDialogTable/abono.cobro.dialog.table.JSX';
 
 export default function DialogModalCobro({abono}) {
-  console.log("El abono es : ",abono);
   const [open, setOpen] = useState(false);
-
   const cancelButtonRef = useRef(null)
 
   return (

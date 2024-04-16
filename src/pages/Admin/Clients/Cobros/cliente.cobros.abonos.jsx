@@ -7,6 +7,8 @@ import {Button} from 'antd';
 import DialogModalCobro from '../../../../components/Dialog/dialog.modal.cobro';
 const ClientesCobrosAbono = ({setPage}) =>{
     let client_id = useSelector(state=>state.client.currentClient.id);
+    let user_id = useSelector(state=>state.user.currentUser.id);
+    let caja_id = useSelector(state=>state.user.currentUser.caja);
     const [cobroAbono,setCobroAbono]=useState({
         abonos : [],
         fecha_inicio:"",
@@ -14,7 +16,9 @@ const ClientesCobrosAbono = ({setPage}) =>{
         medio_pago:"",
         forma_pago:"",
         cant_cuotas : "",
-        client_id:client_id
+        client_id:client_id,
+        caja_id : caja_id,
+        user_id : user_id
 
     })
     const [registrar,setRegistrar] = useState(false);
