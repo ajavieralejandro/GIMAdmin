@@ -2,11 +2,40 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { Button,Select } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import AbonoCobroDialogTable from '../AbonoCobroDialogTable/abono.cobro.dialog.table.JSX';
 
-export default function DialogModalCobro({abono}) {
+
+export default function DialogModalCobro({abono,setAbono,setPage}) {
   const [open, setOpen] = useState(false);
-  const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null);
+  let navigate = useNavigate();
+
+  const registrarCobro = () =>{
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body :JSON.stringify({
+        "user_id":abono.user_id,
+        "client_id":abono.client_id,
+        "abonos": abono.abonos,
+        "caja_id": abono.caja_id,
+        "fecha_inicio" : abono.fecha_inicio,
+        "medio_pago": abono.medio_pago,
+        "referido":abono.referido,
+        "descuento" : abono.descuento
+        
+      })}
+      //console.log("Request Options es : ",requestOptions);
+      fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/cobro_abono",requestOptions)
+      .then(res=>res.json())
+      .then((data)=>{
+        console.log(data);
+        setPage(0);
+      })
+    
+    }
+  
 
   return (
     <div>
@@ -58,7 +87,9 @@ export default function DialogModalCobro({abono}) {
                       <div className='grid grid-cols-1 gap-4'>
 
                            {abono.forma_pago=="cuotas "?<Select placeholder="Cantidad de Cuotas" />:null}
-                          <Select options={
+                          <Select 
+                          onChange={e=>setAbono({...abono,descuento:e})}
+                          options={
                             [
                             {
                               key:1,
@@ -83,7 +114,7 @@ export default function DialogModalCobro({abono}) {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    onClick={() => console.log("El abono a cobrar es : ",abono)}
+                    onClick={() => registrarCobro()}
                   >
                    Registrar
                   </button>

@@ -16,6 +16,7 @@ const ClientesCobrosAbono = ({setPage}) =>{
         medio_pago:"",
         forma_pago:"",
         cant_cuotas : "",
+        descuento : "",
         client_id:client_id,
         caja_id : caja_id,
         user_id : user_id
@@ -116,7 +117,11 @@ const ClientesCobrosAbono = ({setPage}) =>{
                     <Button onClick={()=>setPage(0)}>Atras</Button>
                 </div>
                 <div></div>
-                <div>                <DialogModalCobro abono={cobroAbono}/>
+                <div>                
+                    <DialogModalCobro
+                        setPage={setPage}
+                        setAbono={setCobroAbono} 
+                        abono={cobroAbono}/>
                 </div>
 
             </div>

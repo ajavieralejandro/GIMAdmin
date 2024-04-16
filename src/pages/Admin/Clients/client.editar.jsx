@@ -8,7 +8,6 @@ const ClienteEditar = ({setPage}) =>{
   const [client,setClient]=useState(currentClient);
 
     const handleClick = () =>{
-        console.log("El cliente es : ",client);
         const requestOptions = {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
