@@ -37,7 +37,7 @@ const UserPage = () =>{
             .then(data =>{
 				 //let aux = {...user,password:''};
 				 if(data.message!=="Unauthorized")
-				 dispatch(setCurrentUser(data.user))
+				 dispatch(setCurrentUser({...data.user,caja:user.caja}))
 				else 
 					alert("Usuario invalido");
 				}
