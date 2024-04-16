@@ -25,7 +25,7 @@ export default function DialogModalCobro({abono}) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div className="fixed col-span-3 inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -51,8 +51,11 @@ export default function DialogModalCobro({abono}) {
                       <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
                         Registrar Cobro
                       </Dialog.Title>
-                      <div className="mt-2">
+                      <div className="mt-2 ">
+                      <div className="flex justify-center items-center">
                       {abono.abonos.length>0?<AbonoCobroDialogTable abonos={abono.abonos} />:null}
+
+                      </div>
 
                       <div className='grid grid-cols-1 gap-4'>
 
@@ -69,7 +72,7 @@ export default function DialogModalCobro({abono}) {
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                     onClick={() => setOpen(false)}
                   >
-                    Deactivate
+                   Registrar
                   </button>
                   <button
                     type="button"

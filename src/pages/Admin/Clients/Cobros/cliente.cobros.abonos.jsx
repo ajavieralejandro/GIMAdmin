@@ -17,6 +17,7 @@ const ClientesCobrosAbono = ({setPage}) =>{
     const [registrar,setRegistrar] = useState(false);
     const [abonos,setAbonos]=useState([]);
     const [arrayAux,setArrayAux]=useState([]);
+    const [referidos,setReferidos] = useState([]);
     useEffect(()=>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/abonos')
         .then(res=>res.json())
@@ -29,6 +30,21 @@ const ClientesCobrosAbono = ({setPage}) =>{
             setAbonos(aux);
             setArrayAux(aux);
         });
+
+        //Fetching the users now...
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/referidos')
+        .then(res=>res.json())
+        .then(data=>{
+            let aux = data.map(element=>{
+                return({...element,key:element.id,value:element.id,
+                            label:element.name
+                })
+
+            })
+
+            setReferidos(aux);
+        })
+
     },[])
 
     const insertarAbonos = (e)=>{
@@ -60,26 +76,31 @@ const ClientesCobrosAbono = ({setPage}) =>{
               <div>
               <h1 className='text-left m-2'>Inicio del abono</h1>
 
-              <DatePicker style={{width:'100%'}} placeholder="Inicio" />
+              <DatePicker onChange={e=>setCobroAbono({...cobroAbono,fecha_inicio:e.$d})} style={{width:'100%'}} placeholder="Inicio" />
               
               </div>
            </div>
             <div className='pt-4'>
             <h1 className='text-left m-2'>Seleccionar Medio de Pago</h1>
 
-            <Select style={{width:'100%'}} placeholder="Medio de pago"/>
+            <Select style={{width:'100%'}} placeholder="Medio de pago"
+                options={[
+                    {key:1,value:"Efectivo"},
+                    {key:2,value:"Mercado Pago"},
+                    {key:3,value:"Debito"},
+                    {key:4,value:"Credito"},
+
+
+                ]}
+                onChange={e=>setCobroAbono({...cobroAbono,medio_pago:e})}
+            />
 
             </div>
-            <div className='pt-4'>
-            <h1 className='text-left m-2'>Forma de Pago</h1>
-
-            <Select style={{width:'100%'}} placeholder="Forma de Pago"/>
-
-            </div>
+         
             <div className='pt-4'>
             <h1 className='text-left m-2'>Referido</h1>
 
-            <Select style={{width:'100%'}} placeholder="Referido"/>
+            <Select options={referidos} style={{width:'100%'}} placeholder="Referido"/>
 
             </div>
             <div className="grid grid-cols-3 gap-2 pt-6">

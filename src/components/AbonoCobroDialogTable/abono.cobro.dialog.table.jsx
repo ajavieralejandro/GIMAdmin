@@ -1,5 +1,7 @@
 import Input from "antd/es/input/Input";
 const AbonoCobroDialogTable = ({abonos}) =>{
+  let total =0;
+   abonos.map(element=>{total +=element.price});
     return(
         <div>
         <div className="flex flex-col">
@@ -14,7 +16,6 @@ const AbonoCobroDialogTable = ({abonos}) =>{
               <th scope="col" className="px-6 py-4">#</th>
               <th scope="col" className="px-6 py-4">Nombre</th>
               <th scope="col" className="px-6 py-4">Precio</th>
-              <th scope="col" className="px-6 py-4">Cantidad</th>
             </tr>
           </thead>
           <tbody>
@@ -24,7 +25,6 @@ const AbonoCobroDialogTable = ({abonos}) =>{
             <td className="whitespace-nowrap px-6 py-4 font-medium">{index+1}</td>
             <td className="whitespace-nowrap px-6 py-4">{element.name}</td>
             <td className="whitespace-nowrap px-6 py-4">${element.price}</td>
-            <td className="whitespace-nowrap px-6 py-4"><Input /></td>
           </tr>
             )}
           ):null}
@@ -32,8 +32,7 @@ const AbonoCobroDialogTable = ({abonos}) =>{
           className="border-b border-neutral-200 bg-black/[0.02] dark:border-white/10">
           <td className="whitespace-nowrap px-6 py-4 font-medium"></td>
           <td className="whitespace-nowrap px-6 py-4">total</td>
-          <td className="whitespace-nowrap px-6 py-4"></td>
-          <td className="whitespace-nowrap px-6 py-4">$0</td>
+          <td className="whitespace-nowrap px-6 py-4">${total}</td>
         </tr>
            
           </tbody>
