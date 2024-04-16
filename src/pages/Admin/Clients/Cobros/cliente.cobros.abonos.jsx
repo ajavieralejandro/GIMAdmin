@@ -2,16 +2,19 @@ import SearchInput from '../../../../components/SearchInput/search.input'
 import { useState,useEffect } from 'react';
 import { Select } from 'antd';
 import { DatePicker } from 'antd';
+import { useSelector } from 'react-redux';
 import {Button} from 'antd';
 import DialogModalCobro from '../../../../components/Dialog/dialog.modal.cobro';
 const ClientesCobrosAbono = ({setPage}) =>{
+    let client_id = useSelector(state=>state.client.currentClient.id);
     const [cobroAbono,setCobroAbono]=useState({
         abonos : [],
         fecha_inicio:"",
         referido:"",
         medio_pago:"",
         forma_pago:"",
-        cant_cuotas : ""
+        cant_cuotas : "",
+        client_id:client_id
 
     })
     const [registrar,setRegistrar] = useState(false);
@@ -70,8 +73,7 @@ const ClientesCobrosAbono = ({setPage}) =>{
             placeholder={"Abono"}
             onChange={e=>insertarAbonos(e)}
             options={abonos}
-            showSearch
-                    
+            showSearch={false}                    
               />
               <div>
               <h1 className='text-left m-2'>Inicio del abono</h1>
@@ -95,12 +97,14 @@ const ClientesCobrosAbono = ({setPage}) =>{
                 onChange={e=>setCobroAbono({...cobroAbono,medio_pago:e})}
             />
 
+            
+
             </div>
          
             <div className='pt-4'>
             <h1 className='text-left m-2'>Referido</h1>
 
-            <Select options={referidos} style={{width:'100%'}} placeholder="Referido"/>
+            <Select onChange={(e)=>setCobroAbono({...cobroAbono,referido:e})} options={referidos} style={{width:'100%'}} placeholder="Referido"/>
 
             </div>
             <div className="grid grid-cols-3 gap-2 pt-6">

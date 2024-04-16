@@ -12,7 +12,7 @@ export default function DialogModalCobro({abono}) {
 
   return (
     <div>
-    <Button onClick={()=>{setOpen(true);
+    <Button  onClick={()=>{setOpen(true);
     }}>Registrar Cobro</Button>
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
@@ -60,7 +60,22 @@ export default function DialogModalCobro({abono}) {
                       <div className='grid grid-cols-1 gap-4'>
 
                            {abono.forma_pago=="cuotas "?<Select placeholder="Cantidad de Cuotas" />:null}
-                          <Select placeholder="Aplicar  Descuento" />
+                          <Select options={
+                            [
+                            {
+                              key:1,
+                              value:"Sin Descuento"
+                            },
+                            {
+                              key:2,
+                              value:"10%"
+                            },
+                            {
+                              key:3,
+                              value:"20%"
+                            }
+                            ]
+                          } placeholder="Aplicar  Descuento" />
                         </div>
                       </div>
                     </div>
@@ -70,7 +85,7 @@ export default function DialogModalCobro({abono}) {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    onClick={() => setOpen(false)}
+                    onClick={() => console.log("El abono a cobrar es : ",abono)}
                   >
                    Registrar
                   </button>
