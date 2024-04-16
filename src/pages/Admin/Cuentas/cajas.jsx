@@ -3,41 +3,7 @@ import { CheckCircleOutlined } from '@ant-design/icons';
 import { Space,Button } from 'antd';
 import { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const columns = [
 
-  {
-    title: 'nombre',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-
-  {
-    title: 'Sucursal',
-    dataIndex: 'sucursal',
-    key: 'sucursal',
-  },
-  {
-    title: 'Activa',
-    key: 'active',
-    dataIndex: 'active',
-    render: (_, { active }) => (
-      <>
-        {active?<CheckCircleOutlined />:null}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Editar {record.name}</a>
-        <a>Saldos</a>
-      </Space>
-    ),
-  },
-];
 const data = [
   {
     key: '1',
@@ -62,6 +28,46 @@ const Cajas = () =>{
       setCajas(aux);
     });
   },[]);
+
+  const columns = [
+
+    {
+      title: 'nombre',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => <a>{text}</a>,
+    },
+  
+    {
+      title: 'Sucursal',
+      dataIndex: 'sucursal',
+      key: 'sucursal',
+    },
+    {
+      title: 'Activa',
+      key: 'active',
+      dataIndex: 'active',
+      render: (_, { active }) => (
+        <>
+          {active?<CheckCircleOutlined />:null}
+        </>
+      ),
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Space size="middle">
+          <a>Editar {record.name}</a>
+          <a onClick={()=>handleSaldos()}>Saldos</a>
+        </Space>
+      ),
+    },
+  ];
+
+  const handleSaldos = () =>{
+    navigate('/cajas/movimientos_caja');
+  }
 
   const handleClick = () =>{
     navigate('/cajas/crear_caja');

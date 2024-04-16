@@ -93,7 +93,7 @@ import CrearConceptoCaja from "./Admin/Cuentas/crear.concepto.caja";
 import CrearCategoriaConcepto from "./Admin/Cuentas/crear.categoria.concepto";
 import CrearMovimientoCaja from "./Admin/Cuentas/caja.crear.movimiento";
 import CrearSucursal from "./Admin/Configuracion/crear.sucursal";
-
+import CuentasMovimientosCaja from "./Admin/Cuentas/Caja/cuentas.caja.movimientos";
 //fetchs
 
 
@@ -130,8 +130,8 @@ const AdminPage = () =>{
       <Route path='/cuentas/movimientos_internos' element={<MovimientosInternosCuentas />} />
       <Route  path="/categorias_concepto" element={<Categorias />} />
       <Route  path="/aperturas_cierres" element={<AperturasCierres />} />
-
-        <Route  path="/clientes" element={<Clients />} />
+      <Route path="/cajas/movimientos_caja" element={<CuentasMovimientosCaja />} />
+      <Route  path="/clientes" element={<Clients />} />
         <Route  path="/cajas" element={<Cajas />} />
         <Route  path="/cajas/crear_caja" element={<CrearCaja />} />
 
