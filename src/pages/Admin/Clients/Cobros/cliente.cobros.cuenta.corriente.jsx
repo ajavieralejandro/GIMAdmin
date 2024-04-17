@@ -14,6 +14,22 @@ const ClienteCobroCuentaCorriente = ({setPage})=>{
             setProductos(aux);
         })
     },[]);
+
+    const registrarCobro = () =>{
+        //Chequear que exista stock para registrar cobro
+        cuenta.forEach(element=>{
+            let cantidad = parseInt(element.cantidad);
+            if(cantidad>element.stock){
+                alert("No existe stock en el sistema, actualice stock");
+                return ;
+            }
+        })
+        //Tengo que registrar el cobro
+        
+        //una vez registrado el cobro tengo que sacar los elementos del stock
+
+    }
+
     const handleChange = (e) =>{
         let array = [];
         e.forEach(element => {
@@ -43,7 +59,7 @@ const ClienteCobroCuentaCorriente = ({setPage})=>{
                 </div>
                 <div></div>
                 <div className="text-right">
-                    <Button>Cobrar</Button>
+                    <Button onClick={()=>registrarCobro()}>Cobrar</Button>
                 </div>
 
             </div>
