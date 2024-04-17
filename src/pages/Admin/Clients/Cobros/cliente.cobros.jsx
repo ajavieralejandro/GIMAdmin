@@ -1,6 +1,7 @@
 import ClientAvatar from "../../../../components/ClientAvatar/client.avatar";
 import ClientesCobrosAbono from "./cliente.cobros.abonos";
 import ClienteCobrosCards from "./cliente.cobros.cards";
+import ClienteCobroCuentaCorriente from "./cliente.cobros.cuenta.corriente";
 import ClienteCobrosDeudas from "./cliente.cobros.deudas";
 import ClienteCobrosProductos from "./cliente.cobros.productos";
 import { useState } from "react";
@@ -18,6 +19,8 @@ const ClienteCobros = () =>{
                     {page==1?<ClientesCobrosAbono setPage={setPage} />:null}
                     {page==2?<ClienteCobrosProductos setPage={setPage} />:null}
                     {page==3?<ClienteCobrosDeudas setPage={setPage} />:null}
+                    {page==4?<ClienteCobroCuentaCorriente setPage={setPage} />:null}
+
 
                 </div>
             </div>

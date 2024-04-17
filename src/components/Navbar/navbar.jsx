@@ -22,7 +22,7 @@ const Navbar = () =>{
     return (
         <>
 <nav className="flex justify-center md:justify-between md:px-20 py-10 items-center bg-blue-200">
-  <h1 className="text-xl text-gray-500 hidden md:flex  font-bold">Mis Actividades</h1>
+  <h1 className="text-xl text-gray-500 hidden md:flex  font-bold">Workingest</h1>
   <div className="">
     
     <ul className="flex items-center space-x-3 md:space-x-6">
