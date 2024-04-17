@@ -15,7 +15,8 @@ const ProductosTable = ({productos}) =>{
       }
       let aux =0;
       productos.map(producto=>{
-          aux += producto.price * producto.cantidad;
+          if(producto.cantidad && !isNaN(producto.cantidad))
+            aux += producto.price * producto.cantidad;
       });
       setTotal(aux);
    
