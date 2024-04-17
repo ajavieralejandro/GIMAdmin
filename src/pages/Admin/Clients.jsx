@@ -14,11 +14,11 @@ const Clients = () =>{
       console.log(isNaN(text));
       let aux = clientes.filter(client => client.name.toLowerCase().includes(text.target.value.toLowerCase()) || client.last_name.toLowerCase().includes(text.target.value.toLowerCase() 
       ));
-      //let dniArray =  client.dni.toString().includes(text.target.value)
+      let dniArray =  clientes.filter(client=>client.dni.toString().includes(text.target.value));
       if(isNaN(text.target.value) && text.target.value!=="")
         setData([...aux])
-      //if(!isNaN(text.target.value))
-        //setData([...dniArray]);
+      if(!isNaN(text.target.value))
+        setData([...dniArray]);
       /*if(!isNaN(text.target.value))
         setData(clientes.filter(client => client.dni.toString().includes(text.target.value)  
       )
