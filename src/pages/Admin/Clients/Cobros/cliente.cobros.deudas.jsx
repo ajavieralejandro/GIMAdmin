@@ -1,5 +1,6 @@
 
 import { useEffect,useState } from "react";
+import { Button } from "antd";
 import { useSelector } from "react-redux";
 import DeudasElement from "../../../../components/DeudasModal/deudas.element";
 const ClienteCobrosDeudas = ({setPage}) => {
@@ -11,8 +12,11 @@ const ClienteCobrosDeudas = ({setPage}) => {
         .then(data=>setDeudas(data))
     },[])
     return(
+      <article
+      className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6"
+      >
         <div>{deudas.length>0?<table className="min-w-full bg-white font-[sans-serif]">
-        <thead className="bg-gray-700 whitespace-nowrap">
+        <thead className="bg-slate-200 whitespace-nowrap overflow-scroll">
           <tr>
             <th className="pl-6 w-8">
               <input  id="checkbox" type="checkbox" className="hidden peer" />
@@ -31,14 +35,12 @@ const ClienteCobrosDeudas = ({setPage}) => {
             <th className="px-6 py-3 text-left text-sm font-semibold text-white">
               Precio
             </th>
-            <th className="px-6 py-3 text-left text-sm font-semibold text-white">
-              Vencimiento
-            </th>
+           
       
         
           </tr>
         </thead>
-        <tbody className="whitespace-nowrap">
+        <tbody className="whitespace-nowrap overflow-scroll">
            {
             deudas.map(element => <DeudasElement  value={element.value} key={element.id} debt={element} />)
           }
@@ -48,6 +50,21 @@ const ClienteCobrosDeudas = ({setPage}) => {
       </table>:<h1>No se registran Deudas</h1>}
         
         </div>
+
+        <div className="grid grid-cols-3 pt-6">
+        <div className="text-left">
+        <Button onClick={()=>setPage(0)}>Atras</Button>
+        </div>
+
+        <div>
+        </div>
+
+        <div className="text-right">
+        <Button>Pagar</Button>
+        </div>
+        
+        </div>
+        </article>
     )
 }
 

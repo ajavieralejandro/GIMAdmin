@@ -22,7 +22,6 @@ const ProductosTable = ({productos}) =>{
    
     
     }
-    console.log("Productos es :",productos)
     const columns = [{
         title: 'Nombre',
         dataIndex: 'name',

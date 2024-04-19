@@ -38,9 +38,6 @@ const DeudasElement = ({debt}) =>{
           {debt.price}
         </td>
        
-        <td className="px-6 py-4 text-sm">
-          {debt.vencimiento}
-        </td>
       
         
       </tr>

@@ -43,7 +43,6 @@ const DeudasModal = ()=>{
         return {...element,value:false}
       }));
       data.map(element=>{
-        console.log("Hola itero las deudas");
         console.log(element);
         if(!element.status)
           total_debt = total_debt+ 10;
@@ -77,9 +76,7 @@ const DeudasModal = ()=>{
         <th className="px-6 py-3 text-left text-sm font-semibold text-white">
           Precio
         </th>
-        <th className="px-6 py-3 text-left text-sm font-semibold text-white">
-          Vencimiento
-        </th>
+       
   
     
       </tr>
