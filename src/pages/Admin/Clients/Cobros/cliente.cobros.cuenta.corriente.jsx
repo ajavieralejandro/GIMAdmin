@@ -25,7 +25,7 @@ const ClienteCobroCuentaCorriente = ({setPage})=>{
         cuenta.map(producto=>{
             if(producto.cantidad>0)
                 total_price += producto.price * producto.cantidad;
-                cobro_name = "cobro : "+producto.name+" cantidad :"+producto.cantidad+"\n";
+                cobro_name = producto.name;
         })
 
         let registrar = true;
@@ -96,9 +96,7 @@ const ClienteCobroCuentaCorriente = ({setPage})=>{
             let aux = productos.filter(item => {return item.id==element})[0];
             array= [...array,aux];
         });
-        console.log("El arreglo es : ",array);
         setCuenta(array);
-        console.log("Cuenta es : ",cuenta);
     }
     
     return(
@@ -118,7 +116,7 @@ const ClienteCobroCuentaCorriente = ({setPage})=>{
                 </div>
                 <div></div>
                 <div className="text-right">
-                    <Button onClick={()=>registrarCobro()}>Cobrar</Button>
+                    <Button onClick={()=>registrarCobro()}>Registrar</Button>
                 </div>
 
             </div>

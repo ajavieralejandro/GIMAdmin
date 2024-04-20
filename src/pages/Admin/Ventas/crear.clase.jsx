@@ -7,11 +7,23 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addClase } from "../../../store/Clases/clases.actions";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const CrearClase = () =>{
     let dispatch = useDispatch();
     let navigate = useNavigate();
-    
+    const [actividades,setActividades] = useState([]);
+    useEffect(()=>{
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades')
+        .then(res=>res.json())
+        .then(data=>{
+            let aux = data.map(element=>{
+                return({...element,key:element.id,label:element.name,value:element.name})
+            })
+            setActividades(aux);
+        })
+
+    },[])
     const formato_option = [
         {
             key:1,
@@ -62,10 +74,7 @@ const CrearClase = () =>{
     }
     ]
 
-    let selector = useSelector(state=>state.ventas.actividades);
-    let actividades = selector.map((element,index)=>{
-        return {...element,key:index,value:element.nombre}
-    })
+   
 
     
     const [clase,setClase] = useState({
@@ -95,15 +104,18 @@ const handleOk = () =>{
 
     return (
         <>
-
+        <article
+        className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6"
+        >
+        <h1 className="text-left">Crear Clase</h1>
         <div className="pt-2">
-            <div className="grid grid-cols-4 gap-4">
+            <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
             <Select
       mode="multiple"
       style={{ width: '100%' }}
       placeholder="Actividades"
       options={actividades}
-      onChange={e=>setClase({...clase,actividades:[clase.actividades,e]})}
+      onChange={e=>setClase({...clase,actividades:[e]})}
     />
            <Select
       mode="multiple"
@@ -120,19 +132,19 @@ const handleOk = () =>{
     />
     <Checkbox>Disp. reservar</Checkbox>
             </div>
-            <div className="grid grid-cols-4 gap-4 pt-8"
-            >
+            <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+
                 <GenericSelect onChange={e=>setClase({...clase,formato:e})} placeholder={"Formato"} options={formato_option} />
                     <TimePicker onChange={e=>setClase({...clase,horarios:[clase.horarios,e]})} placeholder={"Desde"} needConfirm={false} />
                 <TimePicker onChange={e=>setClase({...clase,horarios:[clase.horarios,e]})} placeholder={"Hasta"} needConfirm={false} />
-                <GenericSelect onChange={e=>setClase({...clase,dias:[...clase.dias,e]})}  placeholder={"Día"} options={dias_options} />
+                <Select mode="multiple" onChange={e=>setClase({...clase,dias:[e]})}  placeholder={"Día"} options={dias_options} />
 
 
             </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 pt-8">
-            <Input onChange={e=>setClase({...clase,cupo:e.target.value})} placeholder="Cupo Máximo" />
+        <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Input onChange={e=>setClase({...clase,cupo:e.target.value})} placeholder="Cupo Máximo" />
             <Input  onChange={e=>setClase({...clase,invitaciones:e.target.value})} placeholder="Invitaciones" />
             <Checkbox onChange={e=>setClase({...clase,reservas_condicionales:e.target.checked})}>Reservas Condicionales</Checkbox>
 
@@ -140,7 +152,7 @@ const handleOk = () =>{
         <div className="text-right">
             <Button onClick={()=>handleOk()} type="text">Guardar</Button>
         </div>
-
+        </article>
         </>
     )
 }
