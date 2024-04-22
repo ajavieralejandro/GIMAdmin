@@ -13,6 +13,21 @@ const CrearClase = () =>{
     let dispatch = useDispatch();
     let navigate = useNavigate();
     const [actividades,setActividades] = useState([]);
+    const [clase,setClase] = useState({
+        nombre : "",
+        actividad:"",
+        profesores:"",
+        sucursal:"",
+        reserva:false,
+        formate:"",
+        dias:[],
+        horarios:[],
+        cupo:0,
+        invitaciones:0,
+        reservas_condicionales:false
+
+
+    })
     useEffect(()=>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades')
         .then(res=>res.json())
@@ -77,27 +92,16 @@ const CrearClase = () =>{
    
 
     
-    const [clase,setClase] = useState({
-        actividades : [],
-        profesores : [],
-        sucursal : "",
-        reservas : true,
-        horarios :[],
-        dias : [],
-        formato:"",
-        reservas_condicionales:true,
-        cupo : 0,
-
-    })
+ 
 
     const handleSelect = e => {setClase({...clase,actividades:[...actividades,e]});
  
     
 }
 const handleOk = () =>{
-
-    dispatch(addClase(clase));
-    navigate('/ventas/clases_programadas')
+    console.log("La clase a crear es : ",clase);
+    //dispatch(addClase(clase));
+    //navigate('/ventas/clases_programadas')
 
 
 }
@@ -115,12 +119,12 @@ const handleOk = () =>{
       style={{ width: '100%' }}
       placeholder="Actividades"
       options={actividades}
-      onChange={e=>setClase({...clase,actividades:[e]})}
+      onChange={e=>setClase({...clase,actividad:e})}
     />
            <Select
       mode="multiple"
       style={{ width: '100%' }}
-      onChange={e=>setClase({...clase,profesores:[...clase.profesores,e]})}
+      onChange={e=>setClase({...clase,profesor:e})}
       placeholder="Profesores"
       options={profesores_options}
     />
