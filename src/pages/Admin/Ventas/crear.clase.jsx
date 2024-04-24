@@ -99,9 +99,9 @@ const CrearClase = () =>{
     
 }
 const handleOk = () =>{
-    console.log("La clase a crear es : ",clase);
-    //dispatch(addClase(clase));
-    //navigate('/ventas/clases_programadas')
+ 
+
+    
 
 
 }
