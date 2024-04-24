@@ -107,13 +107,9 @@ import VentasCrearProductos from "./Admin/Ventas/Productos/ventas.crear.producto
 import ClienteCobros from "./Admin/Clients/Cobros/cliente.cobros";
 
 const AdminPage = () =>{
-  useEffect(()=>{
-    let res = fetchCategoriasConceptos().then(
-     data =>console.log(data));
-     console.log("res es : ",res);
-  },[])
+  
     return(
-        <>        <BrowserRouter>
+                <BrowserRouter>
         <Navbar />
         <SideBar>
       <Routes>
@@ -236,7 +232,7 @@ const AdminPage = () =>{
       </Routes>
            </SideBar>
            </BrowserRouter>    
-        </>
+        
     )
 }
 

@@ -258,6 +258,7 @@ const App = ({children}) => {
     
       <Layout>
         <Sider
+          theme='dark'
           width={250}
           breakpoint="lg"
           collapsedWidth="50"
@@ -275,6 +276,7 @@ const App = ({children}) => {
             style={{
               height: '100%',
               borderRight: 0,
+              fontSize:'15px'
             }}
             items={items3}
             onClick={event=>onClick(event,items3)}
