@@ -27,6 +27,16 @@ export default function Calendar() {
     <FullCalendar
       plugins={[ timeGridPluggin]}
       initialView={"timeGridWeek"}
+      events={[
+        {
+      id: 'a',
+      title: 'my event',
+      start: '2024-04-24T16:00',
+      end: '2024-04-24T18:00',
+
+      
+    }
+      ]}
     />
     </div>
   )
