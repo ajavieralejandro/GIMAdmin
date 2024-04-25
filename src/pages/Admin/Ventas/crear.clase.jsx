@@ -19,7 +19,7 @@ const CrearClase = () =>{
         profesores:"",
         sucursal:"",
         reserva:false,
-        formate:"",
+        format:"",
         dias:[],
         horarios:[],
         cupo:0,

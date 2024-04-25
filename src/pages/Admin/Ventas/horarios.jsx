@@ -3,7 +3,7 @@ import timeGridPluggin from '@fullcalendar/timegrid';
 import {Select} from 'antd'
 import {useState,useEffect} from 'react'
 export default function Calendar() {
-  const [clases,setClases] = useState([]);
+  const [events,setEvents] = useState([]);
   const [sucursales,setSucursales] = useState([]);
   useEffect(()=>{
     fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
@@ -16,6 +16,21 @@ export default function Calendar() {
       })
       setSucursales(aux);
     })
+    fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/clases_programadas')
+    .then(res=>res.json())
+    .then(data=>{
+      console.log("eventos :",data.data);
+      let aux = data.data.map(element=>{
+        return({...element,title:element.name,
+                start:"2024-04-25T"+element.start,
+                end:"2024-04-25T"+element.end
+
+        })
+      })
+      console.log("aux es :",aux);
+      setEvents(aux);
+    })
+    console.log("Los eventos son :",events)
   },[])
   return (
     <div>
@@ -27,16 +42,7 @@ export default function Calendar() {
     <FullCalendar
       plugins={[ timeGridPluggin]}
       initialView={"timeGridWeek"}
-      events={[
-        {
-      id: 'a',
-      title: 'my event',
-      start: '2024-04-24T16:00',
-      end: '2024-04-24T18:00',
-
-      
-    }
-      ]}
+      events={events}
     />
     </div>
   )
