@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentClient } from "../../store/client/client.actions";
 import Spiner from '../../components/Spiner/spiner';
+import { Pagination } from 'antd';
+
 const Clients = () =>{
     let dispatch = useDispatch();
     let navigate = useNavigate();
@@ -81,8 +83,11 @@ const Clients = () =>{
             data.map((client,index) => <ClientCard key={index} client={client} 
             />)
           }
-           
+         
 
+    </div>
+    <div className="h-full flex items-center justify-center">
+    <Pagination onChange={e=>setCurrentPage(e)} defaultCurrent={1} total={total} />
     </div>
 </section>
     </>)
