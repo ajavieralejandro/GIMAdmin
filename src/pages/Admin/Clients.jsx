@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentClient } from "../../store/client/client.actions";
+import Spiner from '../../components/Spiner/spiner';
 const Clients = () =>{
     let dispatch = useDispatch();
     let navigate = useNavigate();
@@ -76,7 +77,7 @@ const Clients = () =>{
     </div>
       
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
-          {loading?null:
+          {loading?<Spiner />:
             data.map((client,index) => <ClientCard key={index} client={client} 
             />)
           }
