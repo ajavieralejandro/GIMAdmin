@@ -28,8 +28,10 @@ const Clients = () =>{
     }
     const [data,setData] = useState([]);
     const [loading,setLoading] = useState(true);
-    const [index,setIndex] = useState(5);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(10); 
     const[ clientes,setClients] = useState([]);
+    const [total,setTotal] = useState([]);
     const onChange = (page) =>{
       setClients(data.slice())
     }
@@ -43,16 +45,21 @@ const Clients = () =>{
 
 
     useEffect(() => {
-         fetch("https://stingray-app-4224s.ondigitalocean.app/api/v1/clients")
+         fetch(`https://stingray-app-4224s.ondigitalocean.app/api/v1/clients?page=${currentPage}&limit=${itemsPerPage}`)
         .then((response) => response.json())
         .then((data) => { 
+            setTotal(data.total);
             setLoading(false)
             setClients(data.data);
             setData(data.data);
          })
            
 
-      }, []); 
+      },[currentPage, itemsPerPage]); 
+  const totalPages = Math.ceil(total / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = data.slice(startIndex, endIndex);
     return(
         
     <>

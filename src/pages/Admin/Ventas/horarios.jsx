@@ -36,7 +36,8 @@ export default function Calendar() {
     <div>
     <h1 className="text-3xl text-left">Horarios de las Actividades Programadas</h1>
     <div className='grid md:grid-cols-3 grid-cols-1 gap-2 pt-6 pb-6'>
-    <Select options={sucursales}  placeholder="Sucursal" />
+    <Select
+    options={sucursales}  placeholder="Sucursal" />
 
     </div>
     <FullCalendar
