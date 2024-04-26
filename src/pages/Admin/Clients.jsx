@@ -44,7 +44,22 @@ const Clients = () =>{
       navigate('/clientes/crear_cliente');
     }
 
- 
+    const searchClient = (e) =>{
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body :JSON.stringify({
+          "search": e.target.value
+  
+        })
+    };
+      fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/client/search',requestOptions)
+      .then(res=>res.json())
+      .then(data=>{
+        setData(data.results);
+        setTotal(data.reults.length);
+      })
+    }
 
 
     useEffect(() => {
@@ -70,7 +85,7 @@ const Clients = () =>{
     <div className="grid grid-cols-2">
     <div className="text-left "
     >
-              <SearchInput onChange={handleSearch} />
+              <SearchInput onChange={searchClient} />
 
     </div>
     <div className="text-right">
