@@ -35,6 +35,7 @@ const Clients = () =>{
     const [itemsPerPage, setItemsPerPage] = useState(10); 
     const[ clientes,setClients] = useState([]);
     const [total,setTotal] = useState([]);
+
     const onChange = (page) =>{
       setClients(data.slice())
     }
@@ -45,20 +46,43 @@ const Clients = () =>{
     }
 
     const searchClient = (e) =>{
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body :JSON.stringify({
-          "search": e.target.value
+      setLoading(true);
+      console.log("e es : ",e.target.value);
+      if(e.target.value==' '|| e.target.value==''){
+        fetch(`https://stingray-app-4224s.ondigitalocean.app/api/v1/clients?page=${currentPage}&limit=${itemsPerPage}`)
+        .then((response) => response.json())
+        .then((data) => { 
+            setTotal(data.total);
+            setLoading(false)
+            setClients(data.data);
+            setData(data.data);
+         })
+      }
+      else{
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body :JSON.stringify({
+            "search": e.target.value
+    
+          })
+      };
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/client/search',requestOptions)
+        .then(res=>res.json())
+        .then(data=>{
+          setLoading(false);
   
+          {
+            setData(data.results);
+            setTotal(data.results.length);
+          }
+          
+          
+          
+          
         })
-    };
-      fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/client/search',requestOptions)
-      .then(res=>res.json())
-      .then(data=>{
-        setData(data.results);
-        setTotal(data.reults.length);
-      })
+      }
+     
     }
 
 
