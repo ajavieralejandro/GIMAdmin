@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { addClase } from "../../../store/Clases/clases.actions";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import PickerDate from '../../../components/PickerDate/picker.date';
 
 const CrearClase = () =>{
     let dispatch = useDispatch();
@@ -111,9 +112,10 @@ const handleOk = () =>{
         <article
         className="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6"
         >
-        <h1 className="text-left">Crear Clase</h1>
+        <h1 className="text-left text-xl">Nueva Clase</h1>
         <div className="pt-2">
             <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <Input onChange={e=>setClase({...clase,name:e.target.value})} placeholder="Nombre Clase" />
             <Select
       mode="multiple"
       style={{ width: '100%' }}
@@ -134,7 +136,6 @@ const handleOk = () =>{
       placeholder="Sucursal"
       options={sucursales_options}
     />
-    <Checkbox>Disp. reservar</Checkbox>
             </div>
             <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
 
@@ -150,7 +151,9 @@ const handleOk = () =>{
         <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
         <Input onChange={e=>setClase({...clase,cupo:e.target.value})} placeholder="Cupo Máximo" />
             <Input  onChange={e=>setClase({...clase,invitaciones:e.target.value})} placeholder="Invitaciones" />
+            <PickerDate />
             <Checkbox onChange={e=>setClase({...clase,reservas_condicionales:e.target.checked})}>Reservas Condicionales</Checkbox>
+            <Checkbox>Disp. reservar</Checkbox>
 
         </div>
         <div className="text-right">
