@@ -29,6 +29,9 @@ const CrearClase = () =>{
 
 
     })
+    const setDate= (date1,date2)=>{
+        setClase({...clase,desde:date1,hasta:date2})
+    }
     useEffect(()=>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades')
         .then(res=>res.json())
@@ -57,25 +60,40 @@ const CrearClase = () =>{
     const dias_options = [
         {
             key:1,
-            value  : "Lunes"
+            value  : "Monday",
+            label:"Lunes"
         },
         {
             key:2,
-            value  : "Martes"
+            value  : "Tuesday",
+            label:"Martes"
         },
         {
             key:3,
-            value  : "Miercoles"
+            value  : "Wednesday",
+            label:"Miercoles"
+
         },
         {
             key:4,
-            value : "Jueves"
+            value : "Thursday",
+            label:"Jueves"
         },
         {key : 5,
-            value :"Viernes"},
+            value :"Friday",
+            label:"Viernes"
+        },
         {
             key:6,
-            value:"Sabado"
+            value:"Saturday",
+            label:"Sabado "
+
+        },
+        {
+            key:7,
+            value:"Sunday",
+            label:"Domingo "
+
         }
     ];
 
@@ -101,6 +119,7 @@ const CrearClase = () =>{
 }
 const handleOk = () =>{
  
+    console.log(clase);
 
     
 
@@ -142,7 +161,7 @@ const handleOk = () =>{
                 <GenericSelect onChange={e=>setClase({...clase,formato:e})} placeholder={"Formato"} options={formato_option} />
                     <TimePicker onChange={e=>setClase({...clase,horarios:[clase.horarios,e]})} placeholder={"Desde"} needConfirm={false} />
                 <TimePicker onChange={e=>setClase({...clase,horarios:[clase.horarios,e]})} placeholder={"Hasta"} needConfirm={false} />
-                <Select mode="multiple" onChange={e=>setClase({...clase,dias:[e]})}  placeholder={"Día"} options={dias_options} />
+                <Select showSearch={false} mode="multiple" onChange={e=>setClase({...clase,dias:[e]})}  placeholder={"Día"} options={dias_options} />
 
 
             </div>
@@ -151,7 +170,7 @@ const handleOk = () =>{
         <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
         <Input onChange={e=>setClase({...clase,cupo:e.target.value})} placeholder="Cupo Máximo" />
             <Input  onChange={e=>setClase({...clase,invitaciones:e.target.value})} placeholder="Invitaciones" />
-            <PickerDate />
+            <PickerDate setDates={setDate}  />
             <Checkbox onChange={e=>setClase({...clase,reservas_condicionales:e.target.checked})}>Reservas Condicionales</Checkbox>
             <Checkbox>Disp. reservar</Checkbox>
 
