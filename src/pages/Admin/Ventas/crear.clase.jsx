@@ -48,6 +48,33 @@ const CrearClase = () =>{
         return e.$d.getHours()+":"+e.$d.getMinutes();
     }
 
+    const crearClase = () =>{
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body :JSON.stringify({
+              "name": clase.nombre,
+              "date1": clase.date1,
+              "date2" : clase.date2,
+              "sucursal_id":clase.sucursal_id,
+              "actividad_id":clase.actividad_id,
+              "profesor_id":clase.profesor_id,
+              "dias" :clase.dias,
+              "formato": clase.formato,
+              "start":clase.start,
+              "end":clase.end,
+              "cupo":clase.cupo,
+              "reservas":clase.reservas,
+              "reservas_condicionales":clase.reservas_condicionales,
+              "max_invitaciones":clase.invitaciones
+      
+            })
+        };
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/clases',requestOptions)
+        .then(res=>res.text())
+        .then((data)=>alert(data));
+    }
+
     const formato_option = [
         {
             key:1,
@@ -182,7 +209,7 @@ const handleOk = () =>{
 
         </div>
         <div className="text-right">
-            <Button onClick={()=>handleOk()} type="text">Guardar</Button>
+            <Button onClick={()=>crearClase()} type="text">Guardar</Button>
         </div>
         </article>
         </>
