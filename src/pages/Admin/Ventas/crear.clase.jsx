@@ -15,12 +15,12 @@ const CrearClase = () =>{
     let navigate = useNavigate();
     const [actividades,setActividades] = useState([]);
     const [clase,setClase] = useState({
-        nombre : "",
+        name : "",
         actividad:"",
         profesores:"",
         sucursal:"",
         reserva:false,
-        format:"",
+        formato:"",
         dias:[],
         horarios:[],
         cupo:0,
@@ -30,19 +30,24 @@ const CrearClase = () =>{
 
     })
     const setDate= (date1,date2)=>{
-        setClase({...clase,desde:date1,hasta:date2})
+        setClase({...clase,date1:date1,date2:date2})
     }
     useEffect(()=>{
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/actividades')
         .then(res=>res.json())
         .then(data=>{
             let aux = data.map(element=>{
-                return({...element,key:element.id,label:element.name,value:element.name})
+                return({...element,key:element.id,label:element.name,value:element.id})
             })
             setActividades(aux);
         })
 
     },[])
+
+    const handleHorarios = e=>{
+        return e.$d.getHours()+":"+e.$d.getMinutes();
+    }
+
     const formato_option = [
         {
             key:1,
@@ -138,6 +143,7 @@ const handleOk = () =>{
             <Select
       mode="multiple"
       style={{ width: '100%' }}
+      showSearch={false}
       placeholder="Actividades"
       options={actividades}
       onChange={e=>setClase({...clase,actividad:e})}
@@ -159,8 +165,8 @@ const handleOk = () =>{
             <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
 
                 <GenericSelect onChange={e=>setClase({...clase,formato:e})} placeholder={"Formato"} options={formato_option} />
-                    <TimePicker onChange={e=>setClase({...clase,horarios:[clase.horarios,e]})} placeholder={"Desde"} needConfirm={false} />
-                <TimePicker onChange={e=>setClase({...clase,horarios:[clase.horarios,e]})} placeholder={"Hasta"} needConfirm={false} />
+                    <TimePicker onChange={e=>setClase({...clase,start:handleHorarios(e)})} placeholder={"Desde"} needConfirm={false} />
+                <TimePicker onChange={e=>setClase({...clase,end:handleHorarios(e)})} placeholder={"Hasta"} needConfirm={false} />
                 <Select showSearch={false} mode="multiple" onChange={e=>setClase({...clase,dias:[e]})}  placeholder={"Día"} options={dias_options} />
 
 
