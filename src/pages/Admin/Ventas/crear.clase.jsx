@@ -14,15 +14,17 @@ const CrearClase = () =>{
     let dispatch = useDispatch();
     let navigate = useNavigate();
     const [actividades,setActividades] = useState([]);
+    const [sucursales,setSucursales] = useState([]);
     const [clase,setClase] = useState({
         name : "",
-        actividad:"",
+        actividad_id:0,
         profesores:"",
-        sucursal:"",
-        reserva:false,
+        sucursal_id:0,
+        reservas:false,
         formato:"",
         dias:[],
-        horarios:[],
+        start:"",
+        end:"",
         cupo:0,
         invitaciones:0,
         reservas_condicionales:false
@@ -42,18 +44,42 @@ const CrearClase = () =>{
             setActividades(aux);
         })
 
+        fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/sucursales')
+        .then(res=>res.json())
+        .then(data=>{
+            let aux = data.data.map(element=>{
+                return({...element,key:element.id,label:element.nombre,value:element.id})
+            })
+            setSucursales(aux);
+        })
+
     },[])
 
     const handleHorarios = e=>{
-        return e.$d.getHours()+":"+e.$d.getMinutes();
+        
+        // Get the hours and minutes from the date
+        var date = e.$d;
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+
+        // Format hours with leading zero if necessary
+        var formattedHours = hours < 10 ? "0" + hours : hours;
+
+        // Format minutes with leading zero if necessary
+        var formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+        // Concatenate hours and minutes with colon separator
+        var formattedTime = formattedHours + ":" + formattedMinutes;
+        return formattedTime;
     }
 
-    const crearClase = () =>{
+    const handleCrearClase = () =>{
+        console.log("Clase : ",clase);
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body :JSON.stringify({
-              "name": clase.nombre,
+              "name": clase.name,
               "date1": clase.date1,
               "date2" : clase.date2,
               "sucursal_id":clase.sucursal_id,
@@ -70,9 +96,14 @@ const CrearClase = () =>{
       
             })
         };
+        console.log("Mostrando las Opciones :",requestOptions);
         fetch('https://stingray-app-4224s.ondigitalocean.app/api/v1/clases',requestOptions)
         .then(res=>res.text())
-        .then((data)=>alert(data));
+        .then((data)=>{
+            alert(data);
+            console.log("response:",data);
+            //navigate('/ventas/horarios');
+    });
     }
 
     const formato_option = [
@@ -129,10 +160,7 @@ const CrearClase = () =>{
         }
     ];
 
-    const sucursales_options = [
-        {key:1,
-        value:'Lomas'}
-    ];
+   
 
     const profesores_options = [
         {key:1,
@@ -145,7 +173,7 @@ const CrearClase = () =>{
     
  
 
-    const handleSelect = e => {setClase({...clase,actividades:[...actividades,e]});
+    const handleSelect = e => {setClase({...clase,actividad_id:e});
  
     
 }
@@ -168,12 +196,11 @@ const handleOk = () =>{
             <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
             <Input onChange={e=>setClase({...clase,name:e.target.value})} placeholder="Nombre Clase" />
             <Select
-      mode="multiple"
       style={{ width: '100%' }}
       showSearch={false}
       placeholder="Actividades"
       options={actividades}
-      onChange={e=>setClase({...clase,actividad:e})}
+      onChange={e=>setClase({...clase,actividad_id:e})}
     />
            <Select
       mode="multiple"
@@ -184,9 +211,9 @@ const handleOk = () =>{
     />
          <Select
       style={{ width: '100%' }}
-      onChange={e=>setClase({...clase,sucursal:e})}
+      onChange={e=>setClase({...clase,sucursal_id:e})}
       placeholder="Sucursal"
-      options={sucursales_options}
+      options={sucursales}
     />
             </div>
             <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -194,22 +221,22 @@ const handleOk = () =>{
                 <GenericSelect onChange={e=>setClase({...clase,formato:e})} placeholder={"Formato"} options={formato_option} />
                     <TimePicker onChange={e=>setClase({...clase,start:handleHorarios(e)})} placeholder={"Desde"} needConfirm={false} />
                 <TimePicker onChange={e=>setClase({...clase,end:handleHorarios(e)})} placeholder={"Hasta"} needConfirm={false} />
-                <Select showSearch={false} mode="multiple" onChange={e=>setClase({...clase,dias:[e]})}  placeholder={"Día"} options={dias_options} />
+                <Select showSearch={false} mode="multiple" onChange={e=>setClase({...clase,dias:e})}  placeholder={"Día"} options={dias_options} />
 
 
             </div>
         </div>
 
         <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Input onChange={e=>setClase({...clase,cupo:e.target.value})} placeholder="Cupo Máximo" />
-            <Input  onChange={e=>setClase({...clase,invitaciones:e.target.value})} placeholder="Invitaciones" />
+        <Input onChange={e=>setClase({...clase,cupo:parseInt(e.target.value)})} placeholder="Cupo Máximo" />
+            <Input  onChange={e=>setClase({...clase,invitaciones:parseInt(e.target.value)})} placeholder="Invitaciones" />
             <PickerDate setDates={setDate}  />
             <Checkbox onChange={e=>setClase({...clase,reservas_condicionales:e.target.checked})}>Reservas Condicionales</Checkbox>
-            <Checkbox>Disp. reservar</Checkbox>
+            <Checkbox onChange={e=>setClase({...clase,reservas:e.target.checked})}>Disp. reservar</Checkbox>
 
         </div>
         <div className="text-right">
-            <Button onClick={()=>crearClase()} type="text">Guardar</Button>
+            <Button onClick={()=>handleCrearClase()} type="text">Guardar</Button>
         </div>
         </article>
         </>
